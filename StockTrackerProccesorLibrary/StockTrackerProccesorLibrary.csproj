@@ -44,6 +44,13 @@
   <ItemGroup>
     <Compile Include="MainFormProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValuationMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StockTrackerDataLibrary\StockTrackerDataLibrary.csproj">
+      <Project>{99217e94-ea02-4745-b3c0-b25af7c3dea5}</Project>
+      <Name>StockTrackerDataLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

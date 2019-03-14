@@ -14,7 +14,7 @@ namespace StockTrackerDataLibrary.DataModels
         private bool _isFixedRate;
         private decimal _commissionRate;
 
-        public int IDNum
+        public int BrokerId
         {
             get { return _idNum; }
             set { _idNum = value; }

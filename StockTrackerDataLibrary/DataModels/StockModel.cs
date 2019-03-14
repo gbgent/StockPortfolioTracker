@@ -12,7 +12,7 @@ namespace StockTrackerDataLibrary.DataModels
 
         public List<BrokerageModel> Brokers;              
 
-        public decimal MyProperty
+        public decimal Shares
         {
             get { return TotalShares(); }            
         }

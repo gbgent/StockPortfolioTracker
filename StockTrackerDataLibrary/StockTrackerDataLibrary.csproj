@@ -43,7 +43,10 @@
   <ItemGroup>
     <Compile Include="DataModels\BasicStockModel.cs" />
     <Compile Include="DataModels\BrokerageModel.cs" />
+    <Compile Include="DataModels\IBasicStock.cs" />
+    <Compile Include="DataModels\IValuation.cs" />
     <Compile Include="DataModels\TransactionModel.cs" />
+    <Compile Include="DataModels\ValuationModel.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataModels\StockModel.cs" />

@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace StockTrackerDataLibrary.DataModels
 {
-    public class BasicStockModel
+    public class BasicStockModel :IBasicStock
     {
         private string _symbol;
-        private string _name;        
+        private string _name;
 
+        public int StockId;
+        
         public String Symbol
         { get
             { return _symbol; }

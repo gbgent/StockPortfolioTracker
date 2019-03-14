@@ -22,10 +22,12 @@ namespace StockTrackerDataLibrary.DataModels
         //ToDo - Create Global Enumerated Type for Transaction Type
         //ToDo - Create Field for Transaction Type
 
-        public BasicStockModel Stock;
+        public int StockId;
 
-        public BrokerageModel Broker;
-        
+        public int BrokerId;
+
+        public TransactionType Type;
+
         public DateTime Date
         {
             get { return _tDate; }

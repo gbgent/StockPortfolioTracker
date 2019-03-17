@@ -11,7 +11,7 @@ namespace StockTrackerProccesorLibrary
 {
     public class ValuationMethods
     {
-        // Stock Value Calculation for Entire Ownership
+        // Stock Valuation, Current
         public List<ValuationModel> StockValue(BasicStockModel model)
         {
             // Local Variables
@@ -35,7 +35,7 @@ namespace StockTrackerProccesorLibrary
             return output;
         }
 
-        // Stock Value Calculation to a specific date
+        // Stock Valuation, Specific Date
         public List<ValuationModel> StockValue(BasicStockModel model, DateTime endDate)
         {
             // Local Variables
@@ -64,9 +64,8 @@ namespace StockTrackerProccesorLibrary
 
             return output;
         }
-
-
-        // Stock Value Calculation for a Date Range
+        
+        // Stock Valuation, Date Range
         public List<ValuationModel> StockValue(BasicStockModel model, DateTime startDate, DateTime endDate)
         {
             // Local Variables
@@ -98,19 +97,37 @@ namespace StockTrackerProccesorLibrary
             return output;
         }
 
+        //Portfolio Valuation, Current
         public decimal PortfolioValue(List<BasicStockModel> stocks)
         {
             //Local Variables
-            
+            List<ValuationModel> value;
+            List<ValuationModel> PortfolioValue = new List<ValuationModel>();
             decimal output =0;
             
-             // Get 
+             // Get the current valuation for each stock owned
+            foreach (BasicStockModel stock in stocks)
+            {
+                value = StockValue(stock);             
+                PortfolioValue.Add(value.LastOrDefault());
+            }
+
+            //Sum the value for each stock
+            foreach (ValuationModel item in PortfolioValue)
+            {
+                output += item.Value;
+            }
 
             return output;
         }
 
+        // Process Transactions
         private ValuationModel ProcessTransaction(TransactionModel tModel, ValuationModel vModel)
-        {        
+        {   /*  This procedure steps through each transaction for a 
+            *   specific stock and then adjusts the number of shares owned
+            *   and the price at the time of the transaction.  This is done
+            *   using the Enumerated TransactionType which was made global.
+            */
             switch (tModel.Type)
                 {
                     case TransactionType.Buy:  

@@ -99,7 +99,7 @@ namespace StockTrackerApp
         private void mnu_StockUpdateSingle_Click(object sender, EventArgs e)
         {
             //Create Instance of Pop Up Window Update Price
-            StockPriceUpdateForm frm = new StockPriceUpdateForm();
+            StockUpdateForm frm = new StockUpdateForm();
 
             frm.ShowDialog();
 

@@ -18,10 +18,8 @@ namespace StockTrackerDataLibrary.DataModels
         {
             get { return _transactionId; }
             set { _transactionId = value; }
-        }
-        //ToDo - Create Global Enumerated Type for Transaction Type
-        //ToDo - Create Field for Transaction Type
-
+        }        
+       
         public int StockId;
 
         public int BrokerId;

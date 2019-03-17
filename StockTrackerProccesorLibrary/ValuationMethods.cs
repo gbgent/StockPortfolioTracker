@@ -12,7 +12,7 @@ namespace StockTrackerProccesorLibrary
     public class ValuationMethods
     {
         // Stock Valuation, Current
-        public List<ValuationModel> StockValue(BasicStockModel model)
+        static public List<ValuationModel> StockValue(BasicStockModel model)
         {
             // Local Variables
             ValuationModel temp = new ValuationModel();
@@ -36,7 +36,7 @@ namespace StockTrackerProccesorLibrary
         }
 
         // Stock Valuation, Specific Date
-        public List<ValuationModel> StockValue(BasicStockModel model, DateTime endDate)
+        static public List<ValuationModel> StockValue(BasicStockModel model, DateTime endDate)
         {
             // Local Variables
             ValuationModel temp = new ValuationModel();
@@ -66,7 +66,7 @@ namespace StockTrackerProccesorLibrary
         }
         
         // Stock Valuation, Date Range
-        public List<ValuationModel> StockValue(BasicStockModel model, DateTime startDate, DateTime endDate)
+       static public List<ValuationModel> StockValue(BasicStockModel model, DateTime startDate, DateTime endDate)
         {
             // Local Variables
             ValuationModel temp = new ValuationModel();
@@ -97,6 +97,10 @@ namespace StockTrackerProccesorLibrary
             return output;
         }
 
+        /* ToDo - Change the return type for all Portfolio Valuation Methods
+         *        Type will be sometype of Valuation Model, May have to make
+         *        a new Data Model for this. As of 3/17/19 not decided.
+         */
         //Portfolio Valuation, Current
         public decimal PortfolioValue(List<BasicStockModel> stocks)
         {
@@ -121,8 +125,32 @@ namespace StockTrackerProccesorLibrary
             return output;
         }
 
+        //Portfolio Valuation, Specific Date
+        public decimal PortfolioValue(List<BasicStockModel> stocks, DateTime endDate)
+        {
+            //Local Variables
+            List<ValuationModel> value;
+            List<ValuationModel> PortfolioValue = new List<ValuationModel>();
+            decimal output = 0;
+
+            // Get the current valuation for each stock owned on Specific Date
+            foreach (BasicStockModel stock in stocks)
+            {
+                value = StockValue(stock,endDate);
+                PortfolioValue.Add(value.LastOrDefault());
+            }
+
+            //Sum the value for each stock
+            foreach (ValuationModel item in PortfolioValue)
+            {
+                output += item.Value;
+            }
+
+            return output;
+        }
+
         // Process Transactions
-        private ValuationModel ProcessTransaction(TransactionModel tModel, ValuationModel vModel)
+        static private ValuationModel ProcessTransaction(TransactionModel tModel, ValuationModel vModel)
         {   /*  This procedure steps through each transaction for a 
             *   specific stock and then adjusts the number of shares owned
             *   and the price at the time of the transaction.  This is done

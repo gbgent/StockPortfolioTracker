@@ -31,12 +31,18 @@ namespace StockTrackerDataLibrary.DataModels
 
             foreach (TransactionModel trans in Transactions)
             {
-                //ToDo - Finish ForEach Loop after Creating Transaction Types
-                //Select STatement on Transaction Type
-                //Case Buy - Add to Shares
-                //Case Sale - Subtract for Shares
-                //Case Split - Shares equal Trans action Shares
-                //Default do nothing
+                switch (trans.Type)
+                {
+                    case TransactionType.Buy:
+                        output += trans.Shares;
+                        break;
+                    case TransactionType.Sale:
+                        output -= trans.Shares;
+                        break;
+                    case TransactionType.Split:
+                        output = trans.Shares;
+                        break;
+                }
             }
 
             return output;

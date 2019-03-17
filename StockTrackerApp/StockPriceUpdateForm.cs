@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StockTrackerDataLibrary;
 using StockTrackerDataLibrary.DataModels;
+using StockTrackerProccesorLibrary;
 
 
 namespace StockTrackerApp
@@ -39,9 +41,8 @@ namespace StockTrackerApp
             Stock.SetTemp();
             SetupDividend();
         }
-
-        //ToDo - Update Stock Price Update Constructor with BasicStockDataModel Information
-        public StockPriceUpdateForm(BasicStockModel st, int type) // Will recieve the Basic Stock Data Class
+                
+        public StockPriceUpdateForm(BasicStockModel st, TransactionType type) // Will recieve the Basic Stock Data Class
         {
             InitializeComponent();
             
@@ -50,19 +51,19 @@ namespace StockTrackerApp
 
             switch (type)
             {
-                case 1:
+                case TransactionType.Buy:
                     SetupBuy();
                     break;
-                case 2:
+                case TransactionType.Sale:
                     SetupSale();
                     break;
-                case 3:
+                case TransactionType.Update:
                     SetupUpdate();
                     break;
-                case 4:
+                case TransactionType.Split:
                     SetupSplit();
                     break;
-                case 5:
+                case TransactionType.Dividend:
                     SetupDividend();
                     break;
             }
@@ -90,8 +91,11 @@ namespace StockTrackerApp
             //Adjust the Height of Form
             this.Height = this.Height - lbl_Broker.Height;
 
+            List<ValuationModel> Valuations = new List<ValuationModel>();
+            CurrentValuation = ValuationMethods.StockValue(Stock);
+
             //Display Shares Owned and Stock's Value
-            lbl_SharesOwned.Text = Stock.CurrentValuation.Shares.ToString("n");
+            lbl_SharesOwned.Text = .ToString("n");
             lbl_CurrentValue.Text = Stock.CurrentValuation.Value.ToString("c");
         }
 

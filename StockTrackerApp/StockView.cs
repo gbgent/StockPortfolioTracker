@@ -7,14 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StockTrackerDataLibrary;
+using StockTrackerDataLibrary.DataModels;
 
 namespace StockTrackerApp
 {
     public partial class StockView : Form
     {
+        BasicStockModel stock;
+
         public StockView()
         {
             InitializeComponent();
+            //ToDo - Load List of Stocks Owned
+            //ToDo - Display sent Stock Information
+            
+        }
+
+        public StockView(BasicStockModel st)
+        {
+            InitializeComponent();
+
+            stock = st;
         }
     }
 }

@@ -8,15 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockTrackerProccesorLibrary;
+using StockTrackerDataLibrary;
+using StockTrackerDataLibrary.DataModels;
 
 
 namespace StockTrackerApp
 {
     public partial class MainFrm : Form
     {
+        BasicStockModel stock = new BasicStockModel(); 
         public MainFrm()
         {
             InitializeComponent();
+
+            //Load testing Data
+            LoadTestData();
+        }
+
+        private void LoadTestData()
+        {
+            stock.StockId = 1;
+            stock.Symbol = "APPL";
+            stock.Name = "Apple";
         }
 
         private void MainFrm_Load(object sender, EventArgs e)
@@ -98,8 +111,11 @@ namespace StockTrackerApp
 
         private void mnu_StockUpdateSingle_Click(object sender, EventArgs e)
         {
+            //ToDo - code to find which Stock is Selected in dashboard
+            //ToDo - get stock that is being viewed in Stock View
+
             //Create Instance of Pop Up Window Update Price
-            StockUpdateForm frm = new StockUpdateForm();
+            StockUpdateForm frm = new StockUpdateForm(stock,TransactionType.Update);
 
             frm.ShowDialog();
 
@@ -109,7 +125,9 @@ namespace StockTrackerApp
         {
             pnl_Main.Controls.Clear();
 
-            StockView nForm = new StockView();
+            //ToDo - Add coding to find the selected stock
+
+            StockView nForm = new StockView(stock);
 
             // Remove the Top Level desingation for the Form
             nForm.TopLevel = false;
@@ -123,6 +141,59 @@ namespace StockTrackerApp
             // Add Form to Panel then Show Form
             pnl_Main.Controls.Add(nForm);
             nForm.Show();
+        }
+
+        private void mnu_Stock_Buy_Click(object sender, EventArgs e)
+        {
+            //ToDo - code to find which Stock is Selected in dashboard
+            //ToDo - get stock that is being viewed in Stock View
+
+            //Create Instance of Pop Up Window Update Price
+            StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Buy);
+
+            frm.ShowDialog();
+        }
+
+        private void mnu_Stock_Sale_Click(object sender, EventArgs e)
+        {
+            //ToDo - code to find which Stock is Selected in dashboard
+            //ToDo - get stock that is being viewed in Stock View
+
+            //Create Instance of Pop Up Window Update Price
+            StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Sale);
+
+            frm.ShowDialog();
+        }
+
+        private void mnu_Stock_Dividend_Click(object sender, EventArgs e)
+        {
+            //ToDo - code to find which Stock is Selected in dashboard
+            //ToDo - get stock that is being viewed in Stock View
+
+            //Create Instance of Pop Up Window Update Price
+            StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Dividend);
+
+            frm.ShowDialog();
+        }
+
+        private void mnu_Stock_Split_Click(object sender, EventArgs e)
+        {
+            //ToDo - code to find which Stock is Selected in dashboard
+            //ToDo - get stock that is being viewed in Stock View
+
+            //Create Instance of Pop Up Window Update Price
+            StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Split);
+
+            frm.ShowDialog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string msg = ($"Stock Tracker\n\n" +
+                            "Version: 1.0\n" +
+                            "By: Gerald B. Glass");
+
+            MessageBox.Show(msg, "About");
         }
     }
 }

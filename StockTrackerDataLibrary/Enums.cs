@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockTrackerDataLibrary
 {
+    //Enumerated Type for Stock Transactions
     public enum TransactionType
     {
         Buy = 1,
@@ -13,5 +14,12 @@ namespace StockTrackerDataLibrary
         Update,
         Split,
         Dividend          
+    }
+
+    //Enumerated Type of Databases.  Set up for
+    //future expansion, ie Text, MySql, Azure, Amazon, etc
+    public enum DatabaseType
+    {
+        Sql
     }
 }

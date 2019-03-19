@@ -14,4 +14,11 @@ namespace StockTrackerDataLibrary
         Split,
         Dividend          
     }
+
+    public enum MyForms
+    {
+        DashBoard = 1,
+        Broker,
+        Stock
+    }
 }

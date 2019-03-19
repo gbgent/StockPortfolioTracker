@@ -16,7 +16,10 @@ namespace StockTrackerApp
 {
     public partial class MainFrm : Form
     {
+
+        MyForms currentForm = MyForms.DashBoard;
         BasicStockModel stock = new BasicStockModel(); 
+
         public MainFrm()
         {
             InitializeComponent();
@@ -79,6 +82,7 @@ namespace StockTrackerApp
 
             // Add Form to Panel then Show Form
             pnl_Main.Controls.Add(nForm);
+            currentForm = MyForms.DashBoard;
             nForm.Show();
         }
 
@@ -99,6 +103,7 @@ namespace StockTrackerApp
 
             // Add Form to Panel then Show Form
             pnl_Main.Controls.Add(nForm);
+            currentForm = MyForms.Broker;
             nForm.Show();
 
         }
@@ -140,6 +145,7 @@ namespace StockTrackerApp
 
             // Add Form to Panel then Show Form
             pnl_Main.Controls.Add(nForm);
+            currentForm = MyForms.Stock;
             nForm.Show();
         }
 
@@ -194,6 +200,26 @@ namespace StockTrackerApp
                             "By: Gerald B. Glass");
 
             MessageBox.Show(msg, "About");
+        }
+
+        private BasicStockModel GetSelectedStock ()
+        {
+            BasicStockModel output = new BasicStockModel();
+            ListBox lb;
+
+            switch (currentForm)
+            {
+                case MyForms.DashBoard:
+                    
+                    break;
+                case MyForms.Stock:
+                    break;
+                default:
+                    break;
+            }
+
+
+            return output;
         }
     }
 }

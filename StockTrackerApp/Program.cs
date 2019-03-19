@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockTrackerDataLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,10 @@ namespace StockTrackerApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-           // Application.Run(new StockPriceUpdateForm());
+            //Initialize Connection to the Databases
+            StockTrackerDataLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
+            
+            // Application.Run(new StockPriceUpdateForm());
             Application.Run(new MainFrm());
         }
     }

@@ -21,4 +21,12 @@ namespace StockTrackerDataLibrary
         Broker,
         Stock
     }
+
+    // This Enum is for the Database Connections
+    // It is set up to allow for expansion to
+    // another Database, IE MYSql, Amazon, MariaDb, etc.
+    public enum DatabaseType
+    {
+        Sql
+    }
 }

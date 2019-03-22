@@ -18,7 +18,9 @@ namespace StockTrackerApp
     {
 
         MyForms currentForm = MyForms.DashBoard;
-        BasicStockModel stock = new BasicStockModel(); 
+        BasicStockModel stock = new BasicStockModel();
+        Form cform;
+        
 
         public MainFrm()
         {
@@ -28,12 +30,7 @@ namespace StockTrackerApp
             LoadTestData();
         }
 
-        private void LoadTestData()
-        {
-            stock.StockId = 1;
-            stock.Symbol = "APPL";
-            stock.Name = "Apple";
-        }
+       
 
         private void MainFrm_Load(object sender, EventArgs e)
         {
@@ -56,6 +53,7 @@ namespace StockTrackerApp
 
             // Add Form to Panel then Show Form
             pnl_Main.Controls.Add(nForm);
+            cform = nForm;
             nForm.Show();
         }
 
@@ -130,7 +128,9 @@ namespace StockTrackerApp
         {
             pnl_Main.Controls.Clear();
 
-            //ToDo - Add coding to find the selected stock
+            //BasicStockModel stock = GetSelectedStock();
+
+            BasicStockModel stock = LoadTestingStock();
 
             StockView nForm = new StockView(stock);
 
@@ -202,24 +202,66 @@ namespace StockTrackerApp
             MessageBox.Show(msg, "About");
         }
 
-        private BasicStockModel GetSelectedStock ()
+        // Retrieve the selected stock from form inside
+        // of the form in the Panel.  
+       
+        //private BasicStockModel GetSelectedStock ()
+        //{
+        //    BasicStockModel output = new BasicStockModel();
+        //    ListBox lb;
+            
+        //    //switch (currentForm)
+        //    //{
+        //    //    case MyForms.DashBoard: 
+                   
+        //    //        break;
+        //    //    case MyForms.Stock:
+        //    //        break;
+        //    //    case MyForms.Broker:
+        //    //        break;
+        //    //}
+        //    foreach (Control ctl in pnl_Main.Controls)
+        //    {
+        //        if (ctl.GetType() == typeof(Form))
+        //        {
+        //            Form fm = ctl as Form;
+
+        //            foreach (Control ctrl in fm.Controls)
+        //            {
+        //                if (ctrl.GetType() == typeof(ListBox))
+        //                {
+        //                    ListBox lb = ctrl as ListBox;
+
+        //                    if (lb.SelectedIndex > -1)
+        //                    {
+        //                        output = (BasicStockModel)lb.SelectedItem;
+        //                    }
+        //                    else
+        //                    {
+        //                        lb.SelectedIndex = 0;
+        //                        output = (BasicStockModel)lb.SelectedItem;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return output;
+        //}
+
+        private BasicStockModel LoadTestingStock()
         {
-            BasicStockModel output = new BasicStockModel();
-            ListBox lb;
+           BasicStockModel temp = new BasicStockModel(2,"COKE","Coca-Cola");
 
-            switch (currentForm)
-            {
-                case MyForms.DashBoard:
-                    
-                    break;
-                case MyForms.Stock:
-                    break;
-                default:
-                    break;
-            }
-
-
-            return output;
+            return temp;
         }
+
+        private void LoadTestData()
+        {
+            stock.StockId = 1;
+            stock.Symbol = "APPL";
+            stock.Name = "Apple";
+        }
+
+
     }
 }

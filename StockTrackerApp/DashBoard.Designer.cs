@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.lb_Portfolio = new System.Windows.Forms.ListBox();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.lst_Portfolio = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lnk_AddNew = new System.Windows.Forms.LinkLabel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.cht_Portfolio = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cht_Portfolio)).BeginInit();
             this.SuspendLayout();
             // 
-            // lb_Portfolio
+            // lst_Portfolio
             // 
-            this.lb_Portfolio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lst_Portfolio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.lb_Portfolio.FormattingEnabled = true;
-            this.lb_Portfolio.ItemHeight = 21;
-            this.lb_Portfolio.Location = new System.Drawing.Point(13, 74);
-            this.lb_Portfolio.Name = "lb_Portfolio";
-            this.lb_Portfolio.Size = new System.Drawing.Size(250, 382);
-            this.lb_Portfolio.TabIndex = 0;
+            this.lst_Portfolio.FormattingEnabled = true;
+            this.lst_Portfolio.ItemHeight = 21;
+            this.lst_Portfolio.Location = new System.Drawing.Point(13, 74);
+            this.lst_Portfolio.Name = "lst_Portfolio";
+            this.lst_Portfolio.Size = new System.Drawing.Size(250, 382);
+            this.lst_Portfolio.TabIndex = 0;
             // 
             // label1
             // 
@@ -72,27 +72,27 @@
             this.lnk_AddNew.TabStop = true;
             this.lnk_AddNew.Text = "Add New Stock";
             // 
-            // chart1
+            // cht_Portfolio
             // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cht_Portfolio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(294, 74);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(494, 382);
-            this.chart1.TabIndex = 3;
-            this.chart1.Text = "chart1";
+            chartArea2.Name = "ChartArea1";
+            this.cht_Portfolio.ChartAreas.Add(chartArea2);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.cht_Portfolio.Legends.Add(legend2);
+            this.cht_Portfolio.Location = new System.Drawing.Point(294, 74);
+            this.cht_Portfolio.Name = "cht_Portfolio";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
+            this.cht_Portfolio.Series.Add(series2);
+            this.cht_Portfolio.Size = new System.Drawing.Size(494, 382);
+            this.cht_Portfolio.TabIndex = 3;
+            this.cht_Portfolio.Text = "chart1";
             // 
             // label2
             // 
@@ -121,16 +121,17 @@
             this.ClientSize = new System.Drawing.Size(800, 500);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.cht_Portfolio);
             this.Controls.Add(this.lnk_AddNew);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lb_Portfolio);
+            this.Controls.Add(this.lst_Portfolio);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DashBoard";
             this.Text = "DashBoard";
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.Load += new System.EventHandler(this.DashBoard_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.cht_Portfolio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,10 +139,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lb_Portfolio;
+        private System.Windows.Forms.ListBox lst_Portfolio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel lnk_AddNew;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart cht_Portfolio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
     }

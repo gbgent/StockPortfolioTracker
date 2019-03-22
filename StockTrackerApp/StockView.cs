@@ -30,5 +30,17 @@ namespace StockTrackerApp
 
             stock = st;
         }
+
+        private void UpdateDisplay (BasicStockModel model)
+        {
+            lbl_SymbolValue.Text = model.Symbol;
+            lbl_CompName.Text = model.Name;
+
+        }
+
+        private void StockView_Load(object sender, EventArgs e)
+        {
+            UpdateDisplay(stock);
+        }
     }
 }

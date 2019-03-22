@@ -6,46 +6,88 @@ using System.Threading.Tasks;
 
 namespace StockTrackerDataLibrary.DataModels
 {
-    public class StockModel
+    public class StockModel : BasicStockModel, IValuation
     {
-        public BasicStockModel Stock;
+        private ValuationModel _valuation = new ValuationModel();
 
-        public List<BrokerageModel> Brokers;              
+        public DateTime ValuationDate
+        {
+            get
+            {
+                _valuation = CurrentValue(StockId); //May place into a constructor
+                return _valuation.ValuationDate;
+            }            
+        }
 
         public decimal Shares
         {
-            get { return TotalShares(); }            
+            get { return _valuation.Shares; }
         }
 
-        private List<TransactionModel> Transactions;
-
-
-        //Private Methods
-
-        //Method Total Shares
-        //Returns the total Shares Currently Owned
-
-        private decimal TotalShares()
+        public decimal Price
         {
-            decimal output = 0;
+            get { return _valuation.Price; }
+        }
 
-            foreach (TransactionModel trans in Transactions)
+        public decimal Value
+        {
+            get { return _valuation.Value; }
+        }
+
+
+        static private ValuationModel CurrentValue(int id)
+        {
+            // Local Variables
+            ValuationModel temp = new ValuationModel();
+            List<ValuationModel> output = new List<ValuationModel>();
+            List<TransactionModel> transactions = new List<TransactionModel>();
+
+            //ToDo - Add Data Connection
+
+            foreach (TransactionModel item in transactions)
             {
-                switch (trans.Type)
-                {
-                    case TransactionType.Buy:
-                        output += trans.Shares;
-                        break;
-                    case TransactionType.Sale:
-                        output -= trans.Shares;
-                        break;
-                    case TransactionType.Split:
-                        output = trans.Shares;
-                        break;
-                }
+                //Process each Transaction by type
+                temp = ProcessTransaction(item, temp);
+
             }
 
-            return output;
+            // Add Valuation Model to the List of Valuation model
+            // (returns only the latest Valuation Value.
+            output.Add(temp);
+
+            return output.LastOrDefault();
+        }
+
+        static private ValuationModel ProcessTransaction(TransactionModel tModel, ValuationModel vModel)
+        {   /*  This procedure steps through each transaction for a 
+            *   thiswstock and then adjusts the number of shares owned
+            *   and the price at the time of the transaction.  This is done
+            *   using the Enumerated TransactionType which was made global.
+            */
+            switch (tModel.Type)
+            {
+                case TransactionType.Buy:
+                    vModel.Shares += tModel.Shares;  // Add shares to shares owned
+                    vModel.Price = tModel.Price;     // Change Current Price per share
+                    vModel.ValuationDate = tModel.Date;
+                    break;
+                case TransactionType.Sale:
+                    vModel.Shares -= tModel.Shares;  // Subtract Shares from shares owned
+                    vModel.Price = tModel.Price;     // Change the current price per share
+                    vModel.ValuationDate = tModel.Date;
+                    break;
+                case TransactionType.Split:
+                    vModel.Shares = tModel.Shares;   // Set Shares to number after slpit
+                    vModel.Price = tModel.Price;     // Change the current price to price after split
+                    vModel.ValuationDate = tModel.Date;
+                    break;
+                case TransactionType.Update:
+                    vModel.Price = tModel.Price;     // Change current price to updated price
+                    vModel.ValuationDate = tModel.Date;
+                    break;
+            }
+
+            return vModel;
         }
     }
 }

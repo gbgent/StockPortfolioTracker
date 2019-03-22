@@ -26,14 +26,6 @@ namespace StockTrackerDataLibrary.DataModels
             { return _name; }
             set
             { _name = value; }
-        }
-               
-              
-
-        public void SetTemp()
-        {
-            _symbol = "AAPL";
-            _name = "Apple";            
-        }
+        } 
     }
 }

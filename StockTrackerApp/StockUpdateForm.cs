@@ -38,7 +38,7 @@ namespace StockTrackerApp
         public StockUpdateForm()
         {
             InitializeComponent();
-            Stock.SetTemp();
+           
             SetupDividend();
         }
                 

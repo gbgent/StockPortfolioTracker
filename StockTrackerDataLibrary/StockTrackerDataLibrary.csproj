@@ -51,6 +51,7 @@
     <Compile Include="DataModels\BrokerageModel.cs" />
     <Compile Include="DataModels\IBasicStock.cs" />
     <Compile Include="DataModels\IValuation.cs" />
+    <Compile Include="DataModels\PortFolioModel.cs" />
     <Compile Include="DataModels\TransactionModel.cs" />
     <Compile Include="DataModels\ValuationModel.cs" />
     <Compile Include="Enums.cs" />

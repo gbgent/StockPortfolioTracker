@@ -102,7 +102,7 @@ namespace StockTrackerProccesorLibrary
          *        a new Data Model for this. As of 3/17/19 not decided.
          */
         //Portfolio Valuation, Current
-        public decimal PortfolioValue(List<BasicStockModel> stocks)
+        public ValuationModel PortfolioValue(List<BasicStockModel> stocks)
         {
             //Local Variables
             List<ValuationModel> value;

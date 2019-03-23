@@ -23,6 +23,8 @@ namespace StockTrackerProccesorLibrary
         *      {
         *         code in the constructor
         *       }
+        *       
+        *       
        */
         void StockSelected(BasicStockModel model);
     }

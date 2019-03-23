@@ -14,21 +14,41 @@ namespace StockTrackerApp
 {
     public partial class StockView : Form
     {
-        BasicStockModel stock;
+        StockModel stock = new StockModel();
 
         public StockView()
         {
             InitializeComponent();
             //ToDo - Load List of Stocks Owned
-            //ToDo - Display sent Stock Information
+                    
             
         }
 
         public StockView(BasicStockModel st)
         {
             InitializeComponent();
-
-            stock = st;
+            
+            stock.StockId = st.StockId;
+            stock.Name = st.Name;
+            stock.Symbol = st.Symbol;
         }
+
+        private void StockView_Load(object sender, EventArgs e)
+        {
+            UpdateDiplay(stock);
+
+        }
+        private void UpdateDiplay(StockModel model)
+        {
+            if(model != null)
+            {
+                lbl_SymbolValue.Text = model.Symbol;
+                lbl_CompName.Text = model.Name;
+                lbl_SharesOwned.Text = model.Shares.ToString("n4");
+                lbl_AvgPrice.Text = model.AvgPrice.ToString("n4");
+            }
+        }
+
+     
     }
 }

@@ -34,6 +34,11 @@ namespace StockTrackerDataLibrary.DataModels
             get { return _valuation.Value; }
         }
 
+        
+        public decimal AvgPrice
+        { get; }
+        
+        //ToDo - Add Method to Determine Total Cost of Shares Purchased
 
         static private ValuationModel CurrentValue(int id)
         {

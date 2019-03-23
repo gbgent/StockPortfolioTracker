@@ -50,6 +50,7 @@
             this.lst_Portfolio.Name = "lst_Portfolio";
             this.lst_Portfolio.Size = new System.Drawing.Size(250, 382);
             this.lst_Portfolio.TabIndex = 0;
+            this.lst_Portfolio.SelectedIndexChanged += new System.EventHandler(this.lst_Portfolio_SelectedIndexChanged);
             // 
             // label1
             // 

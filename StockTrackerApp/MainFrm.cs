@@ -10,11 +10,12 @@ using System.Windows.Forms;
 using StockTrackerProccesorLibrary;
 using StockTrackerDataLibrary;
 using StockTrackerDataLibrary.DataModels;
+using StockTrackerProccesorLibrary;
 
 
 namespace StockTrackerApp
 {
-    public partial class MainFrm : Form
+    public partial class MainFrm : Form , IStockRequester
     {
 
         MyForms currentForm = MyForms.DashBoard;
@@ -23,22 +24,12 @@ namespace StockTrackerApp
         public MainFrm()
         {
             InitializeComponent();
-
-            //Load testing Data
-            LoadTestData();
         }
-
-        private void LoadTestData()
-        {
-            stock.StockId = 1;
-            stock.Symbol = "APPL";
-            stock.Name = "Apple";
-        }
-
+        
         private void MainFrm_Load(object sender, EventArgs e)
         {
             // Create an Instance of the Dashboard
-            DashBoard nForm = new DashBoard();
+            DashBoard nForm = new DashBoard(this);
 
             //Set New Form to show in Display
             // UpdateMainFormPanel(ref Form DisplayFrm);
@@ -113,26 +104,10 @@ namespace StockTrackerApp
             //Close the Application
             this.Close();
         }
-
-        private void mnu_StockUpdateSingle_Click(object sender, EventArgs e)
-        {
-            //ToDo - code to find which Stock is Selected in dashboard
-            //ToDo - get stock that is being viewed in Stock View
-
-            //Create Instance of Pop Up Window Update Price
-            StockUpdateForm frm = new StockUpdateForm(stock,TransactionType.Update);
-
-            frm.ShowDialog();
-
-        }
-
+ 
         private void mnu_Stock_View_Click(object sender, EventArgs e)
         {
             pnl_Main.Controls.Clear();
-
-            //ToDo - Add coding to find the selected stock
-
-          
 
             StockView nForm = new StockView(stock);
 
@@ -150,6 +125,19 @@ namespace StockTrackerApp
             currentForm = MyForms.Stock;
             nForm.Show();
         }
+
+        private void mnu_StockUpdateSingle_Click(object sender, EventArgs e)
+        {
+            //ToDo - code to find which Stock is Selected in dashboard
+            //ToDo - get stock that is being viewed in Stock View
+
+            //Create Instance of Pop Up Window Update Price
+            StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Update);
+
+            frm.ShowDialog();
+
+        }
+
 
         private void mnu_Stock_Buy_Click(object sender, EventArgs e)
         {
@@ -222,6 +210,11 @@ namespace StockTrackerApp
 
 
             return output;
+        }
+
+        public void StockSelected(BasicStockModel model)
+        {
+            stock = model;
         }
     }
 }

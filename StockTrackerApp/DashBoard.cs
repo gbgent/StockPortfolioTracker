@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StockTrackerProccesorLibrary;
 
 namespace StockTrackerApp
 {
@@ -15,16 +16,25 @@ namespace StockTrackerApp
     {
         List<BasicStockModel> stocks = new List<BasicStockModel>();
         BasicStockModel stock = new BasicStockModel();
+        private IStockRequester callingForm;
 
         public DashBoard()
         {
             InitializeComponent();
         }
 
+        public DashBoard(IStockRequester caller )
+        {
+            InitializeComponent();
+            callingForm = caller;
+
+        }
+
         private void DashBoard_Load(object sender, EventArgs e)
         {
             LoadPortfolio();
             UpdateDisplay();
+            
         }
 
         private void UpdateDisplay()
@@ -32,6 +42,8 @@ namespace StockTrackerApp
             lst_Portfolio.DataSource = null;
             lst_Portfolio.DataSource = stocks;
             lst_Portfolio.DisplayMember = "DisplayName";
+            lst_Portfolio.SelectedIndex = 1;
+            lst_Portfolio.SelectedIndex = 0;
         }
 
         private void LoadPortfolio()
@@ -40,6 +52,19 @@ namespace StockTrackerApp
             LoadTestStocks();
            
         }
+        private void lst_Portfolio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BasicStockModel stock;
+            stock = (BasicStockModel)lst_Portfolio.SelectedItem;
+
+            //  ToDo - Fix Issue when Dashboard is Called
+            // when either Stock View or Broker Form is open in the main panel.
+            // Ie Second Call.  Error is "System.NullReferenceException: 'Object reference not set to an instance of an object.'"
+
+            callingForm.StockSelected(stock);
+                        
+        }
+
 
 
         private void LoadTestStocks()
@@ -52,5 +77,7 @@ namespace StockTrackerApp
             stocks.Add(stock2);
             stocks.Add(stock3);
         }
+
+        
     }
 }

@@ -37,9 +37,7 @@ namespace StockTrackerApp
 
         public StockUpdateForm()
         {
-            InitializeComponent();
-           
-            SetupDividend();
+            InitializeComponent();           
         }
                 
         public StockUpdateForm(BasicStockModel st, TransactionType type) // Will recieve the Basic Stock Data Class

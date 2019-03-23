@@ -102,52 +102,52 @@ namespace StockTrackerProccesorLibrary
          *        a new Data Model for this. As of 3/17/19 not decided.
          */
         //Portfolio Valuation, Current
-        public ValuationModel PortfolioValue(List<BasicStockModel> stocks)
-        {
-            //Local Variables
-            List<ValuationModel> value;
-            List<ValuationModel> PortfolioValue = new List<ValuationModel>();
-            decimal output =0;
+        //public ValuationModel PortfolioValue(List<BasicStockModel> stocks)
+        //{
+        //    //Local Variables
+        //    List<ValuationModel> value;
+        //    List<ValuationModel> PortfolioValue = new List<ValuationModel>();
+        //    decimal output =0;
             
-             // Get the current valuation for each stock owned
-            foreach (BasicStockModel stock in stocks)
-            {
-                value = StockValue(stock);             
-                PortfolioValue.Add(value.LastOrDefault());
-            }
+        //     // Get the current valuation for each stock owned
+        //    foreach (BasicStockModel stock in stocks)
+        //    {
+        //        value = StockValue(stock);             
+        //        PortfolioValue.Add(value.LastOrDefault());
+        //    }
 
-            //Sum the value for each stock
-            foreach (ValuationModel item in PortfolioValue)
-            {
-                output += item.Value;
-            }
+        //    //Sum the value for each stock
+        //    foreach (ValuationModel item in PortfolioValue)
+        //    {
+        //        output += item.Value;
+        //    }
 
-            return output;
-        }
+        //    return output;
+        //}
 
-        //Portfolio Valuation, Specific Date
-        public decimal PortfolioValue(List<BasicStockModel> stocks, DateTime endDate)
-        {
-            //Local Variables
-            List<ValuationModel> value;
-            List<ValuationModel> PortfolioValue = new List<ValuationModel>();
-            decimal output = 0;
+        ////Portfolio Valuation, Specific Date
+        //public decimal PortfolioValue(List<BasicStockModel> stocks, DateTime endDate)
+        //{
+        //    //Local Variables
+        //    List<ValuationModel> value;
+        //    List<ValuationModel> PortfolioValue = new List<ValuationModel>();
+        //    decimal output = 0;
 
-            // Get the current valuation for each stock owned on Specific Date
-            foreach (BasicStockModel stock in stocks)
-            {
-                value = StockValue(stock,endDate);
-                PortfolioValue.Add(value.LastOrDefault());
-            }
+        //    // Get the current valuation for each stock owned on Specific Date
+        //    foreach (BasicStockModel stock in stocks)
+        //    {
+        //        value = StockValue(stock,endDate);
+        //        PortfolioValue.Add(value.LastOrDefault());
+        //    }
 
-            //Sum the value for each stock
-            foreach (ValuationModel item in PortfolioValue)
-            {
-                output += item.Value;
-            }
+        //    //Sum the value for each stock
+        //    foreach (ValuationModel item in PortfolioValue)
+        //    {
+        //        output += item.Value;
+        //    }
 
-            return output;
-        }
+        //    return output;
+        //}
 
         // Process Transactions
         static private ValuationModel ProcessTransaction(TransactionModel tModel, ValuationModel vModel)

@@ -132,6 +132,8 @@ namespace StockTrackerApp
 
             //ToDo - Add coding to find the selected stock
 
+          
+
             StockView nForm = new StockView(stock);
 
             // Remove the Top Level desingation for the Form

@@ -47,11 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrokerForm.cs">
+    <Compile Include="BrokerageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BrokerForm.Designer.cs">
-      <DependentUpon>BrokerForm.cs</DependentUpon>
+    <Compile Include="BrokerageForm.Designer.cs">
+      <DependentUpon>BrokerageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DashBoard.cs">
       <SubType>Form</SubType>
@@ -79,8 +79,8 @@
     <Compile Include="StockView.Designer.cs">
       <DependentUpon>StockView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BrokerForm.resx">
-      <DependentUpon>BrokerForm.cs</DependentUpon>
+    <EmbeddedResource Include="BrokerageForm.resx">
+      <DependentUpon>BrokerageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DashBoard.resx">
       <DependentUpon>DashBoard.cs</DependentUpon>

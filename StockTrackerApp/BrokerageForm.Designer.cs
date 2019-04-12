@@ -1,6 +1,6 @@
 ﻿namespace StockTrackerApp
 {
-    partial class BrokerForm
+    partial class BrokerageForm
     {
         /// <summary>
         /// Required designer variable.

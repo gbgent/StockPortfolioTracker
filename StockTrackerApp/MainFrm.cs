@@ -81,7 +81,7 @@ namespace StockTrackerApp
         {
             pnl_Main.Controls.Clear();
 
-            BrokerForm nForm = new BrokerForm();
+            BrokerageForm nForm = new BrokerageForm();
 
             // Remove the Top Level desingation for the Form
             nForm.TopLevel = false;

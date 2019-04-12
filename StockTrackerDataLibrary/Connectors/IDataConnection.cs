@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockTrackerDataLibrary.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace StockTrackerDataLibrary.Connectors
 {
     public interface IDataConnection
     {
+        void AddNewBroker(BrokerageModel model);
     }
 }

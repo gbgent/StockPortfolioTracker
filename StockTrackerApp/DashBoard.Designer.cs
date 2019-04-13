@@ -72,6 +72,7 @@
             this.lnk_AddNew.TabIndex = 2;
             this.lnk_AddNew.TabStop = true;
             this.lnk_AddNew.Text = "Add New Stock";
+            this.lnk_AddNew.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_AddNew_LinkClicked);
             // 
             // chart1
             // 

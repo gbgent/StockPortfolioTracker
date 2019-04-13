@@ -18,11 +18,13 @@ namespace StockTrackerApp
         BasicStockModel stock = new BasicStockModel();
         private IStockRequester callingForm;
 
+        // Default Constructor
         public DashBoard()
         {
             InitializeComponent();
         }
 
+        // Constructor when Called from Another Form
         public DashBoard(IStockRequester caller )
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace StockTrackerApp
 
         }
 
+        // Load Dashboard with Portfolio Information
         private void DashBoard_Load(object sender, EventArgs e)
         {
             LoadPortfolio();
@@ -37,6 +40,7 @@ namespace StockTrackerApp
             
         }
 
+        // Update the Form
         private void UpdateDisplay()
         {
             lst_Portfolio.DataSource = null;
@@ -51,7 +55,11 @@ namespace StockTrackerApp
             //Test Load for Stocks
             LoadTestStocks();
            
+            // ToDo - Add Code to load Portfolio from Database
         }
+
+        // Event Handler for when Stock Selection Changes
+        // Passes the Stock back to the Calling Form (usually Main Form)
         private void lst_Portfolio_SelectedIndexChanged(object sender, EventArgs e)
         {
             BasicStockModel stock;
@@ -66,7 +74,9 @@ namespace StockTrackerApp
         }
 
 
-
+        // Test Data for Creation and testing
+        // Of program.  Used until testing of 
+        // Data base.
         private void LoadTestStocks()
         {
             BasicStockModel stock1, stock2, stock3;
@@ -78,6 +88,27 @@ namespace StockTrackerApp
             stocks.Add(stock3);
         }
 
-        
+        private void lnk_AddNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            NewStockForm pForm = new NewStockForm();
+            DialogResult result = new DialogResult();
+
+
+            result = pForm.ShowDialog();
+
+            // Check if new stock was added
+            if (result == DialogResult.OK)
+            {
+                //Reload Portfolio
+                LoadPortfolio();
+                //Update Portfolio Value
+
+                //Reload Chart
+            }
+        }
+
+        // ToDo - Work on Portfolio Evaulation
+        // ToDo - Wire up the Chart
+
     }
 }

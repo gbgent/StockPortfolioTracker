@@ -28,43 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_Select = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_BrokerageName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_Address = new System.Windows.Forms.TextBox();
+            this.gb_BrokerageInfo = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txt_AccountNum = new System.Windows.Forms.TextBox();
+            this.gp_BrokerInfo = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.txt_Email = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txt_PhoneNum = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_BrokerName = new System.Windows.Forms.TextBox();
+            this.chk_Edit = new System.Windows.Forms.CheckBox();
+            this.btn_New = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.btn_Revert = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_CommissionRate = new System.Windows.Forms.TextBox();
+            this.gb_BrokerageInfo.SuspendLayout();
+            this.gp_BrokerInfo.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cb_Select
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cb_Select.FormattingEnabled = true;
+            this.cb_Select.Items.AddRange(new object[] {
             "Select a Brokerage",
             "-",
             "E-Trade",
             "AmeriTrade",
             "Charles Swab"});
-            this.comboBox1.Location = new System.Drawing.Point(37, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(159, 29);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.Text = "Select a Brokerage";
+            this.cb_Select.Location = new System.Drawing.Point(37, 28);
+            this.cb_Select.Name = "cb_Select";
+            this.cb_Select.Size = new System.Drawing.Size(159, 29);
+            this.cb_Select.TabIndex = 0;
+            this.cb_Select.Text = "Select a Brokerage";
+            this.cb_Select.SelectedIndexChanged += new System.EventHandler(this.cb_Select_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -75,12 +78,13 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Name";
             // 
-            // textBox1
+            // txt_BrokerageName
             // 
-            this.textBox1.Location = new System.Drawing.Point(120, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(177, 29);
-            this.textBox1.TabIndex = 2;
+            this.txt_BrokerageName.Location = new System.Drawing.Point(120, 45);
+            this.txt_BrokerageName.Name = "txt_BrokerageName";
+            this.txt_BrokerageName.Size = new System.Drawing.Size(177, 29);
+            this.txt_BrokerageName.TabIndex = 2;
+            this.txt_BrokerageName.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
             // 
             // label2
             // 
@@ -91,29 +95,30 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Address";
             // 
-            // textBox2
+            // txt_Address
             // 
-            this.textBox2.Location = new System.Drawing.Point(120, 102);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(177, 107);
-            this.textBox2.TabIndex = 4;
+            this.txt_Address.Location = new System.Drawing.Point(120, 102);
+            this.txt_Address.Multiline = true;
+            this.txt_Address.Name = "txt_Address";
+            this.txt_Address.Size = new System.Drawing.Size(177, 107);
+            this.txt_Address.TabIndex = 4;
+            this.txt_Address.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
             // 
-            // groupBox1
+            // gb_BrokerageInfo
             // 
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Location = new System.Drawing.Point(12, 84);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(314, 279);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Brokerage Infomation";
+            this.gb_BrokerageInfo.Controls.Add(this.label3);
+            this.gb_BrokerageInfo.Controls.Add(this.txt_AccountNum);
+            this.gb_BrokerageInfo.Controls.Add(this.label1);
+            this.gb_BrokerageInfo.Controls.Add(this.txt_Address);
+            this.gb_BrokerageInfo.Controls.Add(this.txt_BrokerageName);
+            this.gb_BrokerageInfo.Controls.Add(this.label2);
+            this.gb_BrokerageInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.gb_BrokerageInfo.Location = new System.Drawing.Point(12, 84);
+            this.gb_BrokerageInfo.Name = "gb_BrokerageInfo";
+            this.gb_BrokerageInfo.Size = new System.Drawing.Size(314, 279);
+            this.gb_BrokerageInfo.TabIndex = 5;
+            this.gb_BrokerageInfo.TabStop = false;
+            this.gb_BrokerageInfo.Text = "Brokerage Infomation";
             // 
             // label3
             // 
@@ -124,27 +129,61 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Account\r\nNumber";
             // 
-            // textBox3
+            // txt_AccountNum
             // 
-            this.textBox3.Location = new System.Drawing.Point(120, 227);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(177, 29);
-            this.textBox3.TabIndex = 6;
+            this.txt_AccountNum.Location = new System.Drawing.Point(120, 227);
+            this.txt_AccountNum.Name = "txt_AccountNum";
+            this.txt_AccountNum.Size = new System.Drawing.Size(177, 29);
+            this.txt_AccountNum.TabIndex = 6;
+            this.txt_AccountNum.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
             // 
-            // groupBox2
+            // gp_BrokerInfo
             // 
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Location = new System.Drawing.Point(358, 84);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(314, 279);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Broker Information";
+            this.gp_BrokerInfo.Controls.Add(this.label6);
+            this.gp_BrokerInfo.Controls.Add(this.txt_Email);
+            this.gp_BrokerInfo.Controls.Add(this.label5);
+            this.gp_BrokerInfo.Controls.Add(this.txt_PhoneNum);
+            this.gp_BrokerInfo.Controls.Add(this.label4);
+            this.gp_BrokerInfo.Controls.Add(this.txt_BrokerName);
+            this.gp_BrokerInfo.Location = new System.Drawing.Point(358, 84);
+            this.gp_BrokerInfo.Name = "gp_BrokerInfo";
+            this.gp_BrokerInfo.Size = new System.Drawing.Size(314, 190);
+            this.gp_BrokerInfo.TabIndex = 6;
+            this.gp_BrokerInfo.TabStop = false;
+            this.gp_BrokerInfo.Text = "Broker Information";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 143);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 21);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "E-Mail";
+            // 
+            // txt_Email
+            // 
+            this.txt_Email.Location = new System.Drawing.Point(93, 139);
+            this.txt_Email.Name = "txt_Email";
+            this.txt_Email.Size = new System.Drawing.Size(177, 29);
+            this.txt_Email.TabIndex = 12;
+            this.txt_Email.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 94);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 21);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Phone";
+            // 
+            // txt_PhoneNum
+            // 
+            this.txt_PhoneNum.Location = new System.Drawing.Point(93, 90);
+            this.txt_PhoneNum.Name = "txt_PhoneNum";
+            this.txt_PhoneNum.Size = new System.Drawing.Size(177, 29);
+            this.txt_PhoneNum.TabIndex = 10;
             // 
             // label4
             // 
@@ -155,103 +194,95 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Name";
             // 
-            // textBox4
+            // txt_BrokerName
             // 
-            this.textBox4.Location = new System.Drawing.Point(93, 45);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(177, 29);
-            this.textBox4.TabIndex = 8;
+            this.txt_BrokerName.Location = new System.Drawing.Point(93, 41);
+            this.txt_BrokerName.Name = "txt_BrokerName";
+            this.txt_BrokerName.Size = new System.Drawing.Size(177, 29);
+            this.txt_BrokerName.TabIndex = 8;
+            this.txt_BrokerName.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
             // 
-            // label5
+            // chk_Edit
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 102);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 21);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Phone";
+            this.chk_Edit.AutoSize = true;
+            this.chk_Edit.Location = new System.Drawing.Point(531, 32);
+            this.chk_Edit.Name = "chk_Edit";
+            this.chk_Edit.Size = new System.Drawing.Size(141, 25);
+            this.chk_Edit.TabIndex = 7;
+            this.chk_Edit.Text = "Edit Information";
+            this.chk_Edit.UseVisualStyleBackColor = true;
+            this.chk_Edit.CheckedChanged += new System.EventHandler(this.chk_Edit_CheckedChanged);
             // 
-            // textBox5
+            // btn_New
             // 
-            this.textBox5.Location = new System.Drawing.Point(93, 102);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(177, 29);
-            this.textBox5.TabIndex = 10;
+            this.btn_New.Location = new System.Drawing.Point(301, 381);
+            this.btn_New.Name = "btn_New";
+            this.btn_New.Size = new System.Drawing.Size(90, 35);
+            this.btn_New.TabIndex = 8;
+            this.btn_New.Text = "New";
+            this.btn_New.UseVisualStyleBackColor = true;
+            this.btn_New.Click += new System.EventHandler(this.btn_New_Click);
             // 
-            // label6
+            // btn_Save
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 159);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 21);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "E-Mail";
+            this.btn_Save.Location = new System.Drawing.Point(189, 381);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(90, 35);
+            this.btn_Save.TabIndex = 9;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
-            // textBox6
+            // btn_Revert
             // 
-            this.textBox6.Location = new System.Drawing.Point(93, 159);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(177, 29);
-            this.textBox6.TabIndex = 12;
+            this.btn_Revert.Location = new System.Drawing.Point(413, 381);
+            this.btn_Revert.Name = "btn_Revert";
+            this.btn_Revert.Size = new System.Drawing.Size(90, 35);
+            this.btn_Revert.TabIndex = 10;
+            this.btn_Revert.Text = "Revert";
+            this.btn_Revert.UseVisualStyleBackColor = true;
+            this.btn_Revert.Click += new System.EventHandler(this.btn_Revert_Click);
             // 
-            // checkBox1
+            // label7
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(531, 32);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(141, 25);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Edit Information";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(377, 305);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(132, 21);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Commission Rate";
             // 
-            // button1
+            // txt_CommissionRate
             // 
-            this.button1.Location = new System.Drawing.Point(301, 381);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 35);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Save/Exit";
-            this.button1.UseVisualStyleBackColor = true;
+            this.txt_CommissionRate.Location = new System.Drawing.Point(513, 301);
+            this.txt_CommissionRate.Name = "txt_CommissionRate";
+            this.txt_CommissionRate.Size = new System.Drawing.Size(115, 29);
+            this.txt_CommissionRate.TabIndex = 14;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(189, 381);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 35);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Save/New";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(413, 381);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(90, 35);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Exit";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // BrokerForm
+            // BrokerageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 427);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btn_Revert);
+            this.Controls.Add(this.txt_CommissionRate);
+            this.Controls.Add(this.btn_Save);
+            this.Controls.Add(this.btn_New);
+            this.Controls.Add(this.chk_Edit);
+            this.Controls.Add(this.gp_BrokerInfo);
+            this.Controls.Add(this.gb_BrokerageInfo);
+            this.Controls.Add(this.cb_Select);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "BrokerForm";
+            this.Name = "BrokerageForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Brokerage Information";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.Load += new System.EventHandler(this.BrokerageForm_Load);
+            this.gb_BrokerageInfo.ResumeLayout(false);
+            this.gb_BrokerageInfo.PerformLayout();
+            this.gp_BrokerInfo.ResumeLayout(false);
+            this.gp_BrokerInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,24 +290,26 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_Select;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_BrokerageName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txt_Address;
+        private System.Windows.Forms.GroupBox gb_BrokerageInfo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txt_AccountNum;
+        private System.Windows.Forms.GroupBox gp_BrokerInfo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txt_Email;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txt_PhoneNum;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txt_BrokerName;
+        private System.Windows.Forms.CheckBox chk_Edit;
+        private System.Windows.Forms.Button btn_New;
+        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.Button btn_Revert;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_CommissionRate;
     }
 }

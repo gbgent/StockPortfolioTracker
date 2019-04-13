@@ -9,9 +9,12 @@ namespace StockTrackerDataLibrary.DataModels
     public class BrokerageModel
     {
         private int _idNum;
-        private string _name;
+        private string _brokerageName;
+        private string _brokerageAddress;
+        private string _accountNum;
         private string _broker;
-        private bool _isFixedRate;
+        private string _phoneNum;
+        private string _email;
         private decimal _commissionRate;
 
         public int BrokerId
@@ -20,24 +23,43 @@ namespace StockTrackerDataLibrary.DataModels
             set { _idNum = value; }
         }
                 
-        public string Name
+        public string BrokerageName
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return _brokerageName; }
+            set { _brokerageName = value; }
         }
-        
+
+        public string BrokerageAddress
+        {
+            get { return _brokerageAddress; }
+            set { _brokerageAddress = value; }
+        }
+
+
+        public string AccountNum
+        {
+            get { return _accountNum; }
+            set { _accountNum = value; }
+        }
+
         public string Broker
         {
             get { return _broker; }
             set { _broker = value; }
         }
-        
-        public bool IsFixedRate
+
+        public string PhoneNum
         {
-            get { return _isFixedRate; }
-            set { _isFixedRate = value; }
+            get { return _phoneNum; }
+            set { _phoneNum = value; }
         }
-        
+
+        public string Email
+        {
+            get { return _email; }
+            set { _email = value; }
+        }
+
         public decimal CommissionRate
         {
             get { return _commissionRate; }

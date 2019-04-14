@@ -36,9 +36,9 @@
             this.lbl_SharesOwned = new System.Windows.Forms.Label();
             this.lbl_OldValuation = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_Cancel = new System.Windows.Forms.Button();
             this.tx_TransPrice = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
             this.lbl_MultiPurpose = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtp_TransDate = new System.Windows.Forms.DateTimePicker();
@@ -117,15 +117,17 @@
             this.label3.Text = "Shares Owned";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button3
+            // btn_Cancel
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(300, 46);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(72, 28);
-            this.button3.TabIndex = 40;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Cancel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Cancel.Location = new System.Drawing.Point(300, 46);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(72, 28);
+            this.btn_Cancel.TabIndex = 40;
+            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // tx_TransPrice
             // 
@@ -135,15 +137,17 @@
             this.tx_TransPrice.Size = new System.Drawing.Size(100, 29);
             this.tx_TransPrice.TabIndex = 44;
             // 
-            // button1
+            // btn_Save
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(300, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 28);
-            this.button1.TabIndex = 39;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Save.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btn_Save.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Save.Location = new System.Drawing.Point(300, 12);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(72, 28);
+            this.btn_Save.TabIndex = 39;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // lbl_MultiPurpose
             // 
@@ -177,7 +181,7 @@
             this.dtp_TransDate.Size = new System.Drawing.Size(131, 29);
             this.dtp_TransDate.TabIndex = 41;
             // 
-            // StockPriceUpdateForm
+            // StockUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -190,9 +194,9 @@
             this.Controls.Add(this.lbl_SharesOwned);
             this.Controls.Add(this.lbl_OldValuation);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.tx_TransPrice);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Save);
             this.Controls.Add(this.lbl_MultiPurpose);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtp_TransDate);
@@ -200,7 +204,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "StockPriceUpdateForm";
+            this.Name = "StockUpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Stock Price Update";
             this.ResumeLayout(false);
@@ -218,9 +222,9 @@
         private System.Windows.Forms.Label lbl_SharesOwned;
         private System.Windows.Forms.Label lbl_OldValuation;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.TextBox tx_TransPrice;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Label lbl_MultiPurpose;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtp_TransDate;

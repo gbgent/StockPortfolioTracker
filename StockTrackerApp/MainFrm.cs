@@ -30,6 +30,7 @@ namespace StockTrackerApp
         {
             // Create an Instance of the Dashboard
             DashBoard nForm = new DashBoard(this);
+            currentForm = MyForms.DashBoard;
 
             //Set New Form to show in Display
             // UpdateMainFormPanel(ref Form DisplayFrm);
@@ -55,7 +56,7 @@ namespace StockTrackerApp
             pnl_Main.Controls.Clear();
 
             // Create an Instance of the Dashboard
-            DashBoard nForm = new DashBoard();
+            DashBoard nForm = new DashBoard(this);
 
             //Set New Form to show in Display
             // UpdateMainFormPanel(ref Form DisplayFrm);

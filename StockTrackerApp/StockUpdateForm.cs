@@ -35,6 +35,8 @@ namespace StockTrackerApp
         // Class Level Variables
         public BasicStockModel Stock = new BasicStockModel();
 
+        TransactionType tType;
+
         public StockUpdateForm()
         {
             InitializeComponent();           
@@ -44,10 +46,11 @@ namespace StockTrackerApp
         {
             InitializeComponent();
             
-            //Set Stock to passed value
-           Stock = st;
+            //Set passed value to class variables
+            Stock = st;
+            tType = type;
 
-            switch (type)
+            switch (tType)
             {
                 case TransactionType.Buy:
                     SetupBuy();
@@ -187,5 +190,17 @@ namespace StockTrackerApp
 
         }
 
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            // Close the Current Form
+            this.Close();
+            
+        }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+
+            // ToDo - Add code for saving transaction to Database
+        }
     }//End Class
 }//End NameSpace

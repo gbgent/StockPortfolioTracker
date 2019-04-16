@@ -12,7 +12,7 @@ using StockTrackerProccesorLibrary;
 
 namespace StockTrackerApp
 {
-    public partial class DashBoard : Form
+    public partial class DashBoard : Form, IValueUpdater
     {
         List<BasicStockModel> stocks = new List<BasicStockModel>();
         BasicStockModel stock = new BasicStockModel();
@@ -105,6 +105,11 @@ namespace StockTrackerApp
 
                 //Reload Chart
             }
+        }
+
+        public void UpdateValue()
+        {
+            MessageBox.Show("Received Call to Update Portfolio Value");
         }
 
         // ToDo - Work on Portfolio Evaulation

@@ -19,7 +19,8 @@ namespace StockTrackerApp
     {
 
         MyForms currentForm = MyForms.DashBoard;
-        BasicStockModel stock = new BasicStockModel(); 
+        BasicStockModel stock = new BasicStockModel();
+        IValueUpdater calledForm;
 
         public MainFrm()
         {
@@ -31,6 +32,7 @@ namespace StockTrackerApp
             // Create an Instance of the Dashboard
             DashBoard nForm = new DashBoard(this);
             currentForm = MyForms.DashBoard;
+            calledForm = nForm;
 
             //Set New Form to show in Display
             // UpdateMainFormPanel(ref Form DisplayFrm);
@@ -57,6 +59,8 @@ namespace StockTrackerApp
 
             // Create an Instance of the Dashboard
             DashBoard nForm = new DashBoard(this);
+
+            calledForm = nForm;
 
             //Set New Form to show in Display
             // UpdateMainFormPanel(ref Form DisplayFrm);
@@ -110,7 +114,11 @@ namespace StockTrackerApp
         {
             pnl_Main.Controls.Clear();
 
+            //Create New instance of Form StockView
             StockView nForm = new StockView(stock);
+
+            //Set CalledForm for the IValueUpdater Interface
+            calledForm = nForm;
 
             // Remove the Top Level desingation for the Form
             nForm.TopLevel = false;
@@ -135,7 +143,10 @@ namespace StockTrackerApp
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Update);
 
-            frm.ShowDialog();
+            if (frm.ShowDialog() == DialogResult.OK & currentForm != MyForms.Broker)
+            {
+                calledForm.UpdateValue();
+            }
 
         }
 
@@ -148,7 +159,11 @@ namespace StockTrackerApp
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Buy);
 
-            frm.ShowDialog();
+            //Check to see if Valuation Need to be Updated
+            if (frm.ShowDialog() == DialogResult.OK & currentForm != MyForms.Broker)
+            {
+                calledForm.UpdateValue();
+            }
         }
 
         private void mnu_Stock_Sale_Click(object sender, EventArgs e)
@@ -159,7 +174,11 @@ namespace StockTrackerApp
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Sale);
 
-            frm.ShowDialog();
+            f//Check to see if Valuation Need to be Updated
+            if (frm.ShowDialog() == DialogResult.OK & currentForm != MyForms.Broker)
+            {
+                calledForm.UpdateValue();
+            }
         }
 
         private void mnu_Stock_Dividend_Click(object sender, EventArgs e)
@@ -170,7 +189,11 @@ namespace StockTrackerApp
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Dividend);
 
-            frm.ShowDialog();
+            //Check to see if Valuation Need to be Updated
+            if (frm.ShowDialog() == DialogResult.OK & currentForm != MyForms.Broker)
+            {
+                calledForm.UpdateValue();
+            }
         }
 
         private void mnu_Stock_Split_Click(object sender, EventArgs e)
@@ -181,7 +204,11 @@ namespace StockTrackerApp
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Split);
 
-            frm.ShowDialog();
+            //Check to see if Valuation Need to be Updated
+            if (frm.ShowDialog() == DialogResult.OK & currentForm != MyForms.Broker)
+            {
+                calledForm.UpdateValue();
+            }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -213,6 +240,9 @@ namespace StockTrackerApp
             return output;
         }
 
+        // Method to Determine Stock Selected for Stock Menu Items
+        // Is return from either Dashboard or StockView when they
+        // are in the pnl_Main Area
         public void StockSelected(BasicStockModel model)
         {
             stock = model;

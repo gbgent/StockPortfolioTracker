@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockTrackerDataLibrary;
 using StockTrackerDataLibrary.DataModels;
+using StockTrackerProccesorLibrary;
 
 namespace StockTrackerApp
 {
-    public partial class StockView : Form
+    public partial class StockView : Form, IValueUpdater
     {
         StockModel stock = new StockModel();
 
@@ -31,6 +32,11 @@ namespace StockTrackerApp
             stock.StockId = st.StockId;
             stock.Name = st.Name;
             stock.Symbol = st.Symbol;
+        }
+
+        public void UpdateValue()
+        {
+            MessageBox.Show("Received Call to Update Portfolio Value");
         }
 
         private void StockView_Load(object sender, EventArgs e)

@@ -174,7 +174,7 @@ namespace StockTrackerApp
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Sale);
 
-            f//Check to see if Valuation Need to be Updated
+            //Check to see if Valuation Need to be Updated
             if (frm.ShowDialog() == DialogResult.OK & currentForm != MyForms.Broker)
             {
                 calledForm.UpdateValue();

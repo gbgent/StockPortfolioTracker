@@ -13,6 +13,11 @@ namespace StockTrackerDataLibrary.DataModels
         private decimal _shares;
         private decimal _price;
 
+        public int ValuationID { get; set; }
+
+        public int StockId { get; set; }
+
+
         public DateTime ValuationDate
         {
             get { return _date; }

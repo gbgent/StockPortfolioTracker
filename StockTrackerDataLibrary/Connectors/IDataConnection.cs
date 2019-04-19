@@ -14,5 +14,9 @@ namespace StockTrackerDataLibrary.Connectors
         void Broker_Update(BrokerageModel model);
 
         List<BrokerageModel> Broker_GetAll();
+
+        List<BasicStockModel> StockList_LoadAll();
+
+        List<TransactionModel> Stock_Transactions_LoadAll(int id);
     }
 }

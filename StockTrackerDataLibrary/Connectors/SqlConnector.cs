@@ -70,6 +70,34 @@ namespace StockTrackerDataLibrary.Connectors
             return output;
         }
 
+        //Method to Load Stock Portfolio
+        public List<BasicStockModel> StockList_LoadAll()
+        {
+            List<BasicStockModel> output;
 
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<BasicStockModel>("dbo.sp_StockList_Get_All").ToList();
+            }
+
+            return output;
+        }
+
+        // Method to load all transactions for a specific Stock
+        public List<TransactionModel> Stock_Transactions_LoadAll(int id)
+        {
+            List<TransactionModel> output;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@StockId", id);
+
+                output = connection.Query<TransactionModel>("dbo.sp_StockList_Get_All",
+                                p,commandType: CommandType.StoredProcedure).ToList();
+            }
+
+            return output;
+        }
     }
 }

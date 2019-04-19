@@ -9,17 +9,17 @@ namespace StockTrackerDataLibrary
     public enum TransactionType
     {
         Buy = 1,
-        Sale,
-        Update,
-        Split,
-        Dividend          
+        Sale = 2,
+        Update = 3,
+        Split = 4,
+        Dividend = 5          
     }
 
     public enum MyForms
     {
         DashBoard = 1,
-        Broker,
-        Stock
+        Broker = 2,
+        Stock = 3
     }
 
     // This Enum is for the Database Connections
@@ -27,6 +27,6 @@ namespace StockTrackerDataLibrary
     // another Database, IE MYSql, Amazon, MariaDb, etc.
     public enum DatabaseType
     {
-        Sql
+        Sql = 1
     }
 }

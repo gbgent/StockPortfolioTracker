@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockTrackerProccesorLibrary;
+using StockTrackerDataLibrary.Connectors;
 
 namespace StockTrackerApp
 {
     public partial class DashBoard : Form, IValueUpdater
     {
-        List<BasicStockModel> stocks = new List<BasicStockModel>();
+        List<BasicStockModel> StocksList = new List<BasicStockModel>();
         BasicStockModel stock = new BasicStockModel();
         private IStockRequester callingForm;
 
@@ -44,7 +45,7 @@ namespace StockTrackerApp
         private void UpdateDisplay()
         {
             lst_Portfolio.DataSource = null;
-            lst_Portfolio.DataSource = stocks;
+            lst_Portfolio.DataSource = StocksList;
             lst_Portfolio.DisplayMember = "DisplayName";
             lst_Portfolio.SelectedIndex = 1;
             lst_Portfolio.SelectedIndex = 0;
@@ -54,8 +55,10 @@ namespace StockTrackerApp
         {
             //Test Load for Stocks
             LoadTestStocks();
-           
+
             // ToDo - Add Code to load Portfolio from Database
+            //StocksList = StockList_LoadAll();
+
         }
 
         // Event Handler for when Stock Selection Changes
@@ -83,9 +86,9 @@ namespace StockTrackerApp
             stock1 = new BasicStockModel(1, "Apple", "APPL");
             stock2 = new BasicStockModel(2, "Coca-Cola", "COKE");
             stock3 = new BasicStockModel(3, "Ford", "F");
-            stocks.Add(stock1);
-            stocks.Add(stock2);
-            stocks.Add(stock3);
+            StocksList.Add(stock1);
+            StocksList.Add(stock2);
+            StocksList.Add(stock3);
         }
 
         private void lnk_AddNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

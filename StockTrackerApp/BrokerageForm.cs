@@ -1,4 +1,5 @@
-﻿using StockTrackerDataLibrary.DataModels;
+﻿using StockTrackerDataLibrary;
+using StockTrackerDataLibrary.DataModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,14 +19,15 @@ namespace StockTrackerApp
 
         BrokerageModel oldInfo = new BrokerageModel();  // Brokerage Selected for use to revert back before saving
 
-        bool InfoChanged = false;  // Flag for changed information
+        bool InfoChanged = false;  // Flag for changed information        
 
-
+        // Default Constructor for Form
         public BrokerageForm()
         {
             InitializeComponent();
         }
 
+        // Load Method
         private void BrokerageForm_Load(object sender, EventArgs e)
         {
             LoadBrokers();
@@ -34,7 +36,7 @@ namespace StockTrackerApp
 
         }
 
-        // UPdates the Brokerage Information being displayed
+        // Updates the Brokerage Information being displayed
         private void UpdateDisplay()
         {
             // Determine the number of Brokers Use has
@@ -60,11 +62,12 @@ namespace StockTrackerApp
                 SetEdit(false);
 
                 // Load the information into the proper locatoin
-                LoadDisplay();
+                LoadSelectedBroker();
 
                 // UnEnable Save and Revert Button
                 btn_Save.Enabled = false;
                 btn_Revert.Enabled = false;
+                btn_New.Enabled = true;
 
             }
             else
@@ -73,35 +76,37 @@ namespace StockTrackerApp
                 SetEdit(false);
 
                 // UnEnable Save and Revert Button
-                LoadDisplay(); btn_Save.Enabled = false;
+                LoadSelectedBroker();
+                btn_Save.Enabled = false;
                 btn_Revert.Enabled = false;
 
             }
         }
 
-        private void LoadDisplay()
+        // Retrieve the Selected Brokers Information
+        private void LoadSelectedBroker()
         {
             // Load the Selected Brokerage Information
             BrokerageModel model = (BrokerageModel)cb_Select.SelectedItem;
             oldInfo = model;
 
-            LoadDisplay(model);
-                       
+            LoadDisplay(model);                       
         }
 
+        // Update the Form Display
         private void LoadDisplay(BrokerageModel model)
         {
             chk_Edit.Checked = false;
             txt_BrokerageName.Text = model.BrokerageName;
             txt_Address.Text = model.BrokerageAddress;
             txt_AccountNum.Text = model.AccountNum;
-            txt_BrokerName.Text = model.Broker;
+            txt_BrokerName.Text = model.BrokerName;
             txt_PhoneNum.Text = model.PhoneNum;
             txt_Email.Text = model.Email;
             txt_CommissionRate.Text = model.CommissionRate.ToString("N2");
 
+            // Set Info Change Flag to False
             InfoChanged = false;
-
         }
 
         // Sets the Enable property of textboxes
@@ -124,16 +129,16 @@ namespace StockTrackerApp
             }
         }
 
+        // Retrieve Brokers from Database
         private void LoadBrokers()
         {
-            UseTempValues();
-
-            //Todo - Add Method to load Brokerages
+           //Add Method to load Brokerages
+            Brokers = GlobalConfig.Connection.Broker_GetAll();
 
             UpdateSelections();
-            
         }
 
+        // Update the Combo Box for Brokerages Base Method
         private void UpdateSelections()
         {
             cb_Select.DataSource = null;
@@ -143,6 +148,8 @@ namespace StockTrackerApp
 
         }
 
+        // Update the Combo Box for Brokerages Passing Index of 
+        // Brokerage to Display
         private void UpdateSelections(int x)
         {
             cb_Select.DataSource = null;
@@ -152,24 +159,9 @@ namespace StockTrackerApp
             cb_Select.SelectedIndex = x;
 
         }
-
-        private void UseTempValues()
-        {
-            BrokerageModel item1 = new BrokerageModel();
-            BrokerageModel item2 = new BrokerageModel();
-
-            item1.BrokerId = 1;
-            item1.BrokerageName = "Ameritrade";
-            item1.CommissionRate = 6.95M;
-
-            item2.BrokerId = 2;
-            item2.BrokerageName = "Etrade";
-            item2.CommissionRate = 7.95M;
-
-            Brokers.Add(item1);
-            Brokers.Add(item2);
-        }
-
+                
+        // Method to handle the change in checked status
+        // Of the Edit Check Box
         private void chk_Edit_CheckedChanged(object sender, EventArgs e)
         {
             // Check for Changed Information
@@ -202,20 +194,24 @@ namespace StockTrackerApp
             }
         }
 
+        // Method to handle the changing of 
+        // Broker information
         private void txtBox_TextChanged(object sender, EventArgs e)
         {
             InfoChanged = true;
         }
 
+        // Method to handle the Combo Box Selection Change
         private void cb_Select_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb_Select.SelectedIndex != -1)
             {
                 // Load the new information
-                LoadDisplay();
+                LoadSelectedBroker();
             }
         }
 
+        // Method to handle New Button Click
         private void btn_New_Click(object sender, EventArgs e)
         {
             if (!InfoChanged)
@@ -248,7 +244,7 @@ namespace StockTrackerApp
 
                 //Enable Save Button
                 btn_Save.Enabled = true;
-                btn_Revert.Enabled = true;
+                btn_Revert.Enabled = false;
                 btn_New.Enabled = false;
 
                 // Set OldInfo to a new instance
@@ -262,39 +258,71 @@ namespace StockTrackerApp
             }
         }
 
+        // Method to Save Info to DataBase
+        // Includes updating Existing Info
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            BrokerageModel newBroker = new BrokerageModel();
+            if (cb_Select.SelectedIndex == -1)  // Check for New Broker
+            {
+                BrokerageModel newBroker = new BrokerageModel();
 
-            newBroker.BrokerageName = txt_BrokerageName.Text;
-            newBroker.BrokerageAddress = txt_Address.Text;
-            newBroker.AccountNum = txt_AccountNum.Text;
-            newBroker.Broker = txt_BrokerName.Text;
-            newBroker.PhoneNum = txt_PhoneNum.Text;
-            newBroker.Email = txt_Email.Text;
-            newBroker.CommissionRate = Convert.ToDecimal(txt_CommissionRate.Text);
+                // Gather Information
+                newBroker.BrokerageName = txt_BrokerageName.Text;
+                newBroker.BrokerageAddress = txt_Address.Text;
+                newBroker.AccountNum = txt_AccountNum.Text;
+                newBroker.BrokerName = txt_BrokerName.Text;
+                newBroker.PhoneNum = txt_PhoneNum.Text;
+                newBroker.Email = txt_Email.Text;
+                newBroker.CommissionRate = Convert.ToDecimal(txt_CommissionRate.Text);
 
-            // ToDo - Add code to save to Data Base;
+                // Save to Database;
+                GlobalConfig.Connection.Broker_AddNew(newBroker);
 
-            //Add to list of Brokerages
-            Brokers.Add(newBroker);
+                //Add to list of Brokerages
+                Brokers.Add(newBroker);
 
-            UpdateSelections(Brokers.Count - 1);
-            SetEdit(false);
-            cb_Select.Visible = true;
-            chk_Edit.Visible = true;
+                UpdateSelections(Brokers.Count - 1);
+                SetEdit(false);
+                cb_Select.Visible = true;
+                chk_Edit.Visible = true;
 
-            btn_Save.Enabled = false;
-            btn_Revert.Enabled = false;
+                btn_Save.Enabled = false;
+                btn_Revert.Enabled = false;
+            }
+            else
+            {
+                // Gather information
+                oldInfo.BrokerageName = txt_BrokerageName.Text;
+                oldInfo.BrokerageAddress = txt_Address.Text;
+                oldInfo.AccountNum = txt_AccountNum.Text;
+                oldInfo.BrokerName = txt_BrokerName.Text;
+                oldInfo.PhoneNum = txt_PhoneNum.Text;
+                oldInfo.Email = txt_Email.Text;
+                oldInfo.CommissionRate = Convert.ToDecimal(txt_CommissionRate.Text);
 
+                // Update Database
+                GlobalConfig.Connection.Broker_Update(oldInfo);
+                               
+                SetEdit(false);
+                cb_Select.Visible = true;
+                chk_Edit.Visible = true;
 
+                btn_Save.Enabled = false;
+                btn_Revert.Enabled = false;
+
+                InfoChanged = false;
+                chk_Edit.Checked = false;
+            }
         }
 
+        // Method to handle Revert Button Event
         private void btn_Revert_Click(object sender, EventArgs e)
         {
-            LoadDisplay(oldInfo);
+            // Set InfoChanged to False because
+            // Reverting to unchanged information
+            InfoChanged = false;
 
-            //ToDo - Check on Why Error Message is Showing on This Button.
+            LoadDisplay(oldInfo);
         }
     }
 }

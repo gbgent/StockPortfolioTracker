@@ -24,7 +24,7 @@ namespace StockTrackerDataLibrary.Connectors
                 p.Add("@BrokerageName", model.BrokerageName);
                 p.Add("@BrokerageAddress", model.BrokerageAddress);
                 p.Add("@AccountNumber", model.AccountNum);
-                p.Add("@BrokerName", model.Broker);
+                p.Add("@BrokerName", model.BrokerName);
                 p.Add("@PhoneNum", model.PhoneNum);
                 p.Add("@Email", model.Email);
                 p.Add("@CommissionRate", model.CommissionRate);
@@ -32,7 +32,7 @@ namespace StockTrackerDataLibrary.Connectors
 
                 connection.Execute("dbo.sp_Brokages_Insert", p, commandType: CommandType.StoredProcedure);
 
-                model.BrokerId = p.Get<int>("@Id");
+                model.BrokerId = p.Get<int>("@BrokerId");
             }
         }
 
@@ -46,7 +46,7 @@ namespace StockTrackerDataLibrary.Connectors
                 p.Add("@BrokerageName", model.BrokerageName);
                 p.Add("@BrokerageAddress", model.BrokerageAddress);
                 p.Add("@AccountNumber", model.AccountNum);
-                p.Add("@BrokerName", model.Broker);
+                p.Add("@BrokerName", model.BrokerName);
                 p.Add("@PhoneNum", model.PhoneNum);
                 p.Add("@Email", model.Email);
                 p.Add("@CommissionRate", model.CommissionRate);

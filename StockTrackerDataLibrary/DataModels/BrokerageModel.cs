@@ -42,7 +42,7 @@ namespace StockTrackerDataLibrary.DataModels
             set { _accountNum = value; }
         }
 
-        public string Broker
+        public string BrokerName
         {
             get { return _broker; }
             set { _broker = value; }

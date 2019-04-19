@@ -83,7 +83,7 @@
             this.txt_BrokerageName.Location = new System.Drawing.Point(120, 45);
             this.txt_BrokerageName.Name = "txt_BrokerageName";
             this.txt_BrokerageName.Size = new System.Drawing.Size(177, 29);
-            this.txt_BrokerageName.TabIndex = 2;
+            this.txt_BrokerageName.TabIndex = 0;
             this.txt_BrokerageName.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
             // 
             // label2
@@ -101,7 +101,7 @@
             this.txt_Address.Multiline = true;
             this.txt_Address.Name = "txt_Address";
             this.txt_Address.Size = new System.Drawing.Size(177, 107);
-            this.txt_Address.TabIndex = 4;
+            this.txt_Address.TabIndex = 1;
             this.txt_Address.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
             // 
             // gb_BrokerageInfo
@@ -116,7 +116,7 @@
             this.gb_BrokerageInfo.Location = new System.Drawing.Point(12, 84);
             this.gb_BrokerageInfo.Name = "gb_BrokerageInfo";
             this.gb_BrokerageInfo.Size = new System.Drawing.Size(314, 279);
-            this.gb_BrokerageInfo.TabIndex = 5;
+            this.gb_BrokerageInfo.TabIndex = 1;
             this.gb_BrokerageInfo.TabStop = false;
             this.gb_BrokerageInfo.Text = "Brokerage Infomation";
             // 
@@ -134,7 +134,7 @@
             this.txt_AccountNum.Location = new System.Drawing.Point(120, 227);
             this.txt_AccountNum.Name = "txt_AccountNum";
             this.txt_AccountNum.Size = new System.Drawing.Size(177, 29);
-            this.txt_AccountNum.TabIndex = 6;
+            this.txt_AccountNum.TabIndex = 2;
             this.txt_AccountNum.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
             // 
             // gp_BrokerInfo
@@ -148,7 +148,7 @@
             this.gp_BrokerInfo.Location = new System.Drawing.Point(358, 84);
             this.gp_BrokerInfo.Name = "gp_BrokerInfo";
             this.gp_BrokerInfo.Size = new System.Drawing.Size(314, 190);
-            this.gp_BrokerInfo.TabIndex = 6;
+            this.gp_BrokerInfo.TabIndex = 2;
             this.gp_BrokerInfo.TabStop = false;
             this.gp_BrokerInfo.Text = "Broker Information";
             // 
@@ -166,7 +166,7 @@
             this.txt_Email.Location = new System.Drawing.Point(93, 139);
             this.txt_Email.Name = "txt_Email";
             this.txt_Email.Size = new System.Drawing.Size(177, 29);
-            this.txt_Email.TabIndex = 12;
+            this.txt_Email.TabIndex = 2;
             this.txt_Email.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
             // 
             // label5
@@ -183,7 +183,7 @@
             this.txt_PhoneNum.Location = new System.Drawing.Point(93, 90);
             this.txt_PhoneNum.Name = "txt_PhoneNum";
             this.txt_PhoneNum.Size = new System.Drawing.Size(177, 29);
-            this.txt_PhoneNum.TabIndex = 10;
+            this.txt_PhoneNum.TabIndex = 1;
             // 
             // label4
             // 
@@ -199,7 +199,7 @@
             this.txt_BrokerName.Location = new System.Drawing.Point(93, 41);
             this.txt_BrokerName.Name = "txt_BrokerName";
             this.txt_BrokerName.Size = new System.Drawing.Size(177, 29);
-            this.txt_BrokerName.TabIndex = 8;
+            this.txt_BrokerName.TabIndex = 0;
             this.txt_BrokerName.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
             // 
             // chk_Edit
@@ -208,7 +208,8 @@
             this.chk_Edit.Location = new System.Drawing.Point(531, 32);
             this.chk_Edit.Name = "chk_Edit";
             this.chk_Edit.Size = new System.Drawing.Size(141, 25);
-            this.chk_Edit.TabIndex = 7;
+            this.chk_Edit.TabIndex = 0;
+            this.chk_Edit.TabStop = false;
             this.chk_Edit.Text = "Edit Information";
             this.chk_Edit.UseVisualStyleBackColor = true;
             this.chk_Edit.CheckedChanged += new System.EventHandler(this.chk_Edit_CheckedChanged);
@@ -218,7 +219,7 @@
             this.btn_New.Location = new System.Drawing.Point(301, 381);
             this.btn_New.Name = "btn_New";
             this.btn_New.Size = new System.Drawing.Size(90, 35);
-            this.btn_New.TabIndex = 8;
+            this.btn_New.TabIndex = 5;
             this.btn_New.Text = "New";
             this.btn_New.UseVisualStyleBackColor = true;
             this.btn_New.Click += new System.EventHandler(this.btn_New_Click);
@@ -228,7 +229,7 @@
             this.btn_Save.Location = new System.Drawing.Point(189, 381);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(90, 35);
-            this.btn_Save.TabIndex = 9;
+            this.btn_Save.TabIndex = 4;
             this.btn_Save.Text = "Save";
             this.btn_Save.UseVisualStyleBackColor = true;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
@@ -238,7 +239,7 @@
             this.btn_Revert.Location = new System.Drawing.Point(413, 381);
             this.btn_Revert.Name = "btn_Revert";
             this.btn_Revert.Size = new System.Drawing.Size(90, 35);
-            this.btn_Revert.TabIndex = 10;
+            this.btn_Revert.TabIndex = 6;
             this.btn_Revert.Text = "Revert";
             this.btn_Revert.UseVisualStyleBackColor = true;
             this.btn_Revert.Click += new System.EventHandler(this.btn_Revert_Click);
@@ -257,7 +258,7 @@
             this.txt_CommissionRate.Location = new System.Drawing.Point(513, 301);
             this.txt_CommissionRate.Name = "txt_CommissionRate";
             this.txt_CommissionRate.Size = new System.Drawing.Size(115, 29);
-            this.txt_CommissionRate.TabIndex = 14;
+            this.txt_CommissionRate.TabIndex = 3;
             // 
             // BrokerageForm
             // 

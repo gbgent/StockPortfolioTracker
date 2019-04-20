@@ -9,6 +9,7 @@ namespace StockTrackerDataLibrary.DataModels
     public class BasicStockModel :IBasicStock
     {
         private int _stockId;
+        private int _brokerId;
         private string _symbol;
         private string _name;
 
@@ -17,7 +18,15 @@ namespace StockTrackerDataLibrary.DataModels
             get { return _stockId; }            
             set { _stockId = value; }
         }
+ 
+        public int BrokerId
+        {
+            get { return _brokerId; }
+            set { _brokerId = value; }
+        }
         
+        BrokerageModel Broker;
+
         public String Symbol
         {
             get { return _symbol; }

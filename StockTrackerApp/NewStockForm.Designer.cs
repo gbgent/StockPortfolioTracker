@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cb_Brokerage = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tx_Symbol = new System.Windows.Forms.TextBox();
+            this.txt_Symbol = new System.Windows.Forms.TextBox();
             this.txt_Company = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_SearchSymbol = new System.Windows.Forms.Button();
@@ -73,12 +73,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Symbol";
             // 
-            // tx_Symbol
+            // txt_Symbol
             // 
-            this.tx_Symbol.Location = new System.Drawing.Point(108, 79);
-            this.tx_Symbol.Name = "tx_Symbol";
-            this.tx_Symbol.Size = new System.Drawing.Size(113, 29);
-            this.tx_Symbol.TabIndex = 3;
+            this.txt_Symbol.Location = new System.Drawing.Point(108, 79);
+            this.txt_Symbol.Name = "txt_Symbol";
+            this.txt_Symbol.Size = new System.Drawing.Size(113, 29);
+            this.txt_Symbol.TabIndex = 3;
             // 
             // txt_Company
             // 
@@ -176,6 +176,7 @@
             this.btn_Save.TabIndex = 14;
             this.btn_Save.Text = "Save";
             this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // btn_Clear
             // 
@@ -217,7 +218,7 @@
             this.Controls.Add(this.btn_SearchSymbol);
             this.Controls.Add(this.txt_Company);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tx_Symbol);
+            this.Controls.Add(this.txt_Symbol);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cb_Brokerage);
             this.Controls.Add(this.label1);
@@ -237,7 +238,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cb_Brokerage;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tx_Symbol;
+        private System.Windows.Forms.TextBox txt_Symbol;
         private System.Windows.Forms.TextBox txt_Company;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_SearchSymbol;

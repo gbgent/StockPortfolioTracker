@@ -70,6 +70,23 @@ namespace StockTrackerDataLibrary.Connectors
             return output;
         }
 
+        // Method to Add a Stock to the Database
+        public void Stocks_AddNew(BasicStockModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@BrokerId", model.BrokerId);
+                p.Add("@Symbol", model.Symbol);
+                p.Add("@Name", model.Name);
+                p.Add("@StockId", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.sp_Stocks_Insert", p, commandType: CommandType.StoredProcedure);
+
+                model.StockId = p.Get<int>("@StockId");
+            }
+        }
+
         //Method to Load Stock Portfolio
         public List<BasicStockModel> StockList_LoadAll()
         {
@@ -84,7 +101,7 @@ namespace StockTrackerDataLibrary.Connectors
         }
 
         // Method to load all transactions for a specific Stock
-        public List<TransactionModel> Stock_Transactions_LoadAll(int id)
+        public List<TransactionModel> Transactions_SingleStock_Load(int id)
         {
             List<TransactionModel> output;
 
@@ -98,6 +115,46 @@ namespace StockTrackerDataLibrary.Connectors
             }
 
             return output;
+        }
+
+        // Method to add Transaction to Database
+        public void Transaction_AddNew(TransactionModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@StockId", model.StockId);
+                p.Add("@BrokerId", model.BrokerId);
+                p.Add("@Type",model.Type);
+                p.Add("@Date", model.Date);
+                p.Add("@Shares", model.Shares);
+                p.Add("@Price", model.Price);
+                p.Add("@Fee", model.Fee);
+                p.Add("@TransactionId", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.sp_Transaction_Insert", p, commandType: CommandType.StoredProcedure);
+
+                model.TransactionId = p.Get<int>("@TransactionId");
+            }
+        }
+
+
+        public void Valuation_AddNew(ValuationModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@StockId", model.StockId);
+                p.Add("@Date", model.ValuationDate);
+                p.Add("@Shares", model.Shares);
+                p.Add("@Price", model.Price);
+
+                p.Add("@ValuationId", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.sp_Valuations_Insert", p, commandType: CommandType.StoredProcedure);
+
+                model.ValuationID = p.Get<int>("@ValuationId");
+            }
         }
     }
 }

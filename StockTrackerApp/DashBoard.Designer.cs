@@ -34,10 +34,10 @@
             this.lst_Portfolio = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lnk_AddNew = new System.Windows.Forms.LinkLabel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.cht_ValueGraph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.lbl_CurrentValue = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.cht_ValueGraph)).BeginInit();
             this.SuspendLayout();
             // 
             // lst_Portfolio
@@ -74,27 +74,27 @@
             this.lnk_AddNew.Text = "Add New Stock";
             this.lnk_AddNew.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_AddNew_LinkClicked);
             // 
-            // chart1
+            // cht_ValueGraph
             // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cht_ValueGraph.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.cht_ValueGraph.ChartAreas.Add(chartArea1);
             legend1.Enabled = false;
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(294, 74);
-            this.chart1.Name = "chart1";
+            this.cht_ValueGraph.Legends.Add(legend1);
+            this.cht_ValueGraph.Location = new System.Drawing.Point(294, 74);
+            this.cht_ValueGraph.Name = "cht_ValueGraph";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "Value";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(494, 382);
-            this.chart1.TabIndex = 3;
-            this.chart1.Text = "chart1";
+            this.cht_ValueGraph.Series.Add(series1);
+            this.cht_ValueGraph.Size = new System.Drawing.Size(494, 382);
+            this.cht_ValueGraph.TabIndex = 3;
+            this.cht_ValueGraph.Text = "chart1";
             // 
             // label2
             // 
@@ -106,24 +106,25 @@
             this.label2.Text = "Current Valuation";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label3
+            // lbl_CurrentValue
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.Location = new System.Drawing.Point(161, 463);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 28);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "1,234,567.89";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl_CurrentValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_CurrentValue.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_CurrentValue.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lbl_CurrentValue.Location = new System.Drawing.Point(161, 463);
+            this.lbl_CurrentValue.Name = "lbl_CurrentValue";
+            this.lbl_CurrentValue.Size = new System.Drawing.Size(102, 28);
+            this.lbl_CurrentValue.TabIndex = 5;
+            this.lbl_CurrentValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // DashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 500);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lbl_CurrentValue);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.cht_ValueGraph);
             this.Controls.Add(this.lnk_AddNew);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lst_Portfolio);
@@ -133,7 +134,7 @@
             this.Name = "DashBoard";
             this.Text = "DashBoard";
             this.Load += new System.EventHandler(this.DashBoard_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cht_ValueGraph)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,8 +145,8 @@
         private System.Windows.Forms.ListBox lst_Portfolio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel lnk_AddNew;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart cht_ValueGraph;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_CurrentValue;
     }
 }

@@ -88,13 +88,13 @@ namespace StockTrackerDataLibrary.Connectors
         }
 
         //Method to Load Stock Portfolio
-        public List<BasicStockModel> StockList_LoadAll()
+        public List<BasicStockModel> Stocks_LoadAll()
         {
             List<BasicStockModel> output;
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
-                output = connection.Query<BasicStockModel>("dbo.sp_StockList_Get_All").ToList();
+                output = connection.Query<BasicStockModel>("dbo.sp_Stocks_Get_All").ToList();
             }
 
             return output;
@@ -138,7 +138,7 @@ namespace StockTrackerDataLibrary.Connectors
             }
         }
 
-
+        // Method to Add Valution to Database
         public void Valuation_AddNew(ValuationModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
@@ -155,6 +155,35 @@ namespace StockTrackerDataLibrary.Connectors
 
                 model.ValuationID = p.Get<int>("@ValuationId");
             }
+        }
+
+        public List<ValuationModel> Valuation_Stock(int id)
+        {
+            List<ValuationModel> output;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@StockId", id);
+
+                output = connection.Query<ValuationModel>("dbo.sp_Valuations_Get_ByStock", 
+                                            p, commandType: CommandType.StoredProcedure).ToList();
+            }
+
+            return output;
+
+        }
+
+        public List<ValuationModel> Valuation_LoadAll()
+        {
+            List<ValuationModel> output;
+
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                output = connection.Query<ValuationModel>("dbo.sp_Valuations_Get_All").ToList();
+            }
+
+            return output;
         }
     }
 }

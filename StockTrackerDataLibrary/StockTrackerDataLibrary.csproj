@@ -49,6 +49,7 @@
     <Compile Include="Connectors\SqlConnector.cs" />
     <Compile Include="DataModels\BasicStockModel.cs" />
     <Compile Include="DataModels\BrokerageModel.cs" />
+    <Compile Include="DataModels\ChartModel.cs" />
     <Compile Include="DataModels\IBasicStock.cs" />
     <Compile Include="DataModels\IValuation.cs" />
     <Compile Include="DataModels\PortFolioModel.cs" />

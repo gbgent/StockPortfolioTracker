@@ -10,7 +10,8 @@ namespace StockTrackerDataLibrary.DataModels
     {
         public DateTime Vdate { get; set; }
 
-        public decimal Value { get; set; }
+        public decimal Value { get; set;}
 
+        public decimal Cost { get; set; }
     }
 }

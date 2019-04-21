@@ -186,7 +186,7 @@ namespace StockTrackerApp
         private void GatherValuationInfo()
         {
             value.StockId = stock.StockId;
-            value.ValuationDate = trans.Date;
+            value.Date = trans.Date;
             value.Shares = trans.Shares;
             value.Price = trans.Price;
         }

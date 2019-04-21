@@ -10,12 +10,12 @@ namespace StockTrackerDataLibrary.DataModels
     {
         private ValuationModel _valuation = new ValuationModel();
 
-        public DateTime ValuationDate
+        public DateTime Date
         {
             get
             {
                 _valuation = CurrentValue(StockId); //May place into a constructor
-                return _valuation.ValuationDate;
+                return _valuation.Date;
             }            
         }
 
@@ -74,21 +74,21 @@ namespace StockTrackerDataLibrary.DataModels
                 case TransactionType.Buy:
                     vModel.Shares += tModel.Shares;  // Add shares to shares owned
                     vModel.Price = tModel.Price;     // Change Current Price per share
-                    vModel.ValuationDate = tModel.Date;
+                    vModel.Date = tModel.Date;
                     break;
                 case TransactionType.Sale:
                     vModel.Shares -= tModel.Shares;  // Subtract Shares from shares owned
                     vModel.Price = tModel.Price;     // Change the current price per share
-                    vModel.ValuationDate = tModel.Date;
+                    vModel.Date = tModel.Date;
                     break;
                 case TransactionType.Split:
                     vModel.Shares = tModel.Shares;   // Set Shares to number after slpit
                     vModel.Price = tModel.Price;     // Change the current price to price after split
-                    vModel.ValuationDate = tModel.Date;
+                    vModel.Date = tModel.Date;
                     break;
                 case TransactionType.Update:
                     vModel.Price = tModel.Price;     // Change current price to updated price
-                    vModel.ValuationDate = tModel.Date;
+                    vModel.Date = tModel.Date;
                     break;
             }
 

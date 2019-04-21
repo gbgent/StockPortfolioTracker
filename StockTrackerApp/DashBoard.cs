@@ -136,32 +136,71 @@ namespace StockTrackerApp
         {
             List<ValuationModel> values;
             DateTime workingDate;
-            ChartModel _chart = new ChartModel();
+            ChartModel _chart;
 
-            decimal total = 0;
+            int counter = 0;
+            decimal totalValue = 0;
+            decimal totalCost = 0;
 
             values = GlobalConfig.Connection.Valuation_LoadAll();
 
             // ToDo - Fix Date Transfer From SQL to C#
 
-            workingDate = values.First().ValuationDate;
+            workingDate = values.First().Date;
 
             foreach (ValuationModel model in values)
             {
-                if (model.ValuationDate == workingDate)
+                if (model != values.Last())
                 {
-                    total += model.Value;
+
+                    if (model.Date == workingDate)
+                    {
+                        totalValue += model.Value;
+                        totalCost += model.Cost;
+                    }
+                    else
+                    {
+                        _chart = new ChartModel();
+
+                        _chart.Vdate = workingDate;
+                        _chart.Value = totalValue;
+                        _chart.Cost = totalCost;
+
+
+                        ChartValuations.Insert(counter, _chart);
+
+                        workingDate = model.Date;
+                        totalValue = model.Value;
+                        totalCost = model.Cost;
+                        counter++;
+                    }
                 }
                 else
                 {
-                    _chart.Vdate = workingDate;
-                    _chart.Value = total;
+                    if (model.Date == workingDate)
+                    {
+                        _chart = new ChartModel();
 
-                    ChartValuations.Add(_chart);
+                        totalValue += model.Value;
+                        totalCost += model.Cost;
 
-                    workingDate = model.ValuationDate;
-                    total = model.Value;
+                        _chart.Vdate = workingDate;
+                        _chart.Value = totalValue;
+                        _chart.Cost = totalCost;
 
+
+                        ChartValuations.Insert(counter, _chart);
+                    }
+                    else
+                    {
+                        _chart = new ChartModel();
+
+                        _chart.Vdate = model.Date;
+                        _chart.Value = model.Value;
+                        _chart.Cost = model.Cost;
+
+                        ChartValuations.Insert(counter, _chart);
+                    }
                 }
             }
 
@@ -178,6 +217,11 @@ namespace StockTrackerApp
             cht_ValueGraph.Series["Value"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             cht_ValueGraph.Series["Value"].YValueMembers = "Value";
             cht_ValueGraph.Series["Value"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+
+            cht_ValueGraph.Series["Costs"].XValueMember = "Vdate";
+            cht_ValueGraph.Series["Costs"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
+            cht_ValueGraph.Series["Costs"].YValueMembers = "Cost";
+            cht_ValueGraph.Series["Costs"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
         }
     }
 }

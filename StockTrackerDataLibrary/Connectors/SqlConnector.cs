@@ -145,7 +145,7 @@ namespace StockTrackerDataLibrary.Connectors
             {
                 var p = new DynamicParameters();
                 p.Add("@StockId", model.StockId);
-                p.Add("@Date", model.ValuationDate);
+                p.Add("@Date", model.Date);
                 p.Add("@Shares", model.Shares);
                 p.Add("@Price", model.Price);
 

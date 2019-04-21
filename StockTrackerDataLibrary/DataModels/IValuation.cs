@@ -9,7 +9,7 @@ namespace StockTrackerDataLibrary.DataModels
     public interface IValuation
     {
         
-        DateTime ValuationDate { get;}
+        DateTime Date { get;}
 
         decimal Shares { get;}
 

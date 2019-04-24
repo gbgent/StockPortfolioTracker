@@ -31,6 +31,8 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.lst_Stocks = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -55,12 +57,14 @@
             // 
             this.lst_Stocks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.lst_Stocks.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lst_Stocks.FormattingEnabled = true;
-            this.lst_Stocks.ItemHeight = 21;
+            this.lst_Stocks.ItemHeight = 17;
             this.lst_Stocks.Location = new System.Drawing.Point(12, 50);
             this.lst_Stocks.Name = "lst_Stocks";
-            this.lst_Stocks.Size = new System.Drawing.Size(133, 424);
+            this.lst_Stocks.Size = new System.Drawing.Size(159, 412);
             this.lst_Stocks.TabIndex = 0;
+            this.lst_Stocks.SelectedIndexChanged += new System.EventHandler(this.lst_Stocks_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -77,9 +81,9 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.lst_History);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(152, 12);
+            this.panel1.Location = new System.Drawing.Point(177, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(636, 462);
+            this.panel1.Size = new System.Drawing.Size(611, 462);
             this.panel1.TabIndex = 2;
             // 
             // cht_IndivStock
@@ -87,38 +91,68 @@
             this.cht_IndivStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea1.AxisX.IsStartedFromZero = false;
+            chartArea1.AxisX2.IsStartedFromZero = false;
+            chartArea1.AxisY.IsStartedFromZero = false;
+            chartArea1.AxisY2.IsStartedFromZero = false;
             chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 80F;
+            chartArea1.Position.Width = 100F;
+            chartArea1.Position.Y = 15F;
             this.cht_IndivStock.ChartAreas.Add(chartArea1);
+            legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
             legend1.Name = "Legend1";
+            legend1.Position.Auto = false;
+            legend1.Position.Height = 7F;
+            legend1.Position.Width = 40F;
+            legend1.Position.X = 25F;
+            legend1.Position.Y = 93F;
             this.cht_IndivStock.Legends.Add(legend1);
-            this.cht_IndivStock.Location = new System.Drawing.Point(191, 148);
+            this.cht_IndivStock.Location = new System.Drawing.Point(191, 134);
             this.cht_IndivStock.Name = "cht_IndivStock";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "Value";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Cost";
             this.cht_IndivStock.Series.Add(series1);
-            this.cht_IndivStock.Size = new System.Drawing.Size(442, 298);
+            this.cht_IndivStock.Series.Add(series2);
+            this.cht_IndivStock.Size = new System.Drawing.Size(417, 312);
             this.cht_IndivStock.TabIndex = 11;
             this.cht_IndivStock.Text = "chart1";
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Valuation";
+            title1.Position.Auto = false;
+            title1.Position.Height = 16F;
+            title1.Position.Width = 94F;
+            title1.Position.X = 3F;
+            title1.Position.Y = 2F;
+            title1.Text = "Stock Value";
+            this.cht_IndivStock.Titles.Add(title1);
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(13, 110);
+            this.label3.Location = new System.Drawing.Point(3, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 22);
+            this.label3.Size = new System.Drawing.Size(182, 53);
             this.label3.TabIndex = 10;
-            this.label3.Text = "History";
+            this.label3.Text = "Transaction\r\nHistory";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lst_History
             // 
             this.lst_History.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.lst_History.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lst_History.FormattingEnabled = true;
-            this.lst_History.ItemHeight = 21;
-            this.lst_History.Location = new System.Drawing.Point(13, 148);
+            this.lst_History.ItemHeight = 17;
+            this.lst_History.Location = new System.Drawing.Point(3, 166);
             this.lst_History.Name = "lst_History";
-            this.lst_History.Size = new System.Drawing.Size(144, 298);
+            this.lst_History.Size = new System.Drawing.Size(182, 293);
             this.lst_History.TabIndex = 9;
             // 
             // groupBox1
@@ -135,7 +169,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(620, 100);
+            this.groupBox1.Size = new System.Drawing.Size(595, 100);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Company Information";

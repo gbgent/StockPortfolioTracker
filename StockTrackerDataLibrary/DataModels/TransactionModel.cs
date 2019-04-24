@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace StockTrackerDataLibrary.DataModels
 {
-    public class TransactionModel
+    public class TransactionModel :ITransaction
     {
         private int _transactionId;
+        private TransactionType _type;
         private DateTime _tDate;
         private decimal _shares;
         private decimal _price;
@@ -24,7 +25,11 @@ namespace StockTrackerDataLibrary.DataModels
 
         public int BrokerId;
 
-        public TransactionType Type;
+        public TransactionType Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
 
         public DateTime Date
         {
@@ -50,5 +55,16 @@ namespace StockTrackerDataLibrary.DataModels
             set { _fee = value; }
         }
 
+        public string DisplayHistory
+        {
+            get
+            { return $"{Date.ToShortDateString()} \n  {Type.ToString()} - {_shares.ToString()}"; }
+        }
+
+        public decimal Cost
+        {
+            get
+            { return ((_shares*_price) + _fee); }
+        }
     }
 }

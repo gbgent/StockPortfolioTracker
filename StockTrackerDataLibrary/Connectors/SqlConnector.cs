@@ -110,7 +110,7 @@ namespace StockTrackerDataLibrary.Connectors
                 var p = new DynamicParameters();
                 p.Add("@StockId", id);
 
-                output = connection.Query<TransactionModel>("dbo.sp_StockList_Get_All",
+                output = connection.Query<TransactionModel>("dbo.sp_Transactions_GetbyId",
                                 p,commandType: CommandType.StoredProcedure).ToList();
             }
 

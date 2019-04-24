@@ -16,7 +16,7 @@ namespace StockTrackerDataLibrary.Connectors
         private const string db = "Stocks";
 
         // Method to add a Brokerage to Database
-        public void Broker_AddNew(BrokerageModel model)
+        public void Broker_AddNew(BrokerageModel model) 
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
@@ -37,7 +37,7 @@ namespace StockTrackerDataLibrary.Connectors
         }
 
         // Method to Update Brokerage Information
-        public void Broker_Update(BrokerageModel model)
+        public void Broker_Update(BrokerageModel model) 
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
@@ -58,7 +58,7 @@ namespace StockTrackerDataLibrary.Connectors
         }
         
         // Method to get a list of all Brokerages
-        public List<BrokerageModel> Broker_GetAll()
+        public List<BrokerageModel> Broker_GetAll() 
         {
             List<BrokerageModel> output;
 
@@ -71,7 +71,7 @@ namespace StockTrackerDataLibrary.Connectors
         }
 
         // Method to Add a Stock to the Database
-        public void Stocks_AddNew(BasicStockModel model)
+        public void Stocks_AddNew(BasicStockModel model) 
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
@@ -88,7 +88,7 @@ namespace StockTrackerDataLibrary.Connectors
         }
 
         //Method to Load Stock Portfolio
-        public List<BasicStockModel> Stocks_LoadAll()
+        public List<BasicStockModel> Stocks_LoadAll() 
         {
             List<BasicStockModel> output;
 
@@ -101,7 +101,7 @@ namespace StockTrackerDataLibrary.Connectors
         }
 
         // Method to load all transactions for a specific Stock
-        public List<TransactionModel> Transactions_SingleStock_Load(int id)
+        public List<TransactionModel> Transactions_SingleStock_Load(int id) 
         {
             List<TransactionModel> output;
 
@@ -118,7 +118,7 @@ namespace StockTrackerDataLibrary.Connectors
         }
 
         // Method to add Transaction to Database
-        public void Transaction_AddNew(TransactionModel model)
+        public void Transaction_AddNew(TransactionModel model) 
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
@@ -139,7 +139,7 @@ namespace StockTrackerDataLibrary.Connectors
         }
 
         // Method to Add Valution to Database
-        public void Valuation_AddNew(ValuationModel model)
+        public void Valuation_AddNew(ValuationModel model) 
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
@@ -148,16 +148,16 @@ namespace StockTrackerDataLibrary.Connectors
                 p.Add("@Date", model.Date);
                 p.Add("@Shares", model.Shares);
                 p.Add("@Price", model.Price);
-
-                p.Add("@ValuationId", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                p.Add("@Cost", model.Cost);
+                p.Add("@ValuationID", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute("dbo.sp_Valuations_Insert", p, commandType: CommandType.StoredProcedure);
 
-                model.ValuationID = p.Get<int>("@ValuationId");
+                model.ValuationID = p.Get<int>("@ValuationID");
             }
         }
 
-        public List<ValuationModel> Valuation_Stock(int id)
+        public List<ValuationModel> Valuation_Stock(int id) 
         {
             List<ValuationModel> output;
 
@@ -174,7 +174,7 @@ namespace StockTrackerDataLibrary.Connectors
 
         }
 
-        public List<ValuationModel> Valuation_LoadAll()
+        public List<ValuationModel> Valuation_LoadAll() 
         {
             List<ValuationModel> output;
 

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using StockTrackerProccesorLibrary;
 using StockTrackerDataLibrary;
 using StockTrackerDataLibrary.DataModels;
 using StockTrackerProccesorLibrary;
@@ -22,12 +21,12 @@ namespace StockTrackerApp
         BasicStockModel stock = new BasicStockModel();
         IValueUpdater calledForm;
 
-        public MainFrm()
+        public MainFrm() 
         {
             InitializeComponent();
         }
         
-        private void MainFrm_Load(object sender, EventArgs e)
+        private void MainFrm_Load(object sender, EventArgs e) 
         {
             // Create an Instance of the Dashboard
             DashBoard nForm = new DashBoard(this);
@@ -53,7 +52,7 @@ namespace StockTrackerApp
             nForm.Show();
         }
 
-        private void mnu_FileDashBoard_Click(object sender, EventArgs e)
+        private void mnu_FileDashBoard_Click(object sender, EventArgs e) 
         {
             pnl_Main.Controls.Clear();
 
@@ -82,7 +81,7 @@ namespace StockTrackerApp
             nForm.Show();
         }
 
-        private void mnu_FileBroker_Click(object sender, EventArgs e)
+        private void mnu_FileBroker_Click(object sender, EventArgs e) 
         {
             pnl_Main.Controls.Clear();
 
@@ -104,13 +103,13 @@ namespace StockTrackerApp
 
         }
 
-        private void mnu_FileExit_Click(object sender, EventArgs e)
+        private void mnu_FileExit_Click(object sender, EventArgs e) 
         {
             //Close the Application
             this.Close();
         }
  
-        private void mnu_Stock_View_Click(object sender, EventArgs e)
+        private void mnu_Stock_View_Click(object sender, EventArgs e) 
         {
             pnl_Main.Controls.Clear();
 
@@ -135,7 +134,7 @@ namespace StockTrackerApp
             nForm.Show();
         }
 
-        private void mnu_StockUpdateSingle_Click(object sender, EventArgs e)
+        private void mnu_StockUpdateSingle_Click(object sender, EventArgs e) 
         {
             //ToDo - code to find which Stock is Selected in dashboard
             //ToDo - get stock that is being viewed in Stock View
@@ -149,9 +148,8 @@ namespace StockTrackerApp
             }
 
         }
-
-
-        private void mnu_Stock_Buy_Click(object sender, EventArgs e)
+        
+        private void mnu_Stock_Buy_Click(object sender, EventArgs e) 
         {
             //ToDo - code to find which Stock is Selected in dashboard
             //ToDo - get stock that is being viewed in Stock View
@@ -166,7 +164,7 @@ namespace StockTrackerApp
             }
         }
 
-        private void mnu_Stock_Sale_Click(object sender, EventArgs e)
+        private void mnu_Stock_Sale_Click(object sender, EventArgs e) 
         {
             //ToDo - code to find which Stock is Selected in dashboard
             //ToDo - get stock that is being viewed in Stock View
@@ -181,7 +179,7 @@ namespace StockTrackerApp
             }
         }
 
-        private void mnu_Stock_Dividend_Click(object sender, EventArgs e)
+        private void mnu_Stock_Dividend_Click(object sender, EventArgs e) 
         {
             //ToDo - code to find which Stock is Selected in dashboard
             //ToDo - get stock that is being viewed in Stock View
@@ -196,7 +194,7 @@ namespace StockTrackerApp
             }
         }
 
-        private void mnu_Stock_Split_Click(object sender, EventArgs e)
+        private void mnu_Stock_Split_Click(object sender, EventArgs e) 
         {
             //ToDo - code to find which Stock is Selected in dashboard
             //ToDo - get stock that is being viewed in Stock View
@@ -211,7 +209,7 @@ namespace StockTrackerApp
             }
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e) 
         {
             string msg = ($"Stock Tracker\n\n" +
                             "Version: 1.0\n" +
@@ -220,10 +218,9 @@ namespace StockTrackerApp
             MessageBox.Show(msg, "About");
         }
 
-        private BasicStockModel GetSelectedStock ()
+        private BasicStockModel GetSelectedStock () 
         {
-            BasicStockModel output = new BasicStockModel();
-            ListBox lb;
+            BasicStockModel output = new BasicStockModel();            
 
             switch (currentForm)
             {
@@ -243,7 +240,7 @@ namespace StockTrackerApp
         // Method to Determine Stock Selected for Stock Menu Items
         // Is return from either Dashboard or StockView when they
         // are in the pnl_Main Area
-        public void StockSelected(BasicStockModel model)
+        public void StockSelected(BasicStockModel model) 
         {
             stock = model;
         }

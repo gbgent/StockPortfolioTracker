@@ -10,42 +10,39 @@ namespace StockTrackerDataLibrary.DataModels
     {
        
         private DateTime _date;
-        private decimal _shares;
+        private decimal _shares;       
         private decimal _price;
+        private decimal _cost;
 
         public int ValuationID { get; set; }
 
         public int StockId { get; set; }
-
-
-        public DateTime Date
+        
+        public DateTime Date  
         {
             get { return _date; }
             set { _date = value; }
         }
              
-        public decimal Shares
+        public decimal Shares  
         {
             get { return _shares; }
             set { _shares = value; }
         }
         
-        public decimal Price
+        public decimal Price  
         {
             get { return _price; }
             set { _price = value; }
         }
-
-        private decimal _cost;
-
-        public decimal Cost
+                
+        public decimal Cost  
         {
             get { return _cost; }
             set { _cost = value; }
         }
-
-
-        public decimal Value
+        
+        public decimal Value  
         {
             get { return _price * _shares;}
         }

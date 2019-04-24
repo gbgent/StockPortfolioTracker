@@ -13,7 +13,8 @@ namespace StockTrackerDataLibrary.Connectors
     {
         // Define Const String to match Connestion STring 
         // Name listed in App Config
-        private const string db = "Stocks";
+        //private const string db = "Stocks";
+        private const string db = "LocalStockDB";
 
         // Method to add a Brokerage to Database
         public void Broker_AddNew(BrokerageModel model) 

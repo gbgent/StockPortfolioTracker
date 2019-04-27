@@ -56,7 +56,6 @@
     <Compile Include="DataModels\PortFolioModel.cs" />
     <Compile Include="DataModels\TransactionModel.cs" />
     <Compile Include="DataModels\ValuationModel.cs" />
-    <Compile Include="DataModels\ValuesModel.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="GlobalConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,23 +8,13 @@ using System.Threading.Tasks;
 
 namespace StockTrackerDataLibrary.DataModels
 {
-    //public class PortFolioModel
-    //{
-    //    int PortId;
+    public class PortFolioModel
+    {
+        public List<BasicStockModel> Stocks = new List<BasicStockModel>();
 
-    //    BasicStockModel Stock = new BasicStockModel();
-
-    //    public ValuationModel Value
-    //    { get { return GetCurrentValue(); }
-    //    }
-
-
-    //    //private ValuationModel GetCurrentValue()
-    //    //{
-    //    //    ValuationModel output;
-
-    //    //    //output = StockTrackerProccesorLibrary.ValuationMethods.PortFolioValue(Stock);
-    //    //    return output;
-    //    //}
-    //}
+        public void Load()
+        {
+            Stocks = GlobalConfig.Connection.Stocks_LoadAll();
+        }
+    }
 }

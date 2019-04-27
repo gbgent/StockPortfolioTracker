@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockTrackerDataLibrary.DataModels
 {
-    public interface IBasicStock
+    class ValuesModel
     {
-        int StockId { get; set; }
-
-        String Symbol { get; set; }
-
-        String Name { get; set; }
     }
 }

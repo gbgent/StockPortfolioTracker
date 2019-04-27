@@ -108,19 +108,13 @@ namespace StockTrackerApp
             }
         }
 
+        // Method to Receive
         public void UpdateValue()
         {
             UpdateDisplay();
         }
         
-        /************************
-          *
-          * Private Methods 
-          * 
-          ************************/
-        
-
-        // Method to load List of Stocks for lst_Stocks ListBox
+       // Method to load List of Stocks for lst_Stocks ListBox
         private void LoadPortfolioList()
         { 
             // Clear Data Source
@@ -139,9 +133,9 @@ namespace StockTrackerApp
             ChartValues = new List<ChartModel>();
             ChartModel _chartValue;
             int counter = 0;
-            
-            List<ValuationModel> values = GlobalConfig.Connection.Valuation_Stock(Stock.StockId);
-            
+
+            List<ValuationModel> values = Stock.Value.HistoryAll(Stock);
+                        
             foreach (ValuationModel vm in values)
             {
                 // Initialize _chartValue

@@ -8,7 +8,7 @@ namespace StockTrackerDataLibrary.DataModels
 {
     public class ChartModel
     {
-        public DateTime Vdate { get; set; }
+        public DateTime Date { get; set; }
 
         public decimal Value { get; set;}
 

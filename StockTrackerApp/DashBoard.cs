@@ -16,7 +16,7 @@ namespace StockTrackerApp
 {
     public partial class DashBoard : Form, IValueUpdater
     {
-        List<BasicStockModel> StocksList = new List<BasicStockModel>();
+        PortFolioModel Portfolio= new PortFolioModel();
         BasicStockModel stock = new BasicStockModel();
 
         List<ChartModel> ChartValuations = new List<ChartModel>();
@@ -46,15 +46,15 @@ namespace StockTrackerApp
         // Update the Form
         private void UpdateDisplay()
         {
-            // Load and Display All Portfolio Stocks
-            PortFolio.Load();
-
+            // Load Portfolio Stocks List
+            
             lst_Portfolio.DataSource = null;
-            lst_Portfolio.DataSource = PortFolio.Stocks;
+            
+            lst_Portfolio.DataSource = Portfolio.Stocks;
             lst_Portfolio.DisplayMember = "DisplayName";
             lst_Portfolio.SelectedIndex = 0;
 
-            lbl_CurrentValue.Text = PortFolio.CurrentValue().ToString("C2");
+            lbl_CurrentValue.Text = Portfolio.CurrentValue.ToString("C2");
 
             //LoadPortfolioValuations();
 
@@ -97,73 +97,8 @@ namespace StockTrackerApp
         public void UpdateValue()
         {
             MessageBox.Show("Received Call to Update Portfolio Value");
-        }
-
-        // Total Portfolio Valuation
-        private decimal PortfolioValuation()
-        {
-            // Local List to determine Current Portfolio Value
-            List<ValuationModel> values = new List<ValuationModel>();
-
-            // Retrieve the Last Valuation for Each Stock Owned
-            foreach (BasicStockModel smodel in StocksList)
-            {
-                List<ValuationModel> vals;
-
-                vals = GlobalConfig.Connection.Valuation_Stock(smodel.StockId);
-
-                values.Add(vals.LastOrDefault());                
-            }
-
-            decimal total = 0;
-
-            //Calculate the Value of the Portfolio
-            foreach (ValuationModel model in values)
-            {
-                total += model.Value;
-            }
-
-            return total;
-
-        }
-
-        // Load Portfolio Valuations for Charting
-        private void LoadPortfolioValuations()
-        {
-            List<ValuationModel> values;
-            DateTime workingDate;
-            ChartModel _chart;
-
-            int counter = 0;
-            decimal totalValue = 0;
-            decimal totalCost = 0;
-
-            values = GlobalConfig.Connection.Valuation_LoadAll();
-
-            // ToDo - Fix Date Transfer From SQL to C#
-
-            workingDate = values.First().Date;
-
-            foreach (ValuationModel model in values)
-            {
-                if (model != values.Last())
-                {
-
-                    if (model.Date == workingDate)
-                    {
-                        totalValue += model.Value;
-                        totalCost += model.Cost;
-                    }
-                    else
-                    {
-                        _chart = new ChartModel();
-
-                        _chart.Vdate = workingDate;
-                        _chart.Value = totalValue;
-                        _chart.Cost = totalCost;
-
+        }      
         
-
         // Wire up the Chart
         private void UpdateChart()
         {
@@ -171,7 +106,7 @@ namespace StockTrackerApp
             cht_ValueGraph.DataSource = null;
 
             //cht_ValueGraph.DataSource = ChartValuations;
-            cht_ValueGraph.DataSource = PortFolio.HistoricalValuesAll();
+            cht_ValueGraph.DataSource = Portfolio.ChartingValuesAll;
             cht_ValueGraph.Series["Value"].XValueMember = "Date";
             cht_ValueGraph.Series["Value"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             cht_ValueGraph.Series["Value"].YValueMembers = "Value";

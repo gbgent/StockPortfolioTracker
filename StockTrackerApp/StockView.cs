@@ -41,8 +41,7 @@ namespace StockTrackerApp
 
         private void StockView_Load(object sender, EventArgs e)
         {
-            // Load and Display Stock Portfolio
-            Portfolio.Load();
+            // Load Stock Portfoilo List
             LoadPortfolioList();
 
             //Update Display
@@ -151,7 +150,7 @@ namespace StockTrackerApp
                 // Initialize _chartValue
                 _chartValue = new ChartModel();
 
-                _chartValue.Vdate = vm.Date;
+                _chartValue.Date = vm.Date;
                 _chartValue.Value = vm.Value;
                 _chartValue.Cost = vm.Cost;
 

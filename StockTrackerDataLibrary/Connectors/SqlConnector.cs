@@ -14,7 +14,7 @@ namespace StockTrackerDataLibrary.Connectors
         // Define Const String to match Connestion STring 
         // Name listed in App Config
         //private const string db = "Stocks";
-        private const string db = "LocalStockDB";
+        private const string db = "Stocks";
 
         // Method to add a Brokerage to Database
         public void Broker_AddNew(BrokerageModel model) 
@@ -89,13 +89,13 @@ namespace StockTrackerDataLibrary.Connectors
         }
 
         //Method to Load Stock Portfolio
-        public List<BasicStockModel> Stocks_LoadAll() 
+        public List<StockModel> Stocks_LoadAll() 
         {
-            List<BasicStockModel> output;
+            List<StockModel> output;
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
-                output = connection.Query<BasicStockModel>("dbo.sp_Stocks_Get_All").ToList();
+                output = connection.Query<StockModel>("dbo.sp_Stocks_Get_All").ToList();
             }
 
             return output;

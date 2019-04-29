@@ -33,8 +33,9 @@ namespace StockTrackerApp
     public partial class StockUpdateForm : Form
     {
         // Class Level Variables
-        public BasicStockModel Stock = new BasicStockModel();
+        public StockModel Stock = new StockModel();
 
+        //ToDo - Create List of Brokers Then Wire up To Broker Combo Box
         BrokerageModel broker;
 
         TransactionType tType;
@@ -44,7 +45,7 @@ namespace StockTrackerApp
             InitializeComponent();           
         }
                 
-        public StockUpdateForm(BasicStockModel st, TransactionType type) // Will recieve the Basic Stock Data Class
+        public StockUpdateForm(StockModel st, TransactionType type) // Will recieve the Basic Stock Data Class
         {
             InitializeComponent();
             
@@ -224,15 +225,7 @@ namespace StockTrackerApp
             decimal shares = 0M;
             decimal price = Decimal.Parse(tx_TransPrice.Text);
             broker = (BrokerageModel)cb_Broker.SelectedItem;
-
-            foreach (Control ctl in pnl_Normal.Controls)
-            {
-                if(ctl is TextBox)
-                {
-                    shares = Decimal.Parse(ctl.Text);
-                }
-            }
-
+                       
             switch (tType)
             {
                 case TransactionType.Buy:
@@ -297,14 +290,13 @@ namespace StockTrackerApp
             TransactionModel t = new TransactionModel
             {
                 StockId = Stock.StockId,
-                BrokerId = broker.BrokerId,
+                BrokerId = Stock.BrokerId,
                 Type = tType,
                 Date = dtp_TransDate.Value.Date,
                 Shares = s,
                 Price = p,
                 Fee = broker.CommissionRate
             };
-
             return t;
         }
 

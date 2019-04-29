@@ -16,7 +16,7 @@ namespace StockTrackerApp
 {
     public partial class DashBoard : Form, IValueUpdater
     {
-        List<BasicStockModel> StocksList = new List<BasicStockModel>();
+        List<StockModel> StocksList = new List<StockModel>();
         BasicStockModel stock = new BasicStockModel();
         List<ChartModel> ChartValuations = new List<ChartModel>();
 
@@ -68,8 +68,8 @@ namespace StockTrackerApp
         // Passes the Stock back to the Calling Form (usually Main Form)
         private void lst_Portfolio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BasicStockModel stock;
-            stock = (BasicStockModel)lst_Portfolio.SelectedItem;
+            StockModel stock;
+            stock = (StockModel)lst_Portfolio.SelectedItem;
 
             //  ToDo - Fix Issue when Dashboard is Called
             // when either Stock View or Broker Form is open in the main panel.
@@ -100,7 +100,7 @@ namespace StockTrackerApp
 
         public void UpdateValue()
         {
-            MessageBox.Show("Received Call to Update Portfolio Value");
+            UpdateDisplay();
         }
 
         // Total Portfolio Valuation
@@ -110,7 +110,7 @@ namespace StockTrackerApp
             List<ValuationModel> values = new List<ValuationModel>();
 
             // Retrieve the Last Valuation for Each Stock Owned
-            foreach (BasicStockModel smodel in StocksList)
+            foreach (StockModel smodel in StocksList)
             {
                 List<ValuationModel> vals;
 

@@ -17,7 +17,7 @@ namespace StockTrackerDataLibrary.Connectors
 
         void Stocks_AddNew(BasicStockModel model);
 
-        List<BasicStockModel> Stocks_LoadAll();
+        List<StockModel> Stocks_LoadAll();
 
         void Transaction_AddNew(TransactionModel model);
 

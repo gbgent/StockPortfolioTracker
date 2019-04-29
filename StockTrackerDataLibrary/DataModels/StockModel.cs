@@ -10,30 +10,47 @@ namespace StockTrackerDataLibrary.DataModels
 
     {
         private int _stockId;
+        private int _brokerId;
         private string _symbol;
         private string _name;
 
-        public List<TransactionModel> Transactions = new List<TransactionModel>();
+       
 
-        public ValueModel Value = new ValueModel(_stockId);
-
-        public int StockId
+        public int StockId 
         {
             get { return _stockId; }
             set { _stockId = value; }
         }
-        public string Symbol
+        public int BrokerId  
+        {
+            get { return _brokerId; }
+            set { _brokerId = value; }
+        }          
+        public string Symbol 
         {
             get { return _symbol; }
             set { _symbol = value; }
         }
-        public string Name
+        public string Name 
         {
             get { return _name; }
             set { _name = value; }
         }
+        public string DisplayName
+        {
+            get { return $"{_name} - {_symbol}"; }
+        }
 
+        public StockModel()
+        {
+            _stockId = -1;
+            _symbol = String.Empty;
+            _name = String.Empty;
+        }
 
+        public List<TransactionModel> Transactions = new List<TransactionModel>();
+
+        public ValueModel Value = new ValueModel();
 
         // Method to Load Transactions
         public void LoadTransactions()
@@ -82,33 +99,5 @@ namespace StockTrackerDataLibrary.DataModels
         }
     }
 
-    public class ValueModel
-    {
-        private int _stockId;
-
-        public ValuationModel Current
-        { get; }
-
-        public List<ValuationModel> All
-        { get;}
-
-        /// <summary>
-        /// Constructor for Value Model
-        /// </summary>
-        /// <param name="id"> Stock Id Number</param>
-        public ValueModel(int id)
-        {
-            _stockId = id;
-        }
-
-        private decimal CalcCurrentValue()
-        {
-            List<ValuationModel> vals = GlobalConfig.Connection.Valuation_Stock(_stockId);
-
-            ValuationModel val = vals.LastOrDefault();
-
-            return val.Value;
-        }
-
-    }
+   
 }

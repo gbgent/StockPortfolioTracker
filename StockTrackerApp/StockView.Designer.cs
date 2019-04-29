@@ -91,10 +91,13 @@
             this.cht_IndivStock.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cht_IndivStock.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cht_IndivStock.BackSecondaryColor = System.Drawing.Color.SeaShell;
             chartArea1.AxisX.IsStartedFromZero = false;
             chartArea1.AxisX2.IsStartedFromZero = false;
             chartArea1.AxisY.IsStartedFromZero = false;
             chartArea1.AxisY2.IsStartedFromZero = false;
+            chartArea1.BorderWidth = 2;
             chartArea1.Name = "ChartArea1";
             chartArea1.Position.Auto = false;
             chartArea1.Position.Height = 80F;
@@ -111,10 +114,12 @@
             this.cht_IndivStock.Legends.Add(legend1);
             this.cht_IndivStock.Location = new System.Drawing.Point(191, 134);
             this.cht_IndivStock.Name = "cht_IndivStock";
+            series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
             series1.Name = "Value";
+            series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.Legend = "Legend1";

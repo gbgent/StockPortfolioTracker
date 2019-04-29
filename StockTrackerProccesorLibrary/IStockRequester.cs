@@ -25,6 +25,7 @@ namespace StockTrackerProccesorLibrary
        *       }c       
        *       
       */
-        void StockSelected(BasicStockModel model);
+       
+        void StockSelected(StockModel stock);
     }
 }

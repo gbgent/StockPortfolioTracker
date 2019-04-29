@@ -18,7 +18,7 @@ namespace StockTrackerApp
     {
 
         MyForms currentForm = MyForms.DashBoard;
-        BasicStockModel stock = new BasicStockModel();
+        StockModel stock = new StockModel();
         IValueUpdater calledForm;
 
         public MainFrm() 
@@ -114,7 +114,7 @@ namespace StockTrackerApp
             pnl_Main.Controls.Clear();
 
             //Create New instance of Form StockView
-            StockView nForm = new StockView(stock);
+            StockView nForm = new StockView(stock,this);
 
             //Set CalledForm for the IValueUpdater Interface
             calledForm = nForm;
@@ -240,7 +240,7 @@ namespace StockTrackerApp
         // Method to Determine Stock Selected for Stock Menu Items
         // Is return from either Dashboard or StockView when they
         // are in the pnl_Main Area
-        public void StockSelected(BasicStockModel model) 
+        public void StockSelected(StockModel model) 
         {
             stock = model;
         }

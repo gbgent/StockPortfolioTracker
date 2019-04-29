@@ -13,30 +13,38 @@ using StockTrackerProccesorLibrary;
 
 namespace StockTrackerApp
 {
-    public partial class StockView : Form, IValueUpdater
+    public partial class StockView : Form, IValueUpdater, IStockRequester
     {
         
         PortFolioModel Portfolio = new PortFolioModel();
         StockModel Stock = new StockModel();
         List<ChartModel> ChartValues;
+        bool FirstLoad = false;
 
+        private IStockRequester callingForm;
 
         public StockView()
         {
             InitializeComponent();
         }
 
-        public StockView(BasicStockModel st)
+        public StockView(StockModel st, IStockRequester caller)
         {
             InitializeComponent();
+            callingForm = caller;
 
             Stock.StockId = st.StockId;
             Stock.Name = st.Name;
             Stock.Symbol = st.Symbol;
+            FirstLoad = true;
         }
 
         private void StockView_Load(object sender, EventArgs e)
         {
+            // Load and Display Stock Portfolio
+            Portfolio.Load();
+            LoadPortfolioList();
+
             //Update Display
             UpdateDisplay();
         }
@@ -44,9 +52,6 @@ namespace StockTrackerApp
         // Method to Update all Information in Form
         private void UpdateDisplay()
         {
-            // Load and Display Stock Portfolio
-            Portfolio.Load();
-            LoadPortfolioList();
             
             //Load and Display Selected Stock Information            
             this.Stock.LoadTransactions();
@@ -92,18 +97,22 @@ namespace StockTrackerApp
              * for Form Controls
              * 
              ************************/
+
+         
         private void lst_Stocks_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lst_Stocks.SelectedIndex >= 0) //Check for Non Focus Change
+            if (!FirstLoad) //Check for Non Focus Change
             {
                 // Assign Selected stock to local variable Stock
-                BasicStockModel bStock = (BasicStockModel)lst_Stocks.SelectedItem;
+                StockModel bStock = (StockModel)lst_Stocks.SelectedItem;
+
+                StockSelected(bStock);
 
                 Stock.StockId = bStock.StockId;
                 Stock.BrokerId = bStock.BrokerId;
                 Stock.Symbol = bStock.Symbol;
                 Stock.Name = bStock.Name;
-
+                FirstLoad = true;
                 UpdateDisplay();
             }
         }
@@ -130,7 +139,8 @@ namespace StockTrackerApp
             lst_Stocks.DataSource = Portfolio.Stocks;
             lst_Stocks.DisplayMember = "DisplayName";
             lst_Stocks.ValueMember = "StockId";
-            lst_Stocks.SelectedIndex = -1;
+            lst_Stocks.SelectedValue = Stock.StockId;
+            FirstLoad = false;
         } 
 
 
@@ -175,6 +185,11 @@ namespace StockTrackerApp
             cht_IndivStock.Series["Cost"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
 
 
+        }
+
+        public void StockSelected(StockModel stock)
+        {
+            callingForm.StockSelected(stock);
         }
     }
 }

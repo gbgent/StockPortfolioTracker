@@ -10,7 +10,7 @@ namespace StockTrackerDataLibrary.DataModels
 {
     public class PortFolioModel
     {
-        public List<BasicStockModel> Stocks = new List<BasicStockModel>();
+        public List<StockModel> Stocks = new List<StockModel>();
 
         public void Load()
         {

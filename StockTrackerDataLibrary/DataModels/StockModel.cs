@@ -48,7 +48,7 @@ namespace StockTrackerDataLibrary.DataModels
         // Method to Load Transactions
         public void LoadTransactions()
         {
-            this.Transactions = GlobalConfig.Connection.Transactions_SingleStock_Load(this.StockId);
+            Transactions = GlobalConfig.Connection.Transactions_SingleStock_Load(StockId);
         }
 
         // Method to Calculate Current Shares Owned

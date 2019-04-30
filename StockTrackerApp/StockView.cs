@@ -33,9 +33,7 @@ namespace StockTrackerApp
             InitializeComponent();
             callingForm = caller;
 
-            Stock.StockId = st.StockId;
-            Stock.Name = st.Name;
-            Stock.Symbol = st.Symbol;
+            Stock= st;            
             Stock.Value.SetID(Stock.StockId);
             FirstLoad = true;
         }
@@ -54,12 +52,12 @@ namespace StockTrackerApp
         {
             
             //Load and Display Selected Stock Information            
-            this.Stock.LoadTransactions();
+            Stock.LoadTransactions();
             ShowStockInfo();
 
             // Display Transaction List
             DisplayTransactionHistory();
-           
+
 
             // Display Chart
             LoadChartingValues();
@@ -124,7 +122,7 @@ namespace StockTrackerApp
         }
         
        // Method to load List of Stocks for lst_Stocks ListBox
-        private void LoadPortfolioList()
+        private void LoadPortfolioList()  //Good
         { 
             // Clear Data Source
             lst_Stocks.DataSource = null;
@@ -167,9 +165,9 @@ namespace StockTrackerApp
 
             // Set up the X Axis 
             cht_IndivStock.DataSource = ChartValues;
-            cht_IndivStock.Series["Value"].XValueMember = "Vdate";
+            cht_IndivStock.Series["Value"].XValueMember = "Date";
             cht_IndivStock.Series["Value"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            cht_IndivStock.Series["Cost"].XValueMember = "Vdate";
+            cht_IndivStock.Series["Cost"].XValueMember = "Date";
             cht_IndivStock.Series["Cost"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
 
             //Set UP Y Axis

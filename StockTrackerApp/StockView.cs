@@ -36,6 +36,7 @@ namespace StockTrackerApp
             Stock.StockId = st.StockId;
             Stock.Name = st.Name;
             Stock.Symbol = st.Symbol;
+            Stock.Value.SetID(Stock.StockId);
             FirstLoad = true;
         }
 
@@ -143,7 +144,7 @@ namespace StockTrackerApp
             ChartModel _chartValue;
             int counter = 0;
 
-            List<ValuationModel> values = Stock.Value.HistoryAll(Stock);
+            List<ValuationModel> values = Stock.Value.HistoryAll;
                         
             foreach (ValuationModel vm in values)
             {

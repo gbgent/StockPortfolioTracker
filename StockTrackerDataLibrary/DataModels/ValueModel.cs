@@ -10,17 +10,19 @@ namespace StockTrackerDataLibrary.DataModels
     {
         // Private Variables
         private int _stockId;
+        private List<ValuationModel> vals;
        
 
         // Public Properties
         public ValuationModel Current;
 
-        public List<ValuationModel> All;
+        public List<ValuationModel> HistoryAll;    
         
         // Constructors
-        public ValueModel()
+        public ValueModel( )
         {
-        }
+            
+;        }
 
         public ValueModel(int id)
         {
@@ -51,7 +53,7 @@ namespace StockTrackerDataLibrary.DataModels
         {
             List<ValuationModel> vals = GlobalConfig.Connection.Valuation_Stock(_stockId);
 
-            All = vals;
+            HistoryAll = vals;
         }
     }
 }

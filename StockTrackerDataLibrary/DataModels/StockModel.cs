@@ -36,17 +36,10 @@ namespace StockTrackerDataLibrary.DataModels
             get { return _name; }
             set { _name = value; }
         }
-        public string DisplayName
+        public string DisplayName 
         {
             get { return $"{_name} - {_symbol}"; }
-        }
-
-        public StockModel()
-        {
-            _stockId = -1;
-            _symbol = String.Empty;
-            _name = String.Empty;
-        }
+        }         
 
         public List<TransactionModel> Transactions = new List<TransactionModel>();
 

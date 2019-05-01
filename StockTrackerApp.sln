@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackerApp", "StockTrackerApp\StockTrackerApp.csproj", "{09A4CBC2-0FDD-4690-8E30-F085D466C403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackerProccesorLibrary", "StockTrackerProccesorLibrary\StockTrackerProccesorLibrary.csproj", "{09F714E7-5451-4C59-8659-B28DD49EAD8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackerProcessorLibrary", "StockTrackerProccesorLibrary\StockTrackerProcessorLibrary.csproj", "{09F714E7-5451-4C59-8659-B28DD49EAD8F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTrackerDataLibrary", "StockTrackerDataLibrary\StockTrackerDataLibrary.csproj", "{99217E94-EA02-4745-B3C0-B25AF7C3DEA5}"
 EndProject

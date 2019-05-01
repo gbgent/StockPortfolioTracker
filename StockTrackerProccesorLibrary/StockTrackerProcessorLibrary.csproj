@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="IStockRequester.cs" />
     <Compile Include="IValueUpdater.cs" />
-    <Compile Include="MainFormProcessor.cs" />
+    <Compile Include="STProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValuationMethods.cs" />
   </ItemGroup>

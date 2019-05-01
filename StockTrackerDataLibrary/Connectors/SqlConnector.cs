@@ -186,5 +186,20 @@ namespace StockTrackerDataLibrary.Connectors
 
             return output;
         }
+
+        public void Stock_Valuation_Update(ValuationModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@ValuationID", model.ValuationID);                
+                p.Add("@Shares", model.Shares);
+                p.Add("@Price", model.Price);
+                p.Add("@Cost", model.Cost);
+                
+
+                connection.Execute("dbo.sp_Valuation_Update", p, commandType: CommandType.StoredProcedure);               
+            }
+        }
     }
 }

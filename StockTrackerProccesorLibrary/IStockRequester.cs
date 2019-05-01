@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using StockTrackerDataLibrary.DataModels;
 
-namespace StockTrackerProccesorLibrary
+namespace StockTrackerProcessorLibrary
 {
     public interface IStockRequester
     {

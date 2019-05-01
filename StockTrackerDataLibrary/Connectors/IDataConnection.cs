@@ -28,5 +28,7 @@ namespace StockTrackerDataLibrary.Connectors
         List<ValuationModel> Valuation_Stock(int id);
 
         List<ValuationModel> Valuation_LoadAll();
+
+        void Stock_Valuation_Update(ValuationModel model);
     }
 }

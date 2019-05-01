@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockTrackerDataLibrary;
 using StockTrackerDataLibrary.DataModels;
-using StockTrackerProccesorLibrary;
+using StockTrackerProcessorLibrary;
 
 namespace StockTrackerApp
 {

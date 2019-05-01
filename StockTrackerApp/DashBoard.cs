@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using StockTrackerProccesorLibrary;
+using StockTrackerProcessorLibrary;
 using StockTrackerDataLibrary.Connectors;
 using StockTrackerDataLibrary;
 
@@ -16,7 +16,7 @@ namespace StockTrackerApp
 {
     public partial class DashBoard : Form, IValueUpdater
     {
-        PortFolioModel Portfolio= new PortFolioModel();
+        PortFolioModel Portfolio= new PortFolioModel(); //Automaticallly Loads Stocks
         BasicStockModel stock = new BasicStockModel();
 
         List<ChartModel> ChartValuations = new List<ChartModel>();
@@ -39,21 +39,26 @@ namespace StockTrackerApp
 
         // Load Dashboard with Portfolio Information
         private void DashBoard_Load(object sender, EventArgs e)
-        {           
+        {
+            // Load Stock Portfolio List on Form
+            UpdatePortfolioList();
+
             UpdateDisplay();               
         }
 
-        // Update the Form
-        private void UpdateDisplay()
+        private void UpdatePortfolioList()
         {
-            // Load Portfolio Stocks List
-            
+            // Note: Portfolio Stocks Load on Instantiation of Portfolio
             lst_Portfolio.DataSource = null;
-            
+
             lst_Portfolio.DataSource = Portfolio.Stocks;
             lst_Portfolio.DisplayMember = "DisplayName";
             lst_Portfolio.SelectedIndex = 0;
-
+        }
+        // Update the Form
+        private void UpdateDisplay()
+        {
+            // Display the Current Value of the Portfolio
             lbl_CurrentValue.Text = Portfolio.CurrentValue.ToString("C2");
 
             //LoadPortfolioValuations();
@@ -86,11 +91,12 @@ namespace StockTrackerApp
 
             // Check if new stock was added
             if (result == DialogResult.OK)
-            {               
-                //Update Portfolio Value
-                UpdateDisplay();
-                //Reload Chart
-                UpdateChart();
+            {
+                //Update Portfolio
+                UpdatePortfolioList();
+
+                // Update Remainder of Display
+                UpdateDisplay();                
             }
         }
 

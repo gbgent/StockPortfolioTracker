@@ -7,7 +7,7 @@ using StockTrackerDataLibrary;
 using StockTrackerDataLibrary.DataModels;
 
 
-namespace StockTrackerProccesorLibrary
+namespace StockTrackerProcessorLibrary
 {
     public class ValuationMethods
     {

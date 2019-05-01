@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockTrackerDataLibrary;
 using StockTrackerDataLibrary.DataModels;
-using StockTrackerProccesorLibrary;
+using StockTrackerProcessorLibrary;
 
 
 namespace StockTrackerApp
@@ -40,11 +40,15 @@ namespace StockTrackerApp
 
         TransactionType tType;
 
+        STProcessor proc = new STProcessor();
+
+        // Default Constructor
         public StockUpdateForm()
         {
             InitializeComponent();           
         }
-                
+        
+        // Preferred Constructor
         public StockUpdateForm(StockModel st, TransactionType type) // Will recieve the Basic Stock Data Class
         {
             InitializeComponent();
@@ -73,6 +77,12 @@ namespace StockTrackerApp
             }
         } // End Constructor
 
+        /**************************
+         * 
+         * Methods for Setting up
+         * Form for specific Function
+         * 
+         **************************/
         private void SetupDividend()
         {
             //Set Form Title
@@ -195,6 +205,15 @@ namespace StockTrackerApp
             pnl_Split.Visible = false;
             
             DisplayCurrentValue();
+
+            //Load Brokers in Combo Box
+            List<BrokerageModel> brokers = GlobalConfig.Connection.Broker_GetAll();
+
+            cb_Broker.DataSource = null;
+            cb_Broker.DataSource = brokers;
+            cb_Broker.DisplayMember = "BrokerageName";
+            cb_Broker.ValueMember = "BrokerId";
+
         }
 
         //Display Shares Owned and Stock's Value
@@ -210,6 +229,13 @@ namespace StockTrackerApp
 
         }
 
+        /**************************
+         * 
+         * Methods for Buttons
+         * 
+         **************************/
+
+        // Cancel Button Click Event Handler
         private void Btn_Cancel_Click(object sender, EventArgs e)
         {
             // Close the Current Form
@@ -217,80 +243,87 @@ namespace StockTrackerApp
             
         }
 
+        // Save Button Click Event Handler
         private void Btn_Save_Click(object sender, EventArgs e)
         {
             //Create Instances of Transaction and Valuation
             TransactionModel transaction = new TransactionModel();
             ValuationModel valuation = new ValuationModel();
-            decimal shares = 0M;
+            decimal shares = 0m;
             decimal price = Decimal.Parse(tx_TransPrice.Text);
             broker = (BrokerageModel)cb_Broker.SelectedItem;
                        
             switch (tType)
             {
                 case TransactionType.Buy:
+                    {
+                        shares = GetShares();
+                        //Load Information and Valuation into Correct variables
+                        transaction = RetrieveTransactionData(price, shares, broker.BrokerId);
+                        valuation = CalculateCurrentValue(price, shares, broker.CommissionRate);
 
-                    //Load Information and Valuation into Correct variables
-                    transaction = RetrieveTransactionData(shares, price);                   
-                    valuation = CalculateCurrentValue(shares, price, broker.CommissionRate);
+                        //Save Transaction and Valuation to Database
+                        GlobalConfig.Connection.Transaction_AddNew(transaction);
+                        GlobalConfig.Connection.Valuation_AddNew(valuation);
 
-                    //Save Transaction and Valuation to Database
-                    GlobalConfig.Connection.Transaction_AddNew(transaction);
-                    GlobalConfig.Connection.Valuation_AddNew(valuation);
-
-                    break;
-
+                        break;
+                    }
                 case TransactionType.Sale:
-                    //Load Information and Valuation into Correct variables
-                    transaction = RetrieveTransactionData(price, shares);
-                    valuation = CalculateCurrentValue(price,  -shares);
+                    {
+                        //Load Information and Valuation into Correct variables
+                        transaction = RetrieveTransactionData(price, shares, broker.BrokerId);
+                        valuation = CalculateCurrentValue(price, -shares);
 
-                    //Save Transaction and Valuation to Database
-                    GlobalConfig.Connection.Transaction_AddNew(transaction);
-                    GlobalConfig.Connection.Valuation_AddNew(valuation);
+                        //Save Transaction and Valuation to Database
+                        GlobalConfig.Connection.Transaction_AddNew(transaction);
+                        GlobalConfig.Connection.Valuation_AddNew(valuation);
 
-                    break;
+                        break;
+                    }
 
                 case TransactionType.Update:
                     //Load  Valuation into Correct variable
                     valuation = CalculateCurrentValue(price);
-                    //Save Valuation to Database
-                    GlobalConfig.Connection.Valuation_AddNew(valuation);
+                    //Save Valuation to Database and Update other Stocks
+                   proc.UpDateValuations(valuation);
                     break;
 
                 case TransactionType.Split:
-                   // Uses Date, Price, Old Shares, New Shares
-                   Decimal oldShares, newShares = 0m;
-
-                    foreach (Control ctl in pnl_Split.Controls)
                     {
-                        if(ctl is TextBox)
+                        // Uses Date, Price, Old Shares, New Shares
+                        Decimal oldShares, newShares = 0m;
+
+                        foreach (Control ctl in pnl_Split.Controls)
                         {
-                            if(ctl.Name.Contains("Old"))
+                            if (ctl is TextBox)
                             {
-                                oldShares = Decimal.Parse(ctl.Text);
-                            }
-                            else if (ctl.Name.Contains("New"))
-                            {
-                                newShares = Decimal.Parse(ctl.Text);
+                                if (ctl.Name.Contains("Old"))
+                                {
+                                    oldShares = Decimal.Parse(ctl.Text);
+                                }
+                                else if (ctl.Name.Contains("New"))
+                                {
+                                    newShares = Decimal.Parse(ctl.Text);
+                                }
                             }
                         }
+                        break;
                     }
-                    break;
 
                 case TransactionType.Dividend:
+                    //ToDo - Set up Save Dividend Transaction
                     // Uses only Date and Price (Price is Dividend per Share)
                     break;
             }            
         }
 
         // Method to Gather Transaction Information
-        private TransactionModel RetrieveTransactionData(decimal p, decimal s)
+        private TransactionModel RetrieveTransactionData(decimal p, decimal s, int bId)
         {
             TransactionModel t = new TransactionModel
             {
                 StockId = Stock.StockId,
-                BrokerId = Stock.BrokerId,
+                BrokerId = bId,
                 Type = tType,
                 Date = dtp_TransDate.Value.Date,
                 Shares = s,
@@ -342,9 +375,17 @@ namespace StockTrackerApp
 
         }
 
-        private void tx_TransPrice_Leave(object sender, EventArgs e)
+        private void NumTextBox_Leave(object sender, EventArgs e)
         {
-            if (tType == TransactionType.Update)
+            TextBox tb = (TextBox)sender;
+            decimal output;
+            if (!Decimal.TryParse(tb.Text,out output))
+            {
+                MessageBox.Show("Please Enter A Number!!", "Invalid Input");
+                tb.Text = string.Empty;
+                tb.Focus();
+            }
+            if (tType == TransactionType.Update && tb.Name == "tx_TransPrice")
             {
                 TextBox txtbox = new TextBox();
                 foreach (Control ctl in pnl_Normal.Controls)
@@ -361,5 +402,19 @@ namespace StockTrackerApp
                 txtbox.Text = (Shares * Price).ToString("c");
             }
         }
+
+        private decimal GetShares()
+        {
+            decimal output = 0m;
+
+            foreach (Control ctl in pnl_Normal.Controls)
+                if (ctl is TextBox)
+                {
+                    output = decimal.Parse(ctl.Text);
+                }
+            return output;
+        }
+
+       
     }//End Class
 }//End NameSpace

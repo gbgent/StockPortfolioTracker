@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using StockTrackerDataLibrary;
 using StockTrackerDataLibrary.DataModels;
-using StockTrackerProccesorLibrary;
+using StockTrackerProcessorLibrary;
 
 
 namespace StockTrackerApp
@@ -49,13 +49,24 @@ namespace StockTrackerApp
 
             // Add Form to Panel then Show Form
             pnl_Main.Controls.Add(nForm);
+            currentForm = MyForms.DashBoard;
             nForm.Show();
+            // Toggle Menu Item Visibility            
+            ToggleMenuItems(currentForm);
         }
 
         private void mnu_FileDashBoard_Click(object sender, EventArgs e) 
         {
+            //Adjust The Visiblity of Menu Items
+            mnu_FileDashBoard.Visible = false;
+            mnu_Stock.Visible = true;
+            mnu_FileBroker.Visible = true;
+            mnu_Stock_View.Visible = true;
+            
+            //Cleare the main Panel of controls
             pnl_Main.Controls.Clear();
 
+            
             // Create an Instance of the Dashboard
             DashBoard nForm = new DashBoard(this);
 
@@ -79,12 +90,14 @@ namespace StockTrackerApp
             pnl_Main.Controls.Add(nForm);
             currentForm = MyForms.DashBoard;
             nForm.Show();
+            ToggleMenuItems(currentForm);
         }
 
         private void mnu_FileBroker_Click(object sender, EventArgs e) 
         {
             pnl_Main.Controls.Clear();
 
+            //Load an Instance of Brokerage Form
             BrokerageForm nForm = new BrokerageForm();
 
             // Remove the Top Level desingation for the Form
@@ -100,7 +113,7 @@ namespace StockTrackerApp
             pnl_Main.Controls.Add(nForm);
             currentForm = MyForms.Broker;
             nForm.Show();
-
+            ToggleMenuItems(currentForm);
         }
 
         private void mnu_FileExit_Click(object sender, EventArgs e) 
@@ -132,6 +145,7 @@ namespace StockTrackerApp
             pnl_Main.Controls.Add(nForm);
             currentForm = MyForms.Stock;
             nForm.Show();
+            ToggleMenuItems(currentForm);
         }
 
         private void mnu_StockUpdateSingle_Click(object sender, EventArgs e) 
@@ -216,6 +230,32 @@ namespace StockTrackerApp
                             "By: Gerald B. Glass");
 
             MessageBox.Show(msg, "About");
+        }
+
+
+        private void ToggleMenuItems(MyForms thisForm)
+        {
+            switch (thisForm)
+            {
+                case MyForms.Broker:
+                    mnu_FileBroker.Visible = false;
+                    mnu_FileDashBoard.Visible = true;
+                    mnu_Stock.Visible = false;
+                    break;
+                case MyForms.DashBoard:
+                    mnu_FileBroker.Visible = true;
+                    mnu_FileDashBoard.Visible = false;
+                    mnu_Stock.Visible = true;
+                    mnu_Stock_View.Visible = true;
+                    break;
+                case MyForms.Stock:
+                    mnu_FileBroker.Visible = true;
+                    mnu_FileDashBoard.Visible = true;
+                    mnu_Stock.Visible = true;
+                    mnu_Stock_View.Visible = false;
+                    break;
+            }
+            
         }
 
         private BasicStockModel GetSelectedStock () 

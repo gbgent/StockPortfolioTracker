@@ -82,6 +82,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.AxisY.IsStartedFromZero = false;
+            chartArea1.BorderWidth = 2;
             chartArea1.Name = "ChartArea1";
             this.cht_ValueGraph.ChartAreas.Add(chartArea1);
             legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

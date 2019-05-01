@@ -161,9 +161,9 @@
       <Project>{99217e94-ea02-4745-b3c0-b25af7c3dea5}</Project>
       <Name>StockTrackerDataLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StockTrackerProccesorLibrary\StockTrackerProccesorLibrary.csproj">
+    <ProjectReference Include="..\StockTrackerProccesorLibrary\StockTrackerProcessorLibrary.csproj">
       <Project>{09f714e7-5451-4c59-8659-b28dd49ead8f}</Project>
-      <Name>StockTrackerProccesorLibrary</Name>
+      <Name>StockTrackerProcessorLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

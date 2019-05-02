@@ -16,7 +16,7 @@ namespace StockTrackerApp
     {
         // Class Variables
         List<BrokerageModel> Brokers = new List<BrokerageModel>();
-        BasicStockModel stock = new BasicStockModel();
+        StockModel stock = new StockModel();
         TransactionModel trans = new TransactionModel();
         ValuationModel value = new ValuationModel();
 
@@ -53,8 +53,7 @@ namespace StockTrackerApp
         
         // Method to handle Save Button Click
         private void btn_Save_Click(object sender, EventArgs e)
-        {
-            // ToDo - Add Error Checking for Existing Stock
+        {           
 
             // Check that All Fields have values
             if (IsMissingInput())
@@ -67,32 +66,39 @@ namespace StockTrackerApp
                 // Gather Information 
                 GatherStockInfo();
 
-                // Save Basic Stock Info to Database
-                GlobalConfig.Connection.Stocks_AddNew(stock);
+                if (IsNewStock())
+                {
+                    // Save Basic Stock Info to Database
+                    GlobalConfig.Connection.Stocks_AddNew(stock);
 
-                // Gather Transaction Information
-                GatherTransactionInfo();
-                // Save Transaction to Database
-                GlobalConfig.Connection.Transaction_AddNew(trans);
+                    // Gather Transaction Information
+                    GatherTransactionInfo();
+                    // Save Transaction to Database
+                    GlobalConfig.Connection.Transaction_AddNew(trans);
 
-                // Gater Valuation Information
-                GatherValuationInfo();
+                    // Gater Valuation Information
+                    GatherValuationInfo();
 
-                // Save Valuation to Database
-                GlobalConfig.Connection.Valuation_AddNew(value);
+                    // Save Valuation to Database
+                    GlobalConfig.Connection.Valuation_AddNew(value);
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.None;
+                }
             }
 
         }
 
         // Return to Dashboard, no Information Saved
-        private void btn_Cancel_Click(object sender, EventArgs e)
+        private void btn_Cancel_Click(object sender, EventArgs e) 
         {
             // Close this Form 
             this.Close();
         }
 
         // Clear the existing form
-        private void btn_Clear_Click(object sender, EventArgs e)
+        private void btn_Clear_Click(object sender, EventArgs e) 
         {
             // Clear all Text Boxes
 
@@ -115,7 +121,7 @@ namespace StockTrackerApp
 
         // This method loads Brokerage Combo Box with
         // a list of brokerages
-        private void LoadBrokers()
+        private void LoadBrokers() 
         {
             List<BrokerageModel> Brokers = new List<BrokerageModel>();
 
@@ -134,7 +140,7 @@ namespace StockTrackerApp
         }
 
         // Method to Check All Fields have Values
-        private bool IsMissingInput()
+        private bool IsMissingInput() 
         {
             bool output = false;
 
@@ -149,7 +155,7 @@ namespace StockTrackerApp
         }
 
         // Method to Display Errors
-        private void DisplayError(string msg)
+        private void DisplayError(string msg) 
         {
             MessageBox.Show(msg, "Error");
         }
@@ -160,9 +166,7 @@ namespace StockTrackerApp
             // Information for the Stock
             stock.BrokerId= int.Parse(cb_Brokerage.SelectedValue.ToString());
             stock.Symbol = txt_Symbol.Text;
-            stock.Name = txt_Company.Text;
-
-            
+            stock.Name = txt_Company.Text;            
         }
 
         // Method to Gather Information for Transaction
@@ -189,6 +193,23 @@ namespace StockTrackerApp
             value.Date = trans.Date;
             value.Shares = trans.Shares;
             value.Price = trans.Price;
+        }
+
+        private bool IsNewStock()
+        {
+            bool output = true;
+            List<StockModel> StocksOwned = GlobalConfig.Connection.Stocks_LoadAll();
+
+            foreach(StockModel sm in StocksOwned)
+            {
+                if (stock.Symbol == sm.Symbol)
+                {
+                    string message = $"You already own stocks in {stock.Name}.";
+                    DisplayError(message);
+                    output = false;
+                }
+            }
+            return output;
         }
     }
 }

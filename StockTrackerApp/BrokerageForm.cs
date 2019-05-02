@@ -86,16 +86,21 @@ namespace StockTrackerApp
         // Retrieve the Selected Brokers Information
         private void LoadSelectedBroker()
         {
+            if (cb_Select.SelectedItem == null)
+            {
+                cb_Select.SelectedIndex = 0;
+            }
             // Load the Selected Brokerage Information
             BrokerageModel model = (BrokerageModel)cb_Select.SelectedItem;
             oldInfo = model;
-
+                        
             LoadDisplay(model);                       
         }
 
         // Update the Form Display
         private void LoadDisplay(BrokerageModel model)
         {
+
             chk_Edit.Checked = false;
             txt_BrokerageName.Text = model.BrokerageName;
             txt_Address.Text = model.BrokerageAddress;
@@ -242,9 +247,12 @@ namespace StockTrackerApp
                 cb_Select.Visible = false;
                 chk_Edit.Visible = false;
 
+                // Rename Revert Button to Cancel
+                btn_Revert.Text = "Cancel";
+
                 //Enable Save Button
                 btn_Save.Enabled = true;
-                btn_Revert.Enabled = false;
+                btn_Revert.Enabled = true;
                 btn_New.Enabled = false;
 
                 // Set OldInfo to a new instance
@@ -318,11 +326,23 @@ namespace StockTrackerApp
         // Method to handle Revert Button Event
         private void btn_Revert_Click(object sender, EventArgs e)
         {
-            // Set InfoChanged to False because
-            // Reverting to unchanged information
-            InfoChanged = false;
+            if (btn_Revert.Text == "Revert")
+            {// Set InfoChanged to False because
+             // Reverting to unchanged information
+                InfoChanged = false;
 
-            LoadDisplay(oldInfo);
+                LoadDisplay(oldInfo);
+            }
+            else
+            {
+                //Show Select ComboBox and Edit Checkbox
+                cb_Select.Visible = true;
+                chk_Edit.Visible = true;
+                btn_New.Enabled = true;
+                btn_Revert.Text = "Revert";
+
+                UpdateDisplay();
+            }
         }
     }
 }

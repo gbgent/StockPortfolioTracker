@@ -19,7 +19,11 @@ namespace StockTrackerDataLibrary.DataModels
         public int StockId 
         {
             get { return _stockId; }
-            set { _stockId = value; }
+            set
+            {
+                _stockId = value;
+                Value.SetID(value);
+            }
         }
         public int BrokerId  
         {
@@ -44,7 +48,7 @@ namespace StockTrackerDataLibrary.DataModels
         public List<TransactionModel> Transactions = new List<TransactionModel>();
 
         public ValueModel Value = new ValueModel();
-
+ 
         // Method to Load Transactions
         public void LoadTransactions()
         {

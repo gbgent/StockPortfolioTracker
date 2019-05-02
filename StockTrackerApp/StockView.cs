@@ -17,7 +17,7 @@ namespace StockTrackerApp
     {
         
         PortFolioModel Portfolio = new PortFolioModel();
-        StockModel Stock = new StockModel();
+        StockModel Stock;
         List<ChartModel> ChartValues;
         bool FirstLoad = false;
 
@@ -26,14 +26,15 @@ namespace StockTrackerApp
         public StockView()
         {
             InitializeComponent();
+            Stock = new StockModel();
         }
 
         public StockView(StockModel st, IStockRequester caller)
         {
             InitializeComponent();
             callingForm = caller;
-
-            Stock= st;            
+            Stock = new StockModel();
+            Stock = st;            
             Stock.Value.SetID(Stock.StockId);
             FirstLoad = true;
         }
@@ -57,8 +58,7 @@ namespace StockTrackerApp
 
             // Display Transaction List
             DisplayTransactionHistory();
-
-
+            
             // Display Chart
             LoadChartingValues();
             UpdateChart();
@@ -101,16 +101,19 @@ namespace StockTrackerApp
         {
             if (!FirstLoad) //Check for Non Focus Change
             {
+                // Create New INstance of Stock Model
+                Stock = new StockModel();
+
                 // Assign Selected stock to local variable Stock
                 StockModel bStock = (StockModel)lst_Stocks.SelectedItem;
 
                 StockSelected(bStock);
-
+                                
                 Stock.StockId = bStock.StockId;
                 Stock.BrokerId = bStock.BrokerId;
                 Stock.Symbol = bStock.Symbol;
                 Stock.Name = bStock.Name;
-                FirstLoad = true;
+                //FirstLoad = true;
                 UpdateDisplay();
             }
         }

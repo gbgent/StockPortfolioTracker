@@ -72,7 +72,7 @@ namespace StockTrackerDataLibrary.Connectors
         }
 
         // Method to Add a Stock to the Database
-        public void Stocks_AddNew(BasicStockModel model) 
+        public void Stocks_AddNew(StockModel model) 
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {

@@ -243,9 +243,9 @@ namespace StockTrackerApp
             
         }
 
-        private BasicStockModel GetSelectedStock () 
+        private StockModel GetSelectedStock () 
         {
-            BasicStockModel output = new BasicStockModel();            
+            StockModel output = new StockModel();            
 
             switch (currentForm)
             {

@@ -17,7 +17,7 @@ namespace StockTrackerApp
     public partial class DashBoard : Form, IValueUpdater
     {
         PortFolioModel Portfolio= new PortFolioModel(); //Automaticallly Loads Stocks
-        BasicStockModel stock = new BasicStockModel();
+        StockModel stock = new StockModel();
 
         List<ChartModel> ChartValuations = new List<ChartModel>();
 

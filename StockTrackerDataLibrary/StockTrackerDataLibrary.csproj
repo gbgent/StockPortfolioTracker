@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Connectors\IDataConnection.cs" />
     <Compile Include="Connectors\SqlConnector.cs" />
-    <Compile Include="DataModels\BasicStockModel.cs" />
     <Compile Include="DataModels\BrokerageModel.cs" />
     <Compile Include="DataModels\ChartModel.cs" />
     <Compile Include="DataModels\IBasicStock.cs" />

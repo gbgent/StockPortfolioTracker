@@ -298,6 +298,8 @@ namespace StockTrackerApp
                         }
                         //Create Transaction
                         transaction = CalcStockSplit(price, newShares, oldShares, sharesowned);
+                        transaction.BrokerId = 4; // This should be 0 for stock splits and dividends
+
                         // Save Transaction
                         GlobalConfig.Connection.Transaction_AddNew(transaction);
                         break;
@@ -305,8 +307,11 @@ namespace StockTrackerApp
 
                 case TransactionType.Dividend:
                     {
+                        broker = GlobalConfig.Connection.Broker_GetAll().FirstOrDefault();
                         // Uses only Date and Price (Price is Dividend per Share)
                         transaction = CreateTransaction(price, 0, 0);
+                        transaction.BrokerId = 4; // Set to Admin Broker Id
+                        transaction.Fee = 0M; // Set to NO Broker Fee
 
                         GlobalConfig.Connection.Transaction_AddNew(transaction);
                         break;
@@ -317,16 +322,16 @@ namespace StockTrackerApp
         // Method to Gather Transaction Information
         private TransactionModel CreateTransaction(decimal p, decimal s, int bId)
         {
-            TransactionModel t = new TransactionModel
-            {
-                StockId = Stock.StockId,
-                BrokerId = bId,
-                Type = tType,
-                Date = dtp_TransDate.Value.Date,
-                Shares = s,
-                Price = p,
-                Fee = broker.CommissionRate
-            };
+            TransactionModel t = new TransactionModel();
+
+            t.StockId = Stock.StockId;
+            t.BrokerId = bId;
+            t.Type = tType;
+            t.Date = dtp_TransDate.Value.Date;
+            t.Shares = s;
+            t.Price = p;
+            t.Fee = broker.CommissionRate;
+            
             return t;
         }
 

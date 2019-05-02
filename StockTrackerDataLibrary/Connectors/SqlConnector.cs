@@ -121,6 +121,7 @@ namespace StockTrackerDataLibrary.Connectors
         // Method to add Transaction to Database
         public void Transaction_AddNew(TransactionModel model) 
         {
+            
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(db)))
             {
                 var p = new DynamicParameters();

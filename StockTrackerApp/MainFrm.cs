@@ -250,6 +250,7 @@ namespace StockTrackerApp
                     mnu_FileDashBoard.Visible = false;
                     mnu_Stock.Visible = true;
                     mnu_Stock_View.Visible = true;
+                    mnu_StockUpdateAll.Enabled = true;
                     break;
                 case MyForms.Stock:
                     mnu_FileBroker.Visible = true;

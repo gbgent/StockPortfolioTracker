@@ -91,8 +91,10 @@ namespace StockTrackerDataLibrary.DataModels
                 else if (t.Type == TransactionType.Split)
                     output = t.Cost;
             }
-
-            return output/shares;
+            if (shares > 0)
+                return output / shares;
+            else
+                return 0M;
         }
     }
 

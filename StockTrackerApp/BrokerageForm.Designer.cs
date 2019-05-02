@@ -216,32 +216,35 @@
             // 
             // btn_New
             // 
+            this.btn_New.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_New.Location = new System.Drawing.Point(301, 381);
             this.btn_New.Name = "btn_New";
             this.btn_New.Size = new System.Drawing.Size(90, 35);
             this.btn_New.TabIndex = 5;
             this.btn_New.Text = "New";
-            this.btn_New.UseVisualStyleBackColor = true;
+            this.btn_New.UseVisualStyleBackColor = false;
             this.btn_New.Click += new System.EventHandler(this.btn_New_Click);
             // 
             // btn_Save
             // 
+            this.btn_Save.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_Save.Location = new System.Drawing.Point(189, 381);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(90, 35);
             this.btn_Save.TabIndex = 4;
             this.btn_Save.Text = "Save";
-            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.UseVisualStyleBackColor = false;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // btn_Revert
             // 
+            this.btn_Revert.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_Revert.Location = new System.Drawing.Point(413, 381);
             this.btn_Revert.Name = "btn_Revert";
             this.btn_Revert.Size = new System.Drawing.Size(90, 35);
             this.btn_Revert.TabIndex = 6;
             this.btn_Revert.Text = "Revert";
-            this.btn_Revert.UseVisualStyleBackColor = true;
+            this.btn_Revert.UseVisualStyleBackColor = false;
             this.btn_Revert.Click += new System.EventHandler(this.btn_Revert_Click);
             // 
             // label7
@@ -264,6 +267,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(684, 427);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btn_Revert);

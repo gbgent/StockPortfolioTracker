@@ -98,23 +98,25 @@
             // 
             // btn_SearchSymbol
             // 
+            this.btn_SearchSymbol.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_SearchSymbol.Location = new System.Drawing.Point(388, 79);
             this.btn_SearchSymbol.Name = "btn_SearchSymbol";
             this.btn_SearchSymbol.Size = new System.Drawing.Size(146, 31);
             this.btn_SearchSymbol.TabIndex = 6;
             this.btn_SearchSymbol.Text = "Search Symbol";
-            this.btn_SearchSymbol.UseVisualStyleBackColor = true;
+            this.btn_SearchSymbol.UseVisualStyleBackColor = false;
             this.btn_SearchSymbol.Visible = false;
             this.btn_SearchSymbol.Click += new System.EventHandler(this.btn_SearchSymbol_Click);
             // 
             // btn_SearchCompany
             // 
+            this.btn_SearchCompany.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_SearchCompany.Location = new System.Drawing.Point(388, 125);
             this.btn_SearchCompany.Name = "btn_SearchCompany";
             this.btn_SearchCompany.Size = new System.Drawing.Size(146, 31);
             this.btn_SearchCompany.TabIndex = 7;
             this.btn_SearchCompany.Text = "Search Company";
-            this.btn_SearchCompany.UseVisualStyleBackColor = true;
+            this.btn_SearchCompany.UseVisualStyleBackColor = false;
             this.btn_SearchCompany.Visible = false;
             this.btn_SearchCompany.Click += new System.EventHandler(this.btn_SearchCompany_Click);
             // 
@@ -169,40 +171,44 @@
             // 
             // btn_Save
             // 
+            this.btn_Save.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_Save.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_Save.Location = new System.Drawing.Point(71, 274);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(89, 28);
             this.btn_Save.TabIndex = 14;
             this.btn_Save.Text = "Save";
-            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.UseVisualStyleBackColor = false;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // btn_Clear
             // 
+            this.btn_Clear.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_Clear.Location = new System.Drawing.Point(216, 274);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(89, 28);
             this.btn_Clear.TabIndex = 15;
             this.btn_Clear.Text = "Clear";
-            this.btn_Clear.UseVisualStyleBackColor = true;
+            this.btn_Clear.UseVisualStyleBackColor = false;
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
             // btn_Cancel
             // 
+            this.btn_Cancel.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Cancel.Location = new System.Drawing.Point(370, 274);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(89, 28);
             this.btn_Cancel.TabIndex = 16;
             this.btn_Cancel.Text = "Cancel";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.UseVisualStyleBackColor = false;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // NewStockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(562, 337);
             this.ControlBox = false;
             this.Controls.Add(this.btn_Cancel);

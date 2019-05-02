@@ -144,6 +144,7 @@
             // 
             // btn_Cancel
             // 
+            this.btn_Cancel.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Cancel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cancel.Location = new System.Drawing.Point(300, 46);
@@ -151,7 +152,7 @@
             this.btn_Cancel.Size = new System.Drawing.Size(72, 28);
             this.btn_Cancel.TabIndex = 40;
             this.btn_Cancel.Text = "Cancel";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.UseVisualStyleBackColor = false;
             this.btn_Cancel.Click += new System.EventHandler(this.Btn_Cancel_Click);
             // 
             // tx_TransPrice
@@ -166,6 +167,7 @@
             // 
             // btn_Save
             // 
+            this.btn_Save.BackColor = System.Drawing.Color.DarkSalmon;
             this.btn_Save.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_Save.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Save.Location = new System.Drawing.Point(300, 12);
@@ -173,7 +175,7 @@
             this.btn_Save.Size = new System.Drawing.Size(72, 28);
             this.btn_Save.TabIndex = 39;
             this.btn_Save.Text = "Save";
-            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.UseVisualStyleBackColor = false;
             this.btn_Save.Click += new System.EventHandler(this.Btn_Save_Click);
             // 
             // label1
@@ -289,6 +291,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(384, 186);
             this.Controls.Add(this.pnl_Split);
             this.Controls.Add(this.pnl_Normal);

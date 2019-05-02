@@ -14,7 +14,7 @@ using StockTrackerDataLibrary;
 
 namespace StockTrackerApp
 {
-    public partial class DashBoard : Form, IValueUpdater
+    public partial class DashBoard : Form, IValueUpdater, IStockRequester
     {
         PortFolioModel Portfolio= new PortFolioModel(); //Automaticallly Loads Stocks
         StockModel stock = new StockModel();
@@ -79,7 +79,7 @@ namespace StockTrackerApp
         // Add New Stock Method
         private void lnk_AddNew_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            NewStockForm pForm = new NewStockForm();
+            NewStockForm pForm = new NewStockForm(this);
             DialogResult result = new DialogResult();
 
 
@@ -118,6 +118,17 @@ namespace StockTrackerApp
             cht_ValueGraph.Series["Costs"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
             cht_ValueGraph.Series["Costs"].YValueMembers = "Cost";
             cht_ValueGraph.Series["Costs"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+        }
+
+        public void StockSelected(StockModel stock)
+        {
+            Portfolio = new PortFolioModel();
+
+            // Load Stock Portfolio List on Form
+            UpdatePortfolioList();
+
+            UpdateDisplay();
+
         }
     }
 }

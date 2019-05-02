@@ -1,5 +1,6 @@
 ﻿using StockTrackerDataLibrary;
 using StockTrackerDataLibrary.DataModels;
+using StockTrackerProcessorLibrary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace StockTrackerApp
 {
-    public partial class NewStockForm : Form
+    public partial class NewStockForm : Form 
     {
         // Class Variables
         List<BrokerageModel> Brokers = new List<BrokerageModel>();
@@ -20,14 +21,16 @@ namespace StockTrackerApp
         TransactionModel trans = new TransactionModel();
         ValuationModel value = new ValuationModel();
 
+        private IStockRequester callingForm;
 
         // Error Messages
         const string MissingDataMsg = "All Fields Must be Filled In";
         
         // Default Constructor
-        public NewStockForm()
+        public NewStockForm(IStockRequester caller)
         {
             InitializeComponent();
+            callingForm = caller;
         }
 
         // On Load Method
@@ -81,6 +84,8 @@ namespace StockTrackerApp
 
                     // Save Valuation to Database
                     GlobalConfig.Connection.Valuation_AddNew(value);
+
+                    callingForm.StockSelected(stock);
                 }
                 else
                 {

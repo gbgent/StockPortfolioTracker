@@ -59,7 +59,7 @@
             this.MainMenu.Margin = new System.Windows.Forms.Padding(3);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.MainMenu.Size = new System.Drawing.Size(837, 27);
+            this.MainMenu.Size = new System.Drawing.Size(884, 27);
             this.MainMenu.TabIndex = 0;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -110,7 +110,7 @@
             // mnu_Stock_View
             // 
             this.mnu_Stock_View.Name = "mnu_Stock_View";
-            this.mnu_Stock_View.Size = new System.Drawing.Size(180, 22);
+            this.mnu_Stock_View.Size = new System.Drawing.Size(127, 22);
             this.mnu_Stock_View.Text = "View";
             this.mnu_Stock_View.Click += new System.EventHandler(this.mnu_Stock_View_Click);
             // 
@@ -120,48 +120,48 @@
             this.mnu_StockUpdateSingle,
             this.mnu_StockUpdateAll});
             this.saleToolStripMenuItem.Name = "saleToolStripMenuItem";
-            this.saleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saleToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.saleToolStripMenuItem.Text = "Update";
             // 
             // mnu_StockUpdateSingle
             // 
             this.mnu_StockUpdateSingle.Name = "mnu_StockUpdateSingle";
-            this.mnu_StockUpdateSingle.Size = new System.Drawing.Size(180, 22);
+            this.mnu_StockUpdateSingle.Size = new System.Drawing.Size(131, 22);
             this.mnu_StockUpdateSingle.Text = "Single";
             this.mnu_StockUpdateSingle.Click += new System.EventHandler(this.mnu_StockUpdateSingle_Click);
             // 
             // mnu_StockUpdateAll
             // 
             this.mnu_StockUpdateAll.Name = "mnu_StockUpdateAll";
-            this.mnu_StockUpdateAll.Size = new System.Drawing.Size(180, 22);
+            this.mnu_StockUpdateAll.Size = new System.Drawing.Size(131, 22);
             this.mnu_StockUpdateAll.Text = "All Stocks";
             this.mnu_StockUpdateAll.Click += new System.EventHandler(this.mnu_Stock_Update_All_Click);
             // 
             // mnu_Stock_Buy
             // 
             this.mnu_Stock_Buy.Name = "mnu_Stock_Buy";
-            this.mnu_Stock_Buy.Size = new System.Drawing.Size(180, 22);
+            this.mnu_Stock_Buy.Size = new System.Drawing.Size(127, 22);
             this.mnu_Stock_Buy.Text = "Buy";
             this.mnu_Stock_Buy.Click += new System.EventHandler(this.mnu_Stock_Buy_Click);
             // 
             // mnu_Stock_Sale
             // 
             this.mnu_Stock_Sale.Name = "mnu_Stock_Sale";
-            this.mnu_Stock_Sale.Size = new System.Drawing.Size(180, 22);
+            this.mnu_Stock_Sale.Size = new System.Drawing.Size(127, 22);
             this.mnu_Stock_Sale.Text = "Sale";
             this.mnu_Stock_Sale.Click += new System.EventHandler(this.mnu_Stock_Sale_Click);
             // 
             // mnu_Stock_Dividend
             // 
             this.mnu_Stock_Dividend.Name = "mnu_Stock_Dividend";
-            this.mnu_Stock_Dividend.Size = new System.Drawing.Size(180, 22);
+            this.mnu_Stock_Dividend.Size = new System.Drawing.Size(127, 22);
             this.mnu_Stock_Dividend.Text = "Dividend";
             this.mnu_Stock_Dividend.Click += new System.EventHandler(this.mnu_Stock_Dividend_Click);
             // 
             // mnu_Stock_Split
             // 
             this.mnu_Stock_Split.Name = "mnu_Stock_Split";
-            this.mnu_Stock_Split.Size = new System.Drawing.Size(180, 22);
+            this.mnu_Stock_Split.Size = new System.Drawing.Size(127, 22);
             this.mnu_Stock_Split.Text = "Split";
             this.mnu_Stock_Split.Click += new System.EventHandler(this.mnu_Stock_Split_Click);
             // 
@@ -189,14 +189,15 @@
             this.pnl_Main.Location = new System.Drawing.Point(13, 44);
             this.pnl_Main.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnl_Main.Name = "pnl_Main";
-            this.pnl_Main.Size = new System.Drawing.Size(811, 500);
+            this.pnl_Main.Size = new System.Drawing.Size(858, 500);
             this.pnl_Main.TabIndex = 1;
             // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 566);
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ClientSize = new System.Drawing.Size(884, 566);
             this.Controls.Add(this.pnl_Main);
             this.Controls.Add(this.MainMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

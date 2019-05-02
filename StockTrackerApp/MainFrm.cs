@@ -159,7 +159,25 @@ namespace StockTrackerApp
             }
 
         }
-        
+
+        private void mnu_Stock_Update_All_Click(object sender, EventArgs e)
+        {
+            //Create List of all stocks owned
+            List<StockModel> Stocks = GlobalConfig.Connection.Stocks_LoadAll();
+            // Create Variable for Form
+            StockUpdateForm frm;
+
+            foreach (StockModel sm in Stocks)
+            {
+                //Create Instance of Form
+                frm = new StockUpdateForm(sm, TransactionType.Update);
+                //Display Form using ShowDialog
+                frm.ShowDialog();
+            }
+            //UPdate the existing Form Display and Charts
+            calledForm.UpdateValue();
+        }
+
         private void mnu_Stock_Buy_Click(object sender, EventArgs e) 
         {            
             //Create Instance of Pop Up Window Update Price
@@ -238,6 +256,7 @@ namespace StockTrackerApp
                     mnu_FileDashBoard.Visible = true;
                     mnu_Stock.Visible = true;
                     mnu_Stock_View.Visible = false;
+                    mnu_StockUpdateAll.Enabled = false;
                     break;
             }
             
@@ -269,5 +288,6 @@ namespace StockTrackerApp
         {
             stock = model;
         }
+
     }
 }

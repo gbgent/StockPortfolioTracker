@@ -37,7 +37,7 @@
             this.mnu_Stock_View = new System.Windows.Forms.ToolStripMenuItem();
             this.saleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_StockUpdateSingle = new System.Windows.Forms.ToolStripMenuItem();
-            this.allStocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnu_StockUpdateAll = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_Stock_Buy = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_Stock_Sale = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_Stock_Dividend = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,21 +76,21 @@
             // mnu_FileDashBoard
             // 
             this.mnu_FileDashBoard.Name = "mnu_FileDashBoard";
-            this.mnu_FileDashBoard.Size = new System.Drawing.Size(180, 22);
+            this.mnu_FileDashBoard.Size = new System.Drawing.Size(140, 22);
             this.mnu_FileDashBoard.Text = "DashBoard";
             this.mnu_FileDashBoard.Click += new System.EventHandler(this.mnu_FileDashBoard_Click);
             // 
             // mnu_FileBroker
             // 
             this.mnu_FileBroker.Name = "mnu_FileBroker";
-            this.mnu_FileBroker.Size = new System.Drawing.Size(180, 22);
+            this.mnu_FileBroker.Size = new System.Drawing.Size(140, 22);
             this.mnu_FileBroker.Text = "Broker";
             this.mnu_FileBroker.Click += new System.EventHandler(this.mnu_FileBroker_Click);
             // 
             // mnu_FileExit
             // 
             this.mnu_FileExit.Name = "mnu_FileExit";
-            this.mnu_FileExit.Size = new System.Drawing.Size(180, 22);
+            this.mnu_FileExit.Size = new System.Drawing.Size(140, 22);
             this.mnu_FileExit.Text = "&Exit";
             this.mnu_FileExit.Click += new System.EventHandler(this.mnu_FileExit_Click);
             // 
@@ -118,7 +118,7 @@
             // 
             this.saleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnu_StockUpdateSingle,
-            this.allStocksToolStripMenuItem});
+            this.mnu_StockUpdateAll});
             this.saleToolStripMenuItem.Name = "saleToolStripMenuItem";
             this.saleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saleToolStripMenuItem.Text = "Update";
@@ -126,15 +126,16 @@
             // mnu_StockUpdateSingle
             // 
             this.mnu_StockUpdateSingle.Name = "mnu_StockUpdateSingle";
-            this.mnu_StockUpdateSingle.Size = new System.Drawing.Size(131, 22);
+            this.mnu_StockUpdateSingle.Size = new System.Drawing.Size(180, 22);
             this.mnu_StockUpdateSingle.Text = "Single";
             this.mnu_StockUpdateSingle.Click += new System.EventHandler(this.mnu_StockUpdateSingle_Click);
             // 
-            // allStocksToolStripMenuItem
+            // mnu_StockUpdateAll
             // 
-            this.allStocksToolStripMenuItem.Name = "allStocksToolStripMenuItem";
-            this.allStocksToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.allStocksToolStripMenuItem.Text = "All Stocks";
+            this.mnu_StockUpdateAll.Name = "mnu_StockUpdateAll";
+            this.mnu_StockUpdateAll.Size = new System.Drawing.Size(180, 22);
+            this.mnu_StockUpdateAll.Text = "All Stocks";
+            this.mnu_StockUpdateAll.Click += new System.EventHandler(this.mnu_Stock_Update_All_Click);
             // 
             // mnu_Stock_Buy
             // 
@@ -175,7 +176,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -224,7 +225,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnu_Stock_View;
         private System.Windows.Forms.ToolStripMenuItem saleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnu_StockUpdateSingle;
-        private System.Windows.Forms.ToolStripMenuItem allStocksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnu_StockUpdateAll;
         private System.Windows.Forms.ToolStripMenuItem mnu_Stock_Buy;
         private System.Windows.Forms.ToolStripMenuItem mnu_Stock_Sale;
         private System.Windows.Forms.ToolStripMenuItem mnu_Stock_Dividend;

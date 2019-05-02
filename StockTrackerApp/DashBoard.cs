@@ -73,10 +73,6 @@ namespace StockTrackerApp
             StockModel stock;
             stock = (StockModel)lst_Portfolio.SelectedItem;
 
-            //  ToDo - Fix Issue when Dashboard is Called
-            // when either Stock View or Broker Form is open in the main panel.
-            // Ie Second Call.  Error is "System.NullReferenceException: 'Object reference not set to an instance of an object.'"
-
             callingForm.StockSelected(stock);                        
         }        
 
@@ -102,7 +98,7 @@ namespace StockTrackerApp
 
         public void UpdateValue()
         {
-            MessageBox.Show("Received Call to Update Portfolio Value");
+            UpdateDisplay();
         }      
         
         // Wire up the Chart

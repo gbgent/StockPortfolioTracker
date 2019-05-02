@@ -274,7 +274,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Split Ratio";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // pnl_Normal
             // 

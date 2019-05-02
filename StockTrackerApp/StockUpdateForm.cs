@@ -34,13 +34,12 @@ namespace StockTrackerApp
     {
         // Class Level Variables
         public StockModel Stock = new StockModel();
-
-        //ToDo - Create List of Brokers Then Wire up To Broker Combo Box
+               
         BrokerageModel broker;
 
         TransactionType tType;
 
-        STProcessor proc = new STProcessor();
+        STProcessor Processor = new STProcessor();
 
         // Default Constructor
         public StockUpdateForm()
@@ -88,24 +87,10 @@ namespace StockTrackerApp
             //Set Form Title
             this.Text = $"Enter Dividend for {Stock.Name}";
 
-            //Hide Multi Purpose Label and Textbox
-            //Change Panel Controls Properties
-            Label lb = new Label();
-            TextBox txbox = new TextBox();
-
-            foreach (Control ctl in pnl_Normal.Controls)
-            {
-                if (ctl is Label)
-                {
-                    lb = (Label)ctl;
-                }
-                else if (ctl is TextBox)
-                {
-                    txbox = (TextBox)ctl;
-                }
-            }
-            lb.Visible = false;
-            txbox.Visible = false;
+            // Hide the Shares Panels
+            pnl_Split.Visible = false;
+            pnl_Normal.Visible = false;
+                     
 
             //Change Text for Price Label
             lbl_Price.Text = "Div/Share";
@@ -135,8 +120,7 @@ namespace StockTrackerApp
             lbl_Broker.Visible = false;
             cb_Broker.Enabled = false;
             cb_Broker.Visible = false;
-
-           
+                    
 
             DisplayCurrentValue();
         }
@@ -186,16 +170,14 @@ namespace StockTrackerApp
             this.Text = $"Sale Shares of {Stock.Name}";
             pnl_Split.Visible = false;
 
-            //Hide the Broker Label and ComboBox
-            lbl_Broker.Enabled = false;
-            lbl_Broker.Visible = false;
-            cb_Broker.Enabled = false;
-            cb_Broker.Visible = false;
-
-            //Adjust the Height of Form
-            this.Height = this.Height - lbl_Broker.Height;
-
             DisplayCurrentValue();
+
+            List<BrokerageModel> brokers = GlobalConfig.Connection.Broker_GetAll();
+
+            cb_Broker.DataSource = null;
+            cb_Broker.DataSource = brokers;
+            cb_Broker.DisplayMember = "BrokerageName";
+            cb_Broker.ValueMember = "BrokerId";
         }
 
         private void SetupBuy()
@@ -259,39 +241,46 @@ namespace StockTrackerApp
                     {
                         shares = GetShares();
                         //Load Information and Valuation into Correct variables
-                        transaction = RetrieveTransactionData(price, shares, broker.BrokerId);
+                        transaction = CreateTransaction(price, shares, broker.BrokerId);
                         valuation = CalculateCurrentValue(price, shares, broker.CommissionRate);
 
                         //Save Transaction and Valuation to Database
                         GlobalConfig.Connection.Transaction_AddNew(transaction);
-                        GlobalConfig.Connection.Valuation_AddNew(valuation);
-
+                        
+                        // Upate Valuations
+                        Processor.UpDateValuations(valuation);
                         break;
                     }
                 case TransactionType.Sale:
                     {
+                        shares = GetShares();
+
                         //Load Information and Valuation into Correct variables
-                        transaction = RetrieveTransactionData(price, shares, broker.BrokerId);
+                        transaction = CreateTransaction(price, shares, broker.BrokerId);
                         valuation = CalculateCurrentValue(price, -shares);
 
                         //Save Transaction and Valuation to Database
                         GlobalConfig.Connection.Transaction_AddNew(transaction);
-                        GlobalConfig.Connection.Valuation_AddNew(valuation);
-
+                        
+                        // CUPdate valuations
+                        Processor.UpDateValuations(valuation);
                         break;
                     }
 
                 case TransactionType.Update:
-                    //Load  Valuation into Correct variable
-                    valuation = CalculateCurrentValue(price);
-                    //Save Valuation to Database and Update other Stocks
-                   proc.UpDateValuations(valuation);
-                    break;
+                    {
+                        //Load  Valuation into Correct variable
+                        valuation = CalculateCurrentValue(price);
+                        //Save Valuation to Database and Update other Stocks
+                        Processor.UpDateValuations(valuation);
+                        break;
+                    }
 
                 case TransactionType.Split:
                     {
                         // Uses Date, Price, Old Shares, New Shares
-                        Decimal oldShares, newShares = 0m;
+                        Decimal oldShares =0m, newShares = 0m;
+                        decimal sharesowned = Decimal.Parse(lbl_SharesOwned.Text);
 
                         foreach (Control ctl in pnl_Split.Controls)
                         {
@@ -307,18 +296,26 @@ namespace StockTrackerApp
                                 }
                             }
                         }
+                        //Create Transaction
+                        transaction = CalcStockSplit(price, newShares, oldShares, sharesowned);
+                        // Save Transaction
+                        GlobalConfig.Connection.Transaction_AddNew(transaction);
                         break;
                     }
 
                 case TransactionType.Dividend:
-                    //ToDo - Set up Save Dividend Transaction
-                    // Uses only Date and Price (Price is Dividend per Share)
-                    break;
+                    {
+                        // Uses only Date and Price (Price is Dividend per Share)
+                        transaction = CreateTransaction(price, 0, 0);
+
+                        GlobalConfig.Connection.Transaction_AddNew(transaction);
+                        break;
+                    }
             }            
         }
 
         // Method to Gather Transaction Information
-        private TransactionModel RetrieveTransactionData(decimal p, decimal s, int bId)
+        private TransactionModel CreateTransaction(decimal p, decimal s, int bId)
         {
             TransactionModel t = new TransactionModel
             {
@@ -349,7 +346,8 @@ namespace StockTrackerApp
         }
 
         // Method to Handle Stock Splits
-        private void CalcStockSplit(decimal p, decimal ns, decimal os, decimal so)
+        // P = Price, NS = New Shares, OS = Old Shares, SO = Shares Owned
+        private TransactionModel CalcStockSplit(decimal p, decimal ns, decimal os, decimal so)
         {
             // Record Transaction Information
             TransactionModel trans = new TransactionModel
@@ -360,7 +358,7 @@ namespace StockTrackerApp
                 Date = dtp_TransDate.Value.Date,
 
                 // New Shares will equal one of the following
-                // if ration  New Share is greater than old shares
+                // if  New Share is greater than old shares
                 //     return shares owned times new shares
                 // else 
                 //     return shares owned divided by old shares
@@ -368,11 +366,8 @@ namespace StockTrackerApp
                 Price = p,
                 Fee = 0
             };
-        }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            return trans;
         }
 
         private void NumTextBox_Leave(object sender, EventArgs e)

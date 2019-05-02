@@ -150,9 +150,6 @@ namespace StockTrackerApp
 
         private void mnu_StockUpdateSingle_Click(object sender, EventArgs e) 
         {
-            //ToDo - code to find which Stock is Selected in dashboard
-            //ToDo - get stock that is being viewed in Stock View
-
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Update);
 
@@ -164,10 +161,7 @@ namespace StockTrackerApp
         }
         
         private void mnu_Stock_Buy_Click(object sender, EventArgs e) 
-        {
-            //ToDo - code to find which Stock is Selected in dashboard
-            //ToDo - get stock that is being viewed in Stock View
-
+        {            
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Buy);
 
@@ -180,9 +174,6 @@ namespace StockTrackerApp
 
         private void mnu_Stock_Sale_Click(object sender, EventArgs e) 
         {
-            //ToDo - code to find which Stock is Selected in dashboard
-            //ToDo - get stock that is being viewed in Stock View
-
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Sale);
 
@@ -195,9 +186,6 @@ namespace StockTrackerApp
 
         private void mnu_Stock_Dividend_Click(object sender, EventArgs e) 
         {
-            //ToDo - code to find which Stock is Selected in dashboard
-            //ToDo - get stock that is being viewed in Stock View
-
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Dividend);
 
@@ -210,9 +198,6 @@ namespace StockTrackerApp
 
         private void mnu_Stock_Split_Click(object sender, EventArgs e) 
         {
-            //ToDo - code to find which Stock is Selected in dashboard
-            //ToDo - get stock that is being viewed in Stock View
-
             //Create Instance of Pop Up Window Update Price
             StockUpdateForm frm = new StockUpdateForm(stock, TransactionType.Split);
 

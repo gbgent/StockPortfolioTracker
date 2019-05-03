@@ -87,6 +87,7 @@ namespace StockTrackerApp
             lst_History.DataSource = Stock.Transactions;
             lst_History.DisplayMember = "DisplayHistory";
             lst_History.ValueMember = "TransactionId";
+            lst_History.SelectedIndex = -1;
         }
 
             /************************

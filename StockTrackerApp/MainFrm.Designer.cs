@@ -110,8 +110,8 @@
             // mnu_Stock_View
             // 
             this.mnu_Stock_View.Name = "mnu_Stock_View";
-            this.mnu_Stock_View.Size = new System.Drawing.Size(127, 22);
-            this.mnu_Stock_View.Text = "View";
+            this.mnu_Stock_View.Size = new System.Drawing.Size(202, 22);
+            this.mnu_Stock_View.Text = "View Stock";
             this.mnu_Stock_View.Click += new System.EventHandler(this.mnu_Stock_View_Click);
             // 
             // saleToolStripMenuItem
@@ -120,49 +120,49 @@
             this.mnu_StockUpdateSingle,
             this.mnu_StockUpdateAll});
             this.saleToolStripMenuItem.Name = "saleToolStripMenuItem";
-            this.saleToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.saleToolStripMenuItem.Text = "Update";
+            this.saleToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.saleToolStripMenuItem.Text = "Update Price";
             // 
             // mnu_StockUpdateSingle
             // 
             this.mnu_StockUpdateSingle.Name = "mnu_StockUpdateSingle";
-            this.mnu_StockUpdateSingle.Size = new System.Drawing.Size(131, 22);
+            this.mnu_StockUpdateSingle.Size = new System.Drawing.Size(180, 22);
             this.mnu_StockUpdateSingle.Text = "Single";
             this.mnu_StockUpdateSingle.Click += new System.EventHandler(this.mnu_StockUpdateSingle_Click);
             // 
             // mnu_StockUpdateAll
             // 
             this.mnu_StockUpdateAll.Name = "mnu_StockUpdateAll";
-            this.mnu_StockUpdateAll.Size = new System.Drawing.Size(131, 22);
+            this.mnu_StockUpdateAll.Size = new System.Drawing.Size(180, 22);
             this.mnu_StockUpdateAll.Text = "All Stocks";
             this.mnu_StockUpdateAll.Click += new System.EventHandler(this.mnu_Stock_Update_All_Click);
             // 
             // mnu_Stock_Buy
             // 
             this.mnu_Stock_Buy.Name = "mnu_Stock_Buy";
-            this.mnu_Stock_Buy.Size = new System.Drawing.Size(127, 22);
-            this.mnu_Stock_Buy.Text = "Buy";
+            this.mnu_Stock_Buy.Size = new System.Drawing.Size(202, 22);
+            this.mnu_Stock_Buy.Text = "Buy Additional Shares";
             this.mnu_Stock_Buy.Click += new System.EventHandler(this.mnu_Stock_Buy_Click);
             // 
             // mnu_Stock_Sale
             // 
             this.mnu_Stock_Sale.Name = "mnu_Stock_Sale";
-            this.mnu_Stock_Sale.Size = new System.Drawing.Size(127, 22);
-            this.mnu_Stock_Sale.Text = "Sale";
+            this.mnu_Stock_Sale.Size = new System.Drawing.Size(202, 22);
+            this.mnu_Stock_Sale.Text = "Sale Shares";
             this.mnu_Stock_Sale.Click += new System.EventHandler(this.mnu_Stock_Sale_Click);
             // 
             // mnu_Stock_Dividend
             // 
             this.mnu_Stock_Dividend.Name = "mnu_Stock_Dividend";
-            this.mnu_Stock_Dividend.Size = new System.Drawing.Size(127, 22);
-            this.mnu_Stock_Dividend.Text = "Dividend";
+            this.mnu_Stock_Dividend.Size = new System.Drawing.Size(202, 22);
+            this.mnu_Stock_Dividend.Text = "Record Dividend";
             this.mnu_Stock_Dividend.Click += new System.EventHandler(this.mnu_Stock_Dividend_Click);
             // 
             // mnu_Stock_Split
             // 
             this.mnu_Stock_Split.Name = "mnu_Stock_Split";
-            this.mnu_Stock_Split.Size = new System.Drawing.Size(127, 22);
-            this.mnu_Stock_Split.Text = "Split";
+            this.mnu_Stock_Split.Size = new System.Drawing.Size(202, 22);
+            this.mnu_Stock_Split.Text = "Stock Split";
             this.mnu_Stock_Split.Click += new System.EventHandler(this.mnu_Stock_Split_Click);
             // 
             // mnu_Help

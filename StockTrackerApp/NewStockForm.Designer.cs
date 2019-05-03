@@ -34,8 +34,6 @@
             this.txt_Symbol = new System.Windows.Forms.TextBox();
             this.txt_Company = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_SearchSymbol = new System.Windows.Forms.Button();
-            this.btn_SearchCompany = new System.Windows.Forms.Button();
             this.dtp_Purchase = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,6 +43,8 @@
             this.btn_Save = new System.Windows.Forms.Button();
             this.btn_Clear = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.btn_SearchCompany = new System.Windows.Forms.Button();
+            this.btn_SearchSymbol = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -95,30 +95,6 @@
             this.label3.Size = new System.Drawing.Size(77, 21);
             this.label3.TabIndex = 4;
             this.label3.Text = "Company";
-            // 
-            // btn_SearchSymbol
-            // 
-            this.btn_SearchSymbol.BackColor = System.Drawing.Color.DarkSalmon;
-            this.btn_SearchSymbol.Location = new System.Drawing.Point(388, 79);
-            this.btn_SearchSymbol.Name = "btn_SearchSymbol";
-            this.btn_SearchSymbol.Size = new System.Drawing.Size(146, 31);
-            this.btn_SearchSymbol.TabIndex = 6;
-            this.btn_SearchSymbol.Text = "Search Symbol";
-            this.btn_SearchSymbol.UseVisualStyleBackColor = false;
-            this.btn_SearchSymbol.Visible = false;
-            this.btn_SearchSymbol.Click += new System.EventHandler(this.btn_SearchSymbol_Click);
-            // 
-            // btn_SearchCompany
-            // 
-            this.btn_SearchCompany.BackColor = System.Drawing.Color.DarkSalmon;
-            this.btn_SearchCompany.Location = new System.Drawing.Point(388, 125);
-            this.btn_SearchCompany.Name = "btn_SearchCompany";
-            this.btn_SearchCompany.Size = new System.Drawing.Size(146, 31);
-            this.btn_SearchCompany.TabIndex = 7;
-            this.btn_SearchCompany.Text = "Search Company";
-            this.btn_SearchCompany.UseVisualStyleBackColor = false;
-            this.btn_SearchCompany.Visible = false;
-            this.btn_SearchCompany.Click += new System.EventHandler(this.btn_SearchCompany_Click);
             // 
             // dtp_Purchase
             // 
@@ -204,6 +180,30 @@
             this.btn_Cancel.UseVisualStyleBackColor = false;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
+            // btn_SearchCompany
+            // 
+            this.btn_SearchCompany.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btn_SearchCompany.Location = new System.Drawing.Point(388, 125);
+            this.btn_SearchCompany.Name = "btn_SearchCompany";
+            this.btn_SearchCompany.Size = new System.Drawing.Size(146, 31);
+            this.btn_SearchCompany.TabIndex = 7;
+            this.btn_SearchCompany.Text = "Search Company";
+            this.btn_SearchCompany.UseVisualStyleBackColor = false;
+            this.btn_SearchCompany.Visible = false;
+            this.btn_SearchCompany.Click += new System.EventHandler(this.btn_SearchCompany_Click);
+            // 
+            // btn_SearchSymbol
+            // 
+            this.btn_SearchSymbol.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btn_SearchSymbol.Location = new System.Drawing.Point(388, 79);
+            this.btn_SearchSymbol.Name = "btn_SearchSymbol";
+            this.btn_SearchSymbol.Size = new System.Drawing.Size(146, 31);
+            this.btn_SearchSymbol.TabIndex = 6;
+            this.btn_SearchSymbol.Text = "Search Symbol";
+            this.btn_SearchSymbol.UseVisualStyleBackColor = false;
+            this.btn_SearchSymbol.Visible = false;
+            this.btn_SearchSymbol.Click += new System.EventHandler(this.btn_SearchSymbol_Click);
+            // 
             // NewStockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -247,8 +247,6 @@
         private System.Windows.Forms.TextBox txt_Symbol;
         private System.Windows.Forms.TextBox txt_Company;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_SearchSymbol;
-        private System.Windows.Forms.Button btn_SearchCompany;
         private System.Windows.Forms.DateTimePicker dtp_Purchase;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -258,5 +256,7 @@
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Button btn_Clear;
         private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.Button btn_SearchCompany;
+        private System.Windows.Forms.Button btn_SearchSymbol;
     }
 }

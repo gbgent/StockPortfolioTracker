@@ -49,6 +49,9 @@
             this.btn_Revert = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txt_CommissionRate = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.gb_BrokerageInfo.SuspendLayout();
             this.gp_BrokerInfo.SuspendLayout();
             this.SuspendLayout();
@@ -106,6 +109,7 @@
             // 
             // gb_BrokerageInfo
             // 
+            this.gb_BrokerageInfo.Controls.Add(this.label8);
             this.gb_BrokerageInfo.Controls.Add(this.label3);
             this.gb_BrokerageInfo.Controls.Add(this.txt_AccountNum);
             this.gb_BrokerageInfo.Controls.Add(this.label1);
@@ -115,7 +119,7 @@
             this.gb_BrokerageInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.gb_BrokerageInfo.Location = new System.Drawing.Point(12, 84);
             this.gb_BrokerageInfo.Name = "gb_BrokerageInfo";
-            this.gb_BrokerageInfo.Size = new System.Drawing.Size(314, 279);
+            this.gb_BrokerageInfo.Size = new System.Drawing.Size(340, 279);
             this.gb_BrokerageInfo.TabIndex = 1;
             this.gb_BrokerageInfo.TabStop = false;
             this.gb_BrokerageInfo.Text = "Brokerage Infomation";
@@ -263,12 +267,47 @@
             this.txt_CommissionRate.Size = new System.Drawing.Size(115, 29);
             this.txt_CommissionRate.TabIndex = 3;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(303, 45);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(22, 30);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "*";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(634, 301);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(22, 30);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(488, 343);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(184, 20);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "* - Denotes Required Field";
+            // 
             // BrokerageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(684, 427);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btn_Revert);
             this.Controls.Add(this.txt_CommissionRate);
@@ -316,5 +355,8 @@
         private System.Windows.Forms.Button btn_Revert;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_CommissionRate;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }

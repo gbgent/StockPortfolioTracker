@@ -253,18 +253,27 @@ namespace StockTrackerApp
                     }
                 case TransactionType.Sale:
                     {
+                        decimal sharesOwned = Decimal.Parse(lbl_SharesOwned.Text);
                         shares = GetShares();
 
-                        //Load Information and Valuation into Correct variables
-                        transaction = CreateTransaction(price, shares, broker.BrokerId);
-                        valuation = CalculateCurrentValue(price, -shares);
+                        if (shares > sharesOwned)
+                        {//Load Information and Valuation into Correct variables
+                            transaction = CreateTransaction(price, shares, broker.BrokerId);
+                            valuation = CalculateCurrentValue(price, -shares);
 
-                        //Save Transaction and Valuation to Database
-                        GlobalConfig.Connection.Transaction_AddNew(transaction);
-                        
-                        // CUPdate valuations
-                        Processor.UpDateValuations(valuation);
-                        break;
+                            //Save Transaction and Valuation to Database
+                            GlobalConfig.Connection.Transaction_AddNew(transaction);
+
+                            // CUPdate valuations
+                            Processor.UpDateValuations(valuation);
+                            break;
+                        }
+                        else
+                        {
+                            MessageBox.Show("You Can Not Sale More Shares than you own.");
+                            DialogResult = DialogResult.None;
+                            break;
+                        }
                     }
 
                 case TransactionType.Update:

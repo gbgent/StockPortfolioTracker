@@ -6,11 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace StockTrackerProcessorLibrary
 {
     public class STProcessor
     {
+        PortFolioModel pf = new PortFolioModel();
+
+        // Update Database of Stock Valuations
         public void UpDateValuations(ValuationModel model)  
         {
             // Check to see if Stock has Valuation for This Date
@@ -81,6 +85,49 @@ namespace StockTrackerProcessorLibrary
                 }
             }
         }
+
+        // Loads a List Box with the Stock Portfolio
+        public void LoadPortfolioList(ref ListBox li) 
+        {
+            // Clear Data Source
+            li.DataSource = null;
+
+            //Reload Data Source
+            li.DataSource = pf.Stocks;
+            li.DisplayMember = "DisplayName";
+            li.ValueMember = "StockId";
+
+        }
+
+        /// <summary>Plots points for Stock Valuation on Chart
+        /// </summary>
+        /// <param name="chart">Chart to Update</param>
+        /// <param name="values">Valuations to Plot</param>
+        public void ChartUpdate(ref Chart chart ,List<ChartModel> values)
+        {
+            // Clear the Chart Data
+            chart.DataSource = null;
+
+            // Load Chart with new values
+            chart.DataSource = values;
+
+            //Set up X Axis
+            chart.Series["Value"].XValueMember = "Date";
+            chart.Series["Value"].XValueType = System.Windows.Forms.DataVisualization.
+                                                Charting.ChartValueType.DateTime;
+            chart.Series["Cost"].XValueMember = "Date";
+            chart.Series["Cost"].XValueType = System.Windows.Forms.DataVisualization.
+                                                Charting.ChartValueType.DateTime;
+
+            //Set up Y Axis
+            chart.Series["Value"].YValueMembers = "Value";
+            chart.Series["Value"].YValueType = System.Windows.Forms.DataVisualization.
+                                                Charting.ChartValueType.Double;
+            chart.Series["Cost"].YValueMembers = "Cost";
+            chart.Series["Cost"].YValueType = System.Windows.Forms.DataVisualization.
+                                                   Charting.ChartValueType.Double;
+        }
+
 
     }
 }

@@ -22,12 +22,13 @@ namespace StockTrackerDataLibrary.DataModels
             get { return RetrieveCharting(); }
         }
 
+        //Default Constructor
         public PortFolioModel()
         {
             Load();
         }
        
-
+        // Public method to load all stocks for Portfolio
         public void Load()
         {
             Stocks = GlobalConfig.Connection.Stocks_LoadAll();

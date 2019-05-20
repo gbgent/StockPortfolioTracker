@@ -21,6 +21,7 @@ namespace StockTrackerApp
 
         List<ChartModel> ChartValuations = new List<ChartModel>();
 
+        STProcessor proc = new STProcessor();
         private IStockRequester callingForm;
 
         // Default Constructor
@@ -48,11 +49,10 @@ namespace StockTrackerApp
 
         private void UpdatePortfolioList()
         {
-            // Note: Portfolio Stocks Load on Instantiation of Portfolio
-            lst_Portfolio.DataSource = null;
+            //Load Portfolio List Box
+            proc.LoadPortfolioList(ref lst_Portfolio);
 
-            lst_Portfolio.DataSource = Portfolio.Stocks;
-            lst_Portfolio.DisplayMember = "DisplayName";
+            // Set Portfolio to first stock
             lst_Portfolio.SelectedIndex = 0;
         }
         // Update the Form
@@ -104,20 +104,7 @@ namespace StockTrackerApp
         // Wire up the Chart
         private void UpdateChart()
         {
-            // Clear Data Source
-            cht_ValueGraph.DataSource = null;
-
-            //cht_ValueGraph.DataSource = ChartValuations;
-            cht_ValueGraph.DataSource = Portfolio.ChartingValuesAll;
-            cht_ValueGraph.Series["Value"].XValueMember = "Date";
-            cht_ValueGraph.Series["Value"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            cht_ValueGraph.Series["Value"].YValueMembers = "Value";
-            cht_ValueGraph.Series["Value"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-
-            cht_ValueGraph.Series["Costs"].XValueMember = "Date";
-            cht_ValueGraph.Series["Costs"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            cht_ValueGraph.Series["Costs"].YValueMembers = "Cost";
-            cht_ValueGraph.Series["Costs"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            proc.ChartUpdate(ref cht_ValueGraph,Portfolio.ChartingValuesAll)
         }
 
         public void StockSelected(StockModel stock)

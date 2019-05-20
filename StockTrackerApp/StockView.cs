@@ -20,6 +20,7 @@ namespace StockTrackerApp
         StockModel Stock;
         List<ChartModel> ChartValues;
         bool FirstLoad = false;
+        STProcessor proc = new STProcessor();
 
         private IStockRequester callingForm;
 
@@ -127,14 +128,12 @@ namespace StockTrackerApp
         
        // Method to load List of Stocks for lst_Stocks ListBox
         private void LoadPortfolioList()  //Good
-        { 
-            // Clear Data Source
-            lst_Stocks.DataSource = null;
+        {
+            //Load Stock List Box
+            proc.LoadPortfolioList(ref lst_Stocks);
 
-            //Add New Data Source
-            lst_Stocks.DataSource = Portfolio.Stocks;
-            lst_Stocks.DisplayMember = "DisplayName";
-            lst_Stocks.ValueMember = "StockId";
+            //Set Selected Stock to Stock Passed into
+            //Stock view or selected by user
             lst_Stocks.SelectedValue = Stock.StockId;
             FirstLoad = false;
         } 
@@ -165,22 +164,7 @@ namespace StockTrackerApp
 
         private void UpdateChart ()
         {
-            cht_IndivStock.DataSource = null;
-
-            // Set up the X Axis 
-            cht_IndivStock.DataSource = ChartValues;
-            cht_IndivStock.Series["Value"].XValueMember = "Date";
-            cht_IndivStock.Series["Value"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-            cht_IndivStock.Series["Cost"].XValueMember = "Date";
-            cht_IndivStock.Series["Cost"].XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.DateTime;
-
-            //Set UP Y Axis
-            cht_IndivStock.Series["Value"].YValueMembers = "Value";
-            cht_IndivStock.Series["Value"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            cht_IndivStock.Series["Cost"].YValueMembers = "Cost";
-            cht_IndivStock.Series["Cost"].YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-
-
+            proc.ChartUpdate(ref cht_IndivStock, ChartValues);
         }
 
         public void StockSelected(StockModel stock)

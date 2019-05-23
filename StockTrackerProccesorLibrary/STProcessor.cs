@@ -128,6 +128,22 @@ namespace StockTrackerProcessorLibrary
                                                    Charting.ChartValueType.Double;
         }
 
+        public ComboBox LoadBrokerComboBox()
+        {
+            ComboBox output = new ComboBox();
 
+            //Ensure Combo Box is Empty
+            output.DataSource = null;
+
+            //Load Brokers into ComboBox
+            output.DataSource = GlobalConfig.Connection.Broker_GetAll();
+
+            //Assign Display and Value Members
+            output.DisplayMember = "BrokerName";
+            output.ValueMember = "BrokerId";
+
+            //Return ComboBox
+            return output;
+        }
     }
 }

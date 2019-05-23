@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StockTrackerProcessorLibrary;
 
 namespace StockTrackerApp
 {
@@ -21,6 +22,8 @@ namespace StockTrackerApp
 
         bool InfoChanged = false;  // Flag for changed information        
 
+        STProcessor proc = new STProcessor();
+       
         // Default Constructor for Form
         public BrokerageForm()
         {
@@ -146,23 +149,15 @@ namespace StockTrackerApp
         // Update the Combo Box for Brokerages Base Method
         private void UpdateSelections()
         {
-            cb_Select.DataSource = null;
-            cb_Select.DataSource = Brokers;
-            cb_Select.DisplayMember = "Brokeragename";
-            cb_Select.ValueMember = "BrokerId";
-
+            cb_Select = proc.LoadBrokerComboBox();
         }
 
         // Update the Combo Box for Brokerages Passing Index of 
         // Brokerage to Display
         private void UpdateSelections(int x)
         {
-            cb_Select.DataSource = null;
-            cb_Select.DataSource = Brokers;
-            cb_Select.DisplayMember = "Brokeragename";
-            cb_Select.ValueMember = "BrokerId";
+            cb_Select = proc.LoadBrokerComboBox();
             cb_Select.SelectedIndex = x;
-
         }
                 
         // Method to handle the change in checked status

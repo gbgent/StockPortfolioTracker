@@ -172,12 +172,7 @@ namespace StockTrackerApp
 
             DisplayCurrentValue();
 
-            List<BrokerageModel> brokers = GlobalConfig.Connection.Broker_GetAll();
-
-            cb_Broker.DataSource = null;
-            cb_Broker.DataSource = brokers;
-            cb_Broker.DisplayMember = "BrokerageName";
-            cb_Broker.ValueMember = "BrokerId";
+            cb_Broker = Processor.LoadBrokerComboBox();
         }
 
         private void SetupBuy()
@@ -189,13 +184,7 @@ namespace StockTrackerApp
             DisplayCurrentValue();
 
             //Load Brokers in Combo Box
-            List<BrokerageModel> brokers = GlobalConfig.Connection.Broker_GetAll();
-
-            cb_Broker.DataSource = null;
-            cb_Broker.DataSource = brokers;
-            cb_Broker.DisplayMember = "BrokerageName";
-            cb_Broker.ValueMember = "BrokerId";
-
+            cb_Broker = Processor.LoadBrokerComboBox()
         }
 
         //Display Shares Owned and Stock's Value
